@@ -1,0 +1,4 @@
+github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=
+github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
+k8s.io/apimachinery v0.0.0-20180327062455-210bcde8e5a7 h1:4s8W5oa2ntZogLwoOKS2tiLP+VO6uLuJb7IjgGRkwb4=
+k8s.io/apimachinery v0.0.0-20180327062455-210bcde8e5a7/go.mod h1:ccL7Eh7zubPUSh9A3USN90/OzHNSVN6zxzde07TDCL0=
