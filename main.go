@@ -33,6 +33,8 @@ package main
 import (
 	"fmt"
 	"justest/pkg/ds"
+	"justest/pkg/leetcode"
+
 )
 
 //go:noinline
@@ -49,6 +51,10 @@ func foo(m0 int) *int {
 }
 
 func main() {
+
+	leetcode.TestPalindrome()
+
+	return
 
 	fmt.Println(10>>2)
 	ds.TestBin()
