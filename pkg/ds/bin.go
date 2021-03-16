@@ -43,7 +43,7 @@ func bin2(arr []int, k int) int {
 			continue
 		}
 	}
-	return -1
+	// return -1
 }
 
 func binarySearchMatrix(nums []int, target int) int {

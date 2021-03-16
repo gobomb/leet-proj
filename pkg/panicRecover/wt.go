@@ -5,25 +5,15 @@ import (
 	"sync"
 )
 
+// defer wg.Wait() 会阻塞 panic
 func Wt() {
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
-	// go func() {
-	// 	defer wg.Wait()
-	// 	// Long running task
-	// 	panic("Something unexpected happened.")
-	// 	fmt.Println("wait")
-	// }()
-	// go func() {
-	// 	wg.Done()
-	// 	fmt.Println("done")
-
-	// }()
 	defer wg.Wait()
+	fmt.Println("main 0")
+
 	func() {
 		panic("panic")
-		fmt.Println("done")
-
 	}()
 	fmt.Println("main 1")
 

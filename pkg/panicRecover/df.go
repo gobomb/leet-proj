@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// Df defer可以阻塞goroutine
 func Df(){
 	i:=0
 	defer func(){

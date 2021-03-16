@@ -7,6 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 )
 
+// runtime.HandleCrash 会打印两次 panic 的 callstack
 func Pr() {
 	// defer func() {
 	// 	r := recover()
@@ -46,7 +47,7 @@ func Pr() {
 
 	log.Printf("Out of defer")
 
-	time.Sleep(1010 * time.Second)
+	select{}
 }
 
 type fakeStruct struct {
