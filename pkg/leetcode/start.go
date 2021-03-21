@@ -1,5 +1,5 @@
 package leetcode
 
 func Start() {
-	testRoamToInt()
+	testlongestCommonPrefix()
 }
