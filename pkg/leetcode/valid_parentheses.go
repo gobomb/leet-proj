@@ -7,6 +7,9 @@ import (
 )
 
 func isValid(s string) bool {
+	if s == "" {
+		return false
+	}
 	st := NewStack()
 	pmap := make(map[byte]byte)
 	pmap['['] = ']'
@@ -41,11 +44,7 @@ func isValid(s string) bool {
 		}
 		st.Push(s[i])
 	}
-	if st.Length() == 0 {
-		return true
-	} else {
-		return false
-	}
+	return st.Length() == 0
 }
 
 type stack struct {
