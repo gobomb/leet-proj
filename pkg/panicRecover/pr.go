@@ -47,7 +47,7 @@ func Pr() {
 
 	log.Printf("Out of defer")
 
-	select{}
+	select {}
 }
 
 type fakeStruct struct {
