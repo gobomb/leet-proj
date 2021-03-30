@@ -59,5 +59,4 @@ func Test3sum() {
 	fmt.Printf("%#v \n", threeSum([]int{}))
 	fmt.Printf("%#v \n", threeSum([]int{0}))
 
-
 }

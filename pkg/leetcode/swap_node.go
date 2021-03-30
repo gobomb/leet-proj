@@ -51,7 +51,7 @@ func testSwapPairs() {
 }
 
 func printList(h *ListNode) {
-	if h==nil{
+	if h == nil {
 		return
 	}
 	printListNode(h)
@@ -75,10 +75,10 @@ func swapPairs(head *ListNode) *ListNode {
 			return head
 		}
 
-		temp := h.Next     
-		h.Next = temp.Next 
-		temp.Next = h      
-		h = temp           
+		temp := h.Next
+		h.Next = temp.Next
+		temp.Next = h
+		h = temp
 		last.Next = h
 		if h.Next == head {
 			head = h
