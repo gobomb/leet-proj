@@ -8,15 +8,15 @@ import "fmt"
 func Bin(arr []int, k int) int {
 	mi, lo, hi := 0, 0, len(arr)-1
 
-	for lo <= hi {
+	for lo <= hi { // <---- 需要包含相等情况
 		mi = lo + (hi-lo)>>1
 		fmt.Println("hi lo mid", hi, lo, mi)
 		if arr[mi] == k {
 			return mi
 		} else if arr[mi] < k {
-			lo = mi + 1
+			lo = mi + 1 // <---- lo/hi 变化需要+-1
 		} else {
-			hi = mi - 1
+			hi = mi - 1 // <----
 		}
 	}
 
@@ -24,6 +24,7 @@ func Bin(arr []int, k int) int {
 
 }
 
+// 错误解法
 func bin2(arr []int, k int) int {
 	lo := 0
 	hi := len(arr) - 1
@@ -62,9 +63,11 @@ func binarySearchMatrix(nums []int, target int) int {
 	return -1
 }
 
-func TestBin() {
+func TBin() {
 	arr := []int{1, 12, 23, 34, 45}
-	println(Bin(arr, 12))
-	r := binarySearchMatrix(arr, 12)
+	println(Bin(arr, 45))
+	r := binarySearchMatrix(arr, 45)
+
+	// println(bin3(arr, 45))
 	println(r)
 }
