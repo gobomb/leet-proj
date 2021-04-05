@@ -12,7 +12,10 @@ type ListNode struct {
 }
 
 func (l *ListNode) String() string {
-	return fmt.Sprintf("{%v %v}", l.Val, l.Next)
+	if l == nil {
+		return fmt.Sprintf("(nil)", )
+	}
+	return fmt.Sprintf("%v->%v", l.Val, l.Next)
 }
 
 func addTwoNumbers(l1, l2 *ListNode) *ListNode {
