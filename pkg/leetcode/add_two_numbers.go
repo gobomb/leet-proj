@@ -13,7 +13,7 @@ type ListNode struct {
 
 func (l *ListNode) String() string {
 	if l == nil {
-		return fmt.Sprintf("(nil)", )
+		return fmt.Sprintf("(nil)")
 	}
 	return fmt.Sprintf("%v->%v", l.Val, l.Next)
 }
