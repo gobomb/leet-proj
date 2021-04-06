@@ -28,6 +28,7 @@ func threeSum(nums []int) [][]int {
 
 			// fmt.Println(start, index, end)
 
+			// 去重
 			if start > 0 && nums[start] == nums[start-1] {
 				start++
 				continue
