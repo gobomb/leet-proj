@@ -27,11 +27,29 @@ func Test_handler(t *testing.T) {
 func Test_Close(t *testing.T) {
 	stopC := make(chan struct{})
 	waitC := make(chan struct{})
-	timer := time.NewTimer(30 * time.Second)
+	timer := time.NewTimer(10 * time.Second)
 	go runServer(stopC, waitC)
 	<-waitC
 	go client()
 
 	<-timer.C
+
 	close(stopC)
+
 }
+
+// func Test_CloseLeak(t *testing.T) {
+// 	time.Sleep(2 * time.Second)
+// 	stopC := make(chan struct{})
+// 	waitC := make(chan struct{})
+// 	timer := time.NewTimer(10 * time.Second)
+// 	go runServer(stopC, waitC)
+// 	<-waitC
+// 	// for i := 0; i < 100; i++ {
+// 	go clientLeak()
+// 	// }
+
+// 	<-timer.C
+
+// 	close(stopC)
+// }
