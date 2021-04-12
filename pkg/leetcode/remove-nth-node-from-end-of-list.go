@@ -32,3 +32,77 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	}
 	return head
 }
+
+func removeNthFromEndRangeTwo(head *ListNode, n int) *ListNode {
+	cur := head
+
+	l := 0
+	// fmt.Printf("long: %v list: %v\n", l, head)
+
+	// first range
+	for {
+		if cur == nil {
+			break
+		}
+		if cur.Next == nil {
+			l++
+			break
+		}
+		l++
+
+		cur = cur.Next
+	}
+
+	// get index to del
+	del := l - n
+	i := 0
+	if del == 0 {
+		return head.Next
+	}
+	cur = head
+
+	// second range
+	for {
+		if i > l {
+			return head
+		}
+		if del == i+1 {
+			cur.Next = cur.Next.Next
+			return head
+		}
+
+		if cur.Next == nil {
+			break
+		}
+		cur = cur.Next
+		i++
+	}
+
+	return head
+}
+
+func removeNthFromEndFastSlowP(head *ListNode, n int) *ListNode {
+	if head.Next == nil && n == 1 {
+		return nil
+	}
+	slow := head
+	fast := head
+	i := 0
+	for {
+		if fast.Next == nil {
+			break
+		}
+		if i == n {
+			slow = slow.Next
+			i = n - 1
+		}
+		fast = fast.Next
+		i++
+	}
+	// fmt.Printf("i:%v,n:%v\n", i, n)
+	// fmt.Printf("sl:%v,fa:%v\n", slow, fast)
+
+	slow.Next = slow.Next.Next
+
+	return head
+}
