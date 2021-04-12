@@ -61,12 +61,30 @@ func Test_mergeTwoLists(t *testing.T) {
 			},
 		},
 		{
+			"1make",
+			args{
+				l1: makeListNode([]int{1, 2, 4}),
+
+				l2: makeListNode([]int{1, 2, 4}),
+			},
+			makeListNode([]int{1, 1, 2, 2, 4, 4}),
+		},
+		{
 			"2",
 			args{
 				l1: nil,
 				l2: nil,
 			},
 			nil,
+		},
+		{
+			"2make",
+			args{
+				l1: makeListNode([]int{}),
+
+				l2: makeListNode([]int{}),
+			},
+			makeListNode([]int{}),
 		},
 		{
 			"3",
@@ -81,6 +99,15 @@ func Test_mergeTwoLists(t *testing.T) {
 				0,
 				nil,
 			},
+		},
+		{
+			"3make",
+			args{
+				l1: makeListNode([]int{}),
+
+				l2: makeListNode([]int{0}),
+			},
+			makeListNode([]int{0}),
 		},
 		// TODO: Add test cases.
 	}

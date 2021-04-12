@@ -1,22 +1,8 @@
 package leetcode
 
 import (
-	"fmt"
 	"log"
 )
-
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (l *ListNode) String() string {
-	if l == nil {
-		return fmt.Sprintf("(nil)")
-	}
-	return fmt.Sprintf("%v->%v", l.Val, l.Next)
-}
 
 func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 	if l1 == nil || l2 == nil {
