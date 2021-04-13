@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -146,7 +145,7 @@ func TestLNDeepCopy(t *testing.T) {
 		},
 	}
 
-	fmt.Printf("loop %+v\n", loop)
+	// fmt.Printf("loop %v\n", NewListPrint(loop))
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if gotN := LNDeepCopy(tt.args.o); !reflect.DeepEqual(gotN, tt.wantN) {
@@ -156,36 +155,37 @@ func TestLNDeepCopy(t *testing.T) {
 	}
 }
 
-func TestListNode_String(t *testing.T) {
-	type fields struct {
-		Val  int
-		Next *ListNode
-	}
+type fieldsString struct {
+	Val  int
+	Next *ListNode
+}
 
-	tests := []struct {
-		name   string
-		fields fields
-		want   string
-	}{
-		{
-			"1make",
-			fields{
-				Val:  0,
-				Next: makeListNode([]int{1, 2, 4}),
-			},
-			"0->1->2->4->(nil)",
+var testsString = []struct {
+	name   string
+	fields fieldsString
+	want   string
+}{
+	{
+		"1make",
+		fieldsString{
+			Val:  0,
+			Next: makeListNode([]int{1, 2, 4}),
 		},
-		{
-			"2",
-			fields{
-				Val:  0,
-				Next: nil,
-			},
-			"0->(nil)",
+		"0->1->2->4->(nil)",
+	},
+	{
+		"2",
+		fieldsString{
+			Val:  0,
+			Next: nil,
 		},
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
+		"0->(nil)",
+	},
+	// TODO: Add test cases.
+}
+
+func TestListNode_String(t *testing.T) {
+	for _, tt := range testsString {
 		t.Run(tt.name, func(t *testing.T) {
 			l := &ListNode{
 				Val:  tt.fields.Val,
@@ -204,8 +204,60 @@ func TestListNode_String_loop(t *testing.T) {
 		3,
 		loop,
 	}
-	want := "1->3->(loop)"
-	if got := loop.String(); got != want {
+	want := "1->3->(loop)1"
+	if got := ListStringer(loop).String(); got != want {
 		t.Errorf("ListNode.String() = %v, want %v", got, want)
+	}
+	t.Logf("%v\n", ListStringer(loop))
+
+}
+
+func TestListPrinter_String(t *testing.T) {
+	ln := makeListNode([]int{1, 2, 4})
+	type fields struct {
+		visitMap visitMap
+		head     *ListNode
+		cur      *ListNode
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   string
+	}{
+		{
+			"1",
+			fields{
+				visitMap: make(visitMap),
+				cur:      ln,
+				head:     ln, //  makeListNode([]int{1, 2, 4}),
+			},
+			"1->2->4->(nil)",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			l := &ListPrinter{
+				visitMap: tt.fields.visitMap,
+				head:     tt.fields.head,
+				cur:      tt.fields.cur,
+			}
+			if got := l.String(); got != tt.want {
+				t.Errorf("ListPrinter.String() = %v, want %v", got, tt.want)
+			}
+			t.Logf("%v\n", l)
+		})
+	}
+
+	for _, tt := range testsString {
+		t.Run(tt.name, func(t *testing.T) {
+			l := &ListNode{
+				Val:  tt.fields.Val,
+				Next: tt.fields.Next,
+			}
+			if got := ListStringer(l).String(); got != tt.want {
+				t.Errorf("ListNode.String() = %v, want %v", got, tt.want)
+			}
+			t.Logf("%v\n", ListStringer(l))
+		})
 	}
 }

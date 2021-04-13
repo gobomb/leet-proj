@@ -2,7 +2,6 @@ package leetcode
 
 import (
 	"fmt"
-	"sync"
 )
 
 type Looper interface {
@@ -15,10 +14,30 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func (l *ListNode) String() string {
+	return l.stringCheckLoop()
+	// if l == nil {
+	// 	return fmt.Sprintf("(nil)")
+	// }
+	// return fmt.Sprintf("%v->%v", l.Val, l.Next)
+}
+
+func (l *ListNode) stringCheckLoop() string {
+	return ListStringer(l).String()
+}
+
+func makeListNode(in []int) *ListNode {
+	var last *ListNode
+	for i := len(in) - 1; i >= 0; i-- {
+		last = &ListNode{
+			Val:  in[i],
+			Next: last,
+		}
+	}
+	return last
+}
+
 type visitMap map[*ListNode]*ListNode
-
-
-
 
 type LNDeepCopyer struct {
 	vm visitMap
@@ -61,52 +80,38 @@ func (lnc LNDeepCopyer) lnDeepCopy(o *ListNode) (n *ListNode) {
 	return n
 }
 
-
-
-
-
-
-// FIXME:  不使用公共map，需要考虑是否内存泄漏
-var initvm visitMap
-var once sync.Once
-
-func init() {
-	once.Do(func() {
-		initvm = make(visitMap)
-	})
+type ListPrinter struct {
+	visitMap visitMap
+	head     *ListNode
+	cur      *ListNode
 }
 
-// func (l *ListNode) Loop(o, n *ListNode) bool {
-// 	_, ok := initvm[o]
-// 	if ok {
-// 		// FIXME:  清空公共map，需要考虑是否内存泄漏
-// 		initvm = make(visitMap)
-// 		return true
-// 	}
-// 	initvm[o] = n
-// 	return false
-// }
+func ListStringer(l *ListNode) fmt.Stringer {
+	return &ListPrinter{
+		visitMap: make(visitMap),
+		head:     l,
+		cur:      l,
+	}
+}
 
-func (l *ListNode) String() string {
-	if l == nil {
+func (l *ListPrinter) Loop(o, n *ListNode) bool {
+	_, ok := l.visitMap[o]
+	if ok {
+		return true
+	}
+	l.visitMap[o] = n
+	return false
+}
+
+func (l *ListPrinter) String() string {
+	if l.cur == nil {
 		return fmt.Sprintf("(nil)")
 	}
-	// if loop := l.Loop(l, nil); loop {
-	// 	return fmt.Sprintf("(loop)")
-	// }
-	return fmt.Sprintf("%v->%v", l.Val, l.Next)
-}
-
-
-
-
-func makeListNode(in []int) *ListNode {
-	var last *ListNode
-	for i := len(in) - 1; i >= 0; i-- {
-		last = &ListNode{
-			Val:  in[i],
-			Next: last,
-		}
+	if loop := l.Loop(l.cur, nil); loop {
+		return fmt.Sprintf("(loop)%v", l.cur.Val)
 	}
-	return last
+	cur := l.cur
+	l.cur = l.cur.Next
+	n := l
+	return fmt.Sprintf("%v->%v", cur.Val, n)
 }
