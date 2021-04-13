@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -184,16 +185,18 @@ var testsString = []struct {
 	// TODO: Add test cases.
 }
 
-func TestListNode_String(t *testing.T) {
+func TestListNode_Format(t *testing.T) {
 	for _, tt := range testsString {
 		t.Run(tt.name, func(t *testing.T) {
 			l := &ListNode{
 				Val:  tt.fields.Val,
 				Next: tt.fields.Next,
 			}
-			if got := l.String(); got != tt.want {
+			if got := fmt.Sprintf("%+v", l); got != tt.want {
 				t.Errorf("ListNode.String() = %v, want %v", got, tt.want)
 			}
+			fmt.Printf("+v %+v\t", l)
+			fmt.Printf("v %v\n", l)
 		})
 	}
 }

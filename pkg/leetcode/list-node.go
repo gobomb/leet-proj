@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"io"
 )
 
 type Looper interface {
@@ -14,16 +15,19 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func (l *ListNode) String() string {
-	return l.stringCheckLoop()
-	// if l == nil {
-	// 	return fmt.Sprintf("(nil)")
-	// }
-	// return fmt.Sprintf("%v->%v", l.Val, l.Next)
-}
+// Ref: github.com/pkg/errors
+func (l *ListNode) Format(s fmt.State, verb rune) {
+	switch verb {
+	case 'v':
+		if s.Flag('+') {
+			fmt.Fprintf(s, "%+v", ListStringer(l))
+			return
+		}
 
-func (l *ListNode) stringCheckLoop() string {
-	return ListStringer(l).String()
+		fallthrough
+	case 'p':
+		io.WriteString(s, fmt.Sprintf("%p", l))
+	}
 }
 
 func makeListNode(in []int) *ListNode {
