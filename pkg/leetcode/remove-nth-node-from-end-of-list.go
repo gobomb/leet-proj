@@ -99,10 +99,15 @@ func removeNthFromEndFastSlowP(head *ListNode, n int) *ListNode {
 		fast = fast.Next
 		i++
 	}
-	// fmt.Printf("i:%v,n:%v\n", i, n)
-	// fmt.Printf("sl:%v,fa:%v\n", slow, fast)
 
-	slow.Next = slow.Next.Next
-
+	// 两指针的具体刚好等于n，删除慢指针的下一个node
+	if i == n {
+		slow.Next = slow.Next.Next
+	}
+	// fast已经走完，i等于节点数-1;n等于节点数，意味着需删除头节点
+	// n有大于节点数的可能，这里题意假设n不大于节点数
+	if i == n-1 {
+		head = head.Next
+	}
 	return head
 }
