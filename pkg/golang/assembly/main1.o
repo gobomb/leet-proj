@@ -8,7 +8,7 @@
 	; 栈从高位向低位增长
 	; SUBQ 对 SP 的值减32 （栈增长32）
 	0x000f 00015 (main.go:5)	SUBQ	$32, SP
-	; 把 BP 中的值存到 SP+24 （把 BP 存到栈上）
+	; 把 BP 中的值存到 SP+24 （把 BP 存到栈上）（32-8, 8用来放 BP）
 	0x0013 00019 (main.go:5)	MOVQ	BP, 24(SP)
 	; 将 SP+24 的地址复制给 BP
 	0x0018 00024 (main.go:5)	LEAQ	24(SP), BP
@@ -39,7 +39,7 @@
 	rel 47+4 t=8 "".add+0
 	rel 65+4 t=8 runtime.morestack_noctxt+0
 "".add STEXT nosplit size=65 args=0x18 locals=0x10 funcid=0x0
-	; 栈帧为16;
+	; 即将分配栈帧为16（ BP + int 大小）; 两个 int 入参加一个返回值 == 24(调用方分配的栈大小)
 	0x0000 00000 (main.go:9)	TEXT	"".add(SB), NOSPLIT|ABIInternal, $16-24
 	0x0000 00000 (main.go:9)	SUBQ	$16, SP
 	0x0004 00004 (main.go:9)	MOVQ	BP, 8(SP)
