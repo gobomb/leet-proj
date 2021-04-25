@@ -12,7 +12,7 @@ func TestRetryOnErr(t *testing.T) {
 		args    args
 		wantErr bool
 	}{
-		// TODO: Add test cases.
+
 		{"1", args{5, 5}, false},
 		{"2", args{5, 6}, true},
 		{"3", args{10, 6}, false},

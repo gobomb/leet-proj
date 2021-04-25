@@ -109,7 +109,6 @@ func Test_mergeTwoLists(t *testing.T) {
 			},
 			makeListNode([]int{0}),
 		},
-		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

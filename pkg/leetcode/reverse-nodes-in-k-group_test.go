@@ -15,7 +15,7 @@ func Test_reverseKGroup(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-		// TODO: Add test cases.
+
 		{
 			"1",
 			args{
@@ -75,7 +75,6 @@ func Test_reverse(t *testing.T) {
 				nil,
 			},
 			makeListNode([]int{5, 4, 3, 2, 1}),
-			// TODO: Add test cases.
 		},
 		{
 			"1",
@@ -84,7 +83,6 @@ func Test_reverse(t *testing.T) {
 				nil,
 			},
 			makeListNode([]int{2, 1}),
-			// TODO: Add test cases.
 		},
 	}
 	for _, tt := range tests {

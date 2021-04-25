@@ -14,7 +14,7 @@ func Test_nextPermutation(t *testing.T) {
 		args args
 		want []int
 	}{
-		// TODO: Add test cases.
+
 		{
 			"1",
 			args{

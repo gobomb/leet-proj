@@ -18,7 +18,6 @@ var tests = []struct {
 	{"2", args{nums: []int{-1, 2, 1, 4}, target: 1}, 2},
 	{"3", args{nums: []int{2, 2, 2, 2}, target: 1}, 6},
 	{"4", args{nums: []int{1, 1, 1, 0}, target: 100}, 3},
-	// TODO: Add test cases.
 }
 
 func Test_threeSumClosest(t *testing.T) {

@@ -13,7 +13,6 @@ func TestNewMan(t *testing.T) {
 		name string
 		want Man
 	}{
-		// TODO: Add test cases.
 		{
 			name: "1",
 			want: man,

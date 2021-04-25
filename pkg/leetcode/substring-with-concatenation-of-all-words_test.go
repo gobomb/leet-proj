@@ -77,7 +77,6 @@ func Test_matchWord(t *testing.T) {
 			},
 			true,
 		},
-		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

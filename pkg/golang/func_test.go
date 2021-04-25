@@ -7,9 +7,7 @@ func TestBook_Pages(t *testing.T) {
 		name string
 		b    Book
 		want int
-	}{
-		// TODO: Add test cases.
-	}
+	}{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.b.Pages(); got != tt.want {
@@ -27,9 +25,7 @@ func TestBook_SetPages(t *testing.T) {
 		name string
 		b    *Book
 		args args
-	}{
-		// TODO: Add test cases.
-	}
+	}{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			tt.b.SetPages(tt.args.pages)

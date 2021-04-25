@@ -15,7 +15,7 @@ func Test_makeListNode(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-		// TODO: Add test cases.
+
 		{
 			"124",
 			args{
@@ -109,7 +109,7 @@ func TestLNDeepCopy(t *testing.T) {
 		args  args
 		wantN *ListNode
 	}{
-		// TODO: Add test cases.
+
 		{
 			"1make",
 			args{
@@ -182,7 +182,6 @@ var testsString = []struct {
 		},
 		"0->(nil)",
 	},
-	// TODO: Add test cases.
 }
 
 func TestListNode_Format(t *testing.T) {

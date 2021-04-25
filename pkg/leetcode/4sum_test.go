@@ -15,7 +15,7 @@ func Test_fourSum(t *testing.T) {
 		args args
 		want [][]int
 	}{
-		// TODO: Add test cases.
+
 		{
 			"1",
 			args{
