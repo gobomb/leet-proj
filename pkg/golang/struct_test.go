@@ -1,6 +1,8 @@
 package golang
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_kk_test(t *testing.T) {
 	tests := []struct {
