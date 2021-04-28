@@ -3,6 +3,7 @@ package ds
 import (
 	"crypto/rand"
 	"math/big"
+	"sort"
 )
 
 func randSliceInt(max int, length int) []int {
@@ -15,4 +16,17 @@ func randSliceInt(max int, length int) []int {
 		rs = append(rs, int(rint.Int64()))
 	}
 	return rs
+}
+
+func genRandSlice(length, max int) ([]int, []int) {
+	r := randSliceInt(max, length)
+	rcopy := DeepCopyIntSlice(r)
+	sort.Ints(rcopy)
+	return r, rcopy
+}
+
+func DeepCopyIntSlice(arr []int) []int {
+	rcopy := make([]int, len(arr))
+	copy(rcopy, arr)
+	return rcopy
 }
