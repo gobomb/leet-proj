@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-
-
 func Test_quick(t *testing.T) {
 	type args struct {
 		arr []int

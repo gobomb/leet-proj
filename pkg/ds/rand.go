@@ -26,6 +26,7 @@ func genRandSlice(length, max int) ([]int, []int) {
 }
 
 func DeepCopyIntSlice(arr []int) []int {
+	// fmt.Printf("deep copy %v\n", arr)
 	rcopy := make([]int, len(arr))
 	copy(rcopy, arr)
 	return rcopy

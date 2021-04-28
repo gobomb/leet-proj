@@ -3,6 +3,7 @@ package leetcode
 import (
 	"fmt"
 	"justest/pkg/ds"
+	"reflect"
 )
 
 func combinationSum(candidates []int, target int) [][]int {
@@ -73,7 +74,29 @@ func combination(candidates []int, target int, sum int, choose *[]*[]int) bool {
 			return true
 		}
 		sum -= candidates[i]
+	}
+	return false
+}
 
+func compSliceSlice(a, b [][]int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	cmap := make(map[int]bool)
+	for i := 0; i < len(a); i++ {
+		for j := 0; j < len(b); j++ {
+			if reflect.DeepEqual(a[i], b[j]) {
+				_, ok := cmap[j]
+				if ok {
+					return false
+				}
+				cmap[j] = true
+				break
+			}
+		}
+	}
+	if len(cmap) == len(a) {
+		return true
 	}
 	return false
 }
