@@ -48,19 +48,19 @@ func longestSubstringWithoutRepeatingCharacters(s string) int {
 	return result
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
+// func min(a, b int) int {
+// 	if a > b {
+// 		return b
+// 	}
+// 	return a
+// }
 
 func TestLong() {
 	log.Printf("%d\n", longestSubstringWithoutRepeatingCharacters("bbbbb"))
