@@ -15,3 +15,34 @@ func firstMissingPositive(nums []int) int {
 		}
 	}
 }
+
+func firstMissingPositive2(nums []int) int {
+	lnums := len(nums)
+	for i := 0; i < lnums; i++ {
+		if nums[i] <= 0 {
+			nums[i] = lnums + 1
+		}
+	}
+	// fmt.Printf("%v\n", nums)
+
+	for i := 0; i < lnums; i++ {
+		n := nums[i]
+		if n < 0 {
+			n *= -1
+		}
+		if n > lnums {
+			continue
+		}
+		if nums[n-1] > 0 {
+			nums[n-1] *= -1
+		}
+	}
+	// fmt.Printf("%v\n", nums)
+
+	for i := 1; i <= lnums; i++ {
+		if nums[i-1] > 0 {
+			return i
+		}
+	}
+	return lnums + 1
+}
