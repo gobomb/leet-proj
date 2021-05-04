@@ -1,30 +1,53 @@
 package leetcode
 
-import "fmt"
+func tobyte(i int) byte {
+	return byte(48 + i)
+}
+
+func toint(b byte) int {
+	if b == 0 {
+		return 0
+	}
+	return int(b - '0')
+}
 
 func multiply(num1 string, num2 string) string {
 	product := make([]byte, len(num1)+len(num2))
-	for i := len(num1) - 1; i >= 0; i-- {
-		for j := len(num2) - 1; j >= 0; j-- {
-			t := int(num1[i]-48) * int(num2[j]-48)
-			sum := int(product[j]) + t
-			fmt.Printf("sum %v  \n", sum)
-			fmt.Printf("sum str %s\n", string(byte(sum+48)))
 
-			// var sum int
+	for i := 0; i < len(num1); i++ {
+		ni := len(num1) - 1 - i
+		for j := 0; j < len(num2); j++ {
+			nj := len(num2) - 1 - j
+			nk := len(product) - 1 - (i + j)
+			prd := toint(num1[ni]) * toint(num2[nj])
+			sum := toint(product[nk]) + prd
+
+			for sum >= 10 {
+				product[nk] = tobyte(sum % 10)
+				sum /= 10
+				nk--
+				sum += toint(product[nk])
+			}
+
 			if sum < 10 {
-				product[j] = byte(sum + 48)
-			} else {
-				product[j] = byte(48 + sum%10)
-				product[j+1] = byte(48 + sum/10)
+				product[nk] = tobyte(sum % 10)
 			}
 		}
 	}
-	for i := 0; i < len(product); i++ {
-		if product[i] == 0 && i+1 < len(product) {
-			product = product[i+1:]
+
+	k := 0
+
+	for k = 0; k < len(product); k++ {
+		if toint(product[k]) != 0 {
+			break
 		}
 	}
-	fmt.Printf("%#v\n", product)
+
+	if k == len(product) {
+		product = product[k-1:]
+	} else {
+		product = product[k:]
+	}
+
 	return string(product)
 }
