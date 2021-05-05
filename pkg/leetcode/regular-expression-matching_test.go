@@ -43,7 +43,14 @@ func Test_isMatch(t *testing.T) {
 			s:    "mississippi",
 			p:    "mis*is*p*.",
 			want: false,
-		}}
+		},
+		{
+			name: "6",
+			s:    "ab",
+			p:    "a*b",
+			want: true,
+		},
+	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := isMatch(tt.s, tt.p); got != tt.want {
