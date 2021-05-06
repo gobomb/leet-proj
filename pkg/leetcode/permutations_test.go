@@ -44,4 +44,32 @@ func Test_permute(t *testing.T) {
 			}
 		})
 	}
+	tests = append(tests, []struct {
+		name string
+		args args
+		want [][]int
+	}{{
+		"5",
+		args{[]int{1, 1, 2}},
+		[][]int{{1, 1, 2}, {1, 2, 1}, {2, 1, 1}},
+	}, {
+		"6",
+		args{[]int{1, 1, 1}},
+		[][]int{{1, 1, 1}},
+	}}...,
+	)
+	// for _, tt := range tests {
+	// 	t.Run(tt.name, func(t *testing.T) {
+	// 		if got := permuteUnique2(tt.args.nums); !reflect.DeepEqual(got, tt.want) {
+	// 			t.Errorf("permute() = %v, want %v", got, tt.want)
+	// 		}
+	// 	})
+	// }
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := permuteUnique(tt.args.nums); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("permute() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
