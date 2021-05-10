@@ -10,6 +10,7 @@ func init() {
 }
 
 // 暴力
+//88 ms	3.3 MB
 func maxSubArray(nums []int) int {
 	// log.Printf("%v\n", nums)
 	maxRecord := -math.MaxInt64
@@ -76,6 +77,7 @@ func dpsubarray3(nums []int, dp []int, i int) int {
 	return res
 }
 
+// 	4 ms 3.3 MB
 func maxSubArray1(nums []int) int {
 	maxSum := nums[0]
 	record := 0
