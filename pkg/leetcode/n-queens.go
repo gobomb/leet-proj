@@ -22,6 +22,7 @@ func solveNQueens(n int) [][]string {
 	return rst
 }
 
+
 func makeresult(rs [][]string) []string {
 	var rss []string
 	for i := range rs {
@@ -33,6 +34,9 @@ func makeresult(rs [][]string) []string {
 	}
 	return rss
 }
+
+
+
 
 func dfsnqueens(rs [][]string, rst *[][]string, r, qs int) {
 	if qs == 0 {
@@ -78,4 +82,41 @@ func checkQueen(a, b int, rs [][]string) bool {
 		}
 	}
 	return true
+}
+
+
+
+
+func totalNQueens(n int) int {
+	rs := make([][]string, n)
+	for i := range rs {
+		rs[i] = make([]string, n)
+		for j := range rs[i] {
+			rs[i][j] = "."
+		}
+	}
+	var rst2 = new(int)
+	dfsnqueens2(rs, rst2, 0, n)
+
+	return *rst2
+}
+
+func dfsnqueens2(rs [][]string, rst *int, r, qs int) {
+	if qs == 0 {
+		*rst++
+		return
+	}
+	for j := 0; j < len(rs); j++ {
+		if rs[r][j] != "Q" && checkQueen(r, j, rs) {
+			rs[r][j] = "Q"
+			qs--
+			dfsnqueens2(rs, rst, r+1, qs)
+			rs[r][j] = "."
+			qs++
+		}
+		if rs[r][j] != "Q" {
+			rs[r][j] = "."
+		}
+	}
+	return
 }
