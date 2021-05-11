@@ -1,9 +1,13 @@
 package leetcode
 
 import (
-	"fmt"
+	"log"
 	"math"
 )
+
+func init() {
+	log.SetFlags(log.Lshortfile)
+}
 
 func jump(nums []int) int {
 	if len(nums) == 1 {
@@ -11,8 +15,12 @@ func jump(nums []int) int {
 	}
 	var canReach, needChoose, step int
 	for i, n := range nums {
+		if i > canReach {
+			return -1
+		}
 		if i+n > canReach {
 			canReach = i + n
+
 			if i+n >= len(nums)-1 {
 				return step + 1
 			}
@@ -22,12 +30,35 @@ func jump(nums []int) int {
 			step++
 		}
 	}
-
 	return step
 }
 
 var memo []int
 var dept *int
+
+func canJump(nums []int) bool {
+	if len(nums) == 1 {
+		return true
+	}
+	var canReach, needChoose, step int
+	for i, n := range nums {
+		if i > canReach {
+			return false
+		}
+		if i+n > canReach {
+			canReach = i + n
+			if i+n >= len(nums)-1 {
+				return true
+			}
+		}
+		if i == needChoose {
+			needChoose = canReach
+			step++
+		}
+
+	}
+	return false
+}
 
 func jump2(nums []int) int {
 	memo = make([]int, len(nums))
@@ -37,7 +68,8 @@ func jump2(nums []int) int {
 	dept = new(int)
 	*dept = -1
 	tryJump(&nums, 0)
-	fmt.Printf("%v\n", memo)
+	log.Printf("%v\n", memo)
+
 	return memo[0]
 }
 
