@@ -9,6 +9,33 @@ func init() {
 	log.SetFlags(log.Lshortfile)
 }
 
+func insert(intervals [][]int, newInterval []int) [][]int {
+	intervals = append(intervals, newInterval)
+	return merge(intervals)
+	// for i := range intervals {
+	// 	if i+1 == len(intervals) {
+	// 		intervals = append(intervals, newInterval)
+	// 		break
+	// 	}
+	// 	if intervals[i][0] <= newInterval[0] && intervals[i+1][0] >= newInterval[0] {
+	// 		log.Printf("%v\n", intervals)
+
+	// 		temp := append([][]int{}, newInterval)
+	// 		temp = append(temp, intervals[i+1:]...)
+	// 		log.Printf("%v\n", temp)
+
+	// 		intervals = append(intervals[:i], temp...)
+	// 		log.Printf("%v\n", intervals)
+
+	// 		break
+	// 	} else {
+	// 		temp := append([][]int{}, newInterval)
+	// 		intervals = append(temp, intervals...)
+	// 	}
+	// }
+	// log.Printf("%v\n", intervals)
+}
+
 func merge(intervals [][]int) [][]int {
 	var is = new(intervalSlice)
 	for i := range intervals {
