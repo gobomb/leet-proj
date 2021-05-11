@@ -5,34 +5,44 @@ import (
 	"reflect"
 	"strings"
 
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/pkg/errors"
 	appv1 "k8s.io/api/apps/v1"
-	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/apimachinery/pkg/util/strategicpatch"
 	"k8s.io/apimachinery/pkg/util/yaml"
-	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 
 	"k8s.io/apimachinery/pkg/types"
 
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-var (
-	scheme = runtime.NewScheme()
-)
-
 func init() {
 	log.SetFlags(log.Lshortfile)
-	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
-	utilruntime.Must(corev1.AddToScheme(scheme))
 }
 
-func load(src []byte) (runtime.Object, error) {
+func PatchOffline(deploy *appv1.Deployment, patchBytes []byte, patchType string, scheme *runtime.Scheme) error {
+	if len(patchBytes) == 0 {
+		return nil
+	}
+
+	patched, err := patch(deploy, patchBytes, patchType, scheme)
+	if err != nil {
+		return err
+	}
+	patchedDeploy, ok := patched.(*appv1.Deployment)
+	if !ok {
+		return errors.Errorf("could not reflect the deploy")
+	}
+	*deploy = *patchedDeploy.DeepCopy()
+	return nil
+}
+
+func load(src []byte, scheme *runtime.Scheme) (runtime.Object, error) {
 	decode := serializer.NewCodecFactory(scheme).UniversalDeserializer().Decode
 	obj, gvk, err := decode(src, nil, nil)
 	if err != nil {
@@ -44,6 +54,22 @@ func load(src []byte) (runtime.Object, error) {
 	return obj, nil
 }
 
+func getGVK(scheme *runtime.Scheme) {
+	deploy := &appv1.Deployment{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      "aaa",
+			Namespace: "bbb",
+		},
+	}
+
+	gvks, _, err := scheme.ObjectKinds(deploy)
+	if err != nil {
+		err = errors.WithStack(err)
+		return
+	}
+	log.Printf("%v\n", gvks)
+
+}
 func checkdeploy(obj runtime.Object) (*appv1.Deployment, error) {
 	deploy, ok := obj.(*appv1.Deployment)
 	if !ok {
@@ -55,10 +81,15 @@ func checkdeploy(obj runtime.Object) (*appv1.Deployment, error) {
 }
 
 // ref: https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/patch/patch.go Latest commit 04f62ff
-func patch(obj runtime.Object, patchBytes []byte, patchType types.PatchType) (runtime.Object, error) {
-	if patchType == "" {
-		patchType = types.MergePatchType
+func patch(obj runtime.Object, patchBytes []byte, ptype string, scheme *runtime.Scheme) (runtime.Object, error) {
+	patchType := types.PatchType(ptype)
+	if len(patchBytes) == 0 {
+		return obj, nil
 	}
+	if patchType == "" {
+		patchType = types.StrategicMergePatchType
+	}
+
 	// 	var patchBytes []byte
 	// if len(o.PatchFile) > 0 {
 	// 	var err error
@@ -97,7 +128,6 @@ func patch(obj runtime.Object, patchBytes []byte, patchType types.PatchType) (ru
 	if !didPatch {
 		return nil, errors.Errorf("didn't patch!")
 	}
-	log.Printf("gvk %v\n", targetObj.GetObjectKind().GroupVersionKind())
 	return targetObj, nil
 }
 
