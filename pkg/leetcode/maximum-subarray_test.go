@@ -1,6 +1,10 @@
 package leetcode
 
-import "testing"
+import (
+	"log"
+	"testing"
+	"time"
+)
 
 func Test_maxSubArray(t *testing.T) {
 	type args struct {
@@ -26,7 +30,19 @@ func Test_maxSubArray(t *testing.T) {
 			args{[]int{5, 4, -1, 7, 8}},
 			23,
 		},
+		{
+			"4",
+			args{[]int{-1}},
+			-1,
+		},
+		{
+			"4",
+			args{[]int{-1, -2, -3}},
+			-1,
+		},
 	}
+	now := time.Now()
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := maxSubArray(tt.args.nums); got != tt.want {
@@ -34,4 +50,35 @@ func Test_maxSubArray(t *testing.T) {
 			}
 		})
 	}
+	log.Printf("%v\n", time.Now().Sub(now))
+
+	now = time.Now()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxSubArray1(tt.args.nums); got != tt.want {
+				t.Errorf("maxSubArray() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+	log.Printf("%v\n", time.Now().Sub(now))
+
+	now = time.Now()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxSubArray2(tt.args.nums); got != tt.want {
+				t.Errorf("maxSubArray() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+	log.Printf("%v\n", time.Now().Sub(now))
+
+	now = time.Now()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxSubArray3(tt.args.nums); got != tt.want {
+				t.Errorf("maxSubArray() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+	log.Printf("%v\n", time.Now().Sub(now))
 }
