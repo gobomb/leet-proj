@@ -19,6 +19,81 @@ func turn(d *direction) {
 	*d++
 }
 
+func generateMatrix(n int) [][]int {
+	rs := make([]int, n*n)
+	for i := 0; i < len(rs); i++ {
+		rs[i] = i + 1
+	}
+	matrix := make([][]int, n)
+	for i := range matrix {
+		matrix[i] = make([]int, n)
+	}
+
+	k := 0
+	i := k
+	j := k
+
+	rt := len(matrix[0])
+	lt := -1
+	ut := -1
+	dt := len(matrix)
+
+	var d direction
+	for ; ; k++ {
+		if k == len(rs) {
+			return matrix
+		}
+		switch d {
+		case right:
+			matrix[i][j] = rs[k]
+			j++
+		case down:
+			matrix[i][j] = rs[k]
+
+			i++
+		case left:
+			matrix[i][j] = rs[k]
+
+			j--
+		case up:
+			matrix[i][j] = rs[k]
+
+			i--
+		}
+
+		if j == rt {
+			ut = i
+			turn(&d)
+			j--
+			i++
+			continue
+		}
+		if i == dt {
+			rt = j
+			turn(&d)
+			i--
+			j--
+			continue
+		}
+		if j == lt {
+			dt = i
+			turn(&d)
+			j++
+			i--
+			continue
+		}
+
+		if i == ut {
+			lt = j
+			turn(&d)
+			i++
+			j++
+			continue
+		}
+
+	}
+}
+
 func spiralOrder(matrix [][]int) []int {
 	rs := make([]int, len(matrix)*len(matrix[0]))
 
