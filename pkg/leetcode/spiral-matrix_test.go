@@ -73,7 +73,7 @@ func Test_generateMatrix(t *testing.T) {
 			args{
 				3,
 			},
-			[][]int{{1, 2, 3}, {8,9,4}, {7, 6, 5}},
+			[][]int{{1, 2, 3}, {8, 9, 4}, {7, 6, 5}},
 		},
 		{
 			"2",

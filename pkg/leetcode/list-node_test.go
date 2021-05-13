@@ -229,7 +229,7 @@ func TestListPrinter_String(t *testing.T) {
 		{
 			"1",
 			fields{
-				visitMap: make(visitMap),
+				visitMap: vmFree.Get().(visitMap), //make(visitMap),
 				cur:      ln,
 				head:     ln, //  makeListNode([]int{1, 2, 4}),
 			},

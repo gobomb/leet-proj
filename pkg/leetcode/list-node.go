@@ -3,7 +3,17 @@ package leetcode
 import (
 	"fmt"
 	"io"
+	"sync"
 )
+
+// var VmFree = &Vm{}
+
+var vmFree = sync.Pool{
+	New: func() interface{} {
+		vm := make(visitMap)
+		return vm
+	},
+}
 
 type Looper interface {
 	Loop(o, n *ListNode) bool
@@ -23,8 +33,10 @@ func (l *ListNode) Format(s fmt.State, verb rune) {
 			fmt.Fprintf(s, "%+v", ListStringer(l))
 			return
 		}
-
 		fallthrough
+	case 'l':
+		fmt.Fprintf(s, "%v", ListLen(l))
+		return
 	case 'p':
 		io.WriteString(s, fmt.Sprintf("%p", l))
 	}
@@ -49,12 +61,19 @@ type LNDeepCopyer struct {
 
 func newLNDeepCopyer() LNDeepCopyer {
 	return LNDeepCopyer{
-		make(visitMap),
+		// make(visitMap),
+		vmFree.Get().(visitMap),
 	}
 }
 
 func LNDeepCopy(o *ListNode) (n *ListNode) {
 	ldc := newLNDeepCopyer()
+	defer func() {
+		for k := range ldc.vm {
+			delete(ldc.vm, k)
+		}
+		vmFree.Put(ldc.vm)
+	}()
 	n = ldc.lnDeepCopy(o)
 	return
 }
@@ -88,13 +107,47 @@ type ListPrinter struct {
 	visitMap visitMap
 	head     *ListNode
 	cur      *ListNode
+	len      int
+	isLoop   bool
 }
 
 func ListStringer(l *ListNode) fmt.Stringer {
 	return &ListPrinter{
-		visitMap: make(visitMap),
+		visitMap: vmFree.Get().(visitMap),
 		head:     l,
 		cur:      l,
+	}
+}
+
+func ListLen(l *ListNode) int {
+	lp := &ListPrinter{
+		visitMap: vmFree.Get().(visitMap),
+		head:     l,
+		cur:      l,
+	}
+	defer func() {
+		for k := range lp.visitMap {
+			delete(lp.visitMap, k)
+		}
+		vmFree.Put(lp.visitMap)
+	}()
+
+	return lp.Len()
+}
+
+func (l *ListPrinter) Len() int {
+	cur := l.cur
+	l.len = 0
+	for i := 0; ; i++ {
+		if cur == nil {
+			return l.len
+		}
+		if loop := l.Loop(cur, nil); loop {
+			return l.len
+		}
+		l.len++
+
+		cur = cur.Next
 	}
 }
 
@@ -109,9 +162,18 @@ func (l *ListPrinter) Loop(o, n *ListNode) bool {
 
 func (l *ListPrinter) String() string {
 	if l.cur == nil {
+		defer func() {
+			for k := range l.visitMap {
+				delete(l.visitMap, k)
+			}
+			vmFree.Put(l.visitMap)
+		}()
 		return fmt.Sprintf("(nil)")
 	}
 	if loop := l.Loop(l.cur, nil); loop {
+		for k := range l.visitMap {
+			delete(l.visitMap, k)
+		}
 		return fmt.Sprintf("(loop)%v", l.cur.Val)
 	}
 	cur := l.cur

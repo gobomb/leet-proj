@@ -1,6 +1,8 @@
 package leetcode
 
-import "log"
+import (
+	"log"
+)
 
 func init() {
 	log.SetFlags(log.Lshortfile)
@@ -11,14 +13,37 @@ func getPermutation(n int, k int) string {
 	if n == 0 {
 		return rs
 	}
-	s := []int{}
 	for i := 1; i < n+1; i++ {
-		s = append(s, i)
+		rs += string('0' + byte(i))
 	}
-	ss := permute(s)
-	// log.Printf("%v %v\n", ss[k-1], s)
-	for i := range ss[k-1] {
-		rs = rs + string('0'+byte(ss[k-1][i]))
-	}
+	// log.Printf("%v\n", rs)
+	rs = dfsFindKPermut(rs, k)
+
 	return rs
+}
+
+func factorial(n int) int {
+	f := 1
+	for i := 1; i < n+1; i++ {
+		f *= i
+	}
+	return f
+}
+
+func dfsFindKPermut(s string, k int) string {
+	// log.Printf("args %v %v", s, k)
+	l := len(s)
+	if l == 1 {
+		return s
+	}
+	// f := factorial(l)
+	nextf := factorial(l - 1)
+
+	if k <= nextf {
+		return s[0:1] + dfsFindKPermut(s[1:], k)
+	}
+	id := (k - 1) / nextf
+	remainder := (k-1)%nextf + 1
+	log.Printf("id remainder %v %v\n", id, remainder)
+	return s[id:id+1] + dfsFindKPermut(s[:id]+s[id+1:], remainder)
 }
