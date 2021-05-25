@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"container/list"
+	"path/filepath"
 	"strings"
 )
 
@@ -59,4 +60,8 @@ func simplifyPath2(path string) string {
 		}
 	}
 	return "/" + strings.Join(stack, "/")
+}
+
+func simplifyPath3(path string) string {
+	return filepath.Clean(path)
 }
