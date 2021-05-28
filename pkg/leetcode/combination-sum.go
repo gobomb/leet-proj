@@ -24,13 +24,8 @@ func count(sums []int) (cs int) {
 	return
 }
 
-/*
-func DeepCopyIntSlice(arr []int) []int {
-	rcopy := make([]int, len(arr))
-	copy(rcopy, arr)
-	return rcopy
-}
-*/
+
+
 
 func combination2(candidates []int, target int, sums []int, choose *[][]int, ind int) bool {
 	sum := count(sums)
