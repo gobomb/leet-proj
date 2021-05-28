@@ -25,6 +25,18 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func (l *ListNode) FindNode(v int) *ListNode {
+	for {
+		if l.Val == v {
+			return l
+		}
+		l = l.Next
+		if l == nil {
+			return nil
+		}
+	}
+}
+
 // Ref: github.com/pkg/errors
 func (l *ListNode) Format(s fmt.State, verb rune) {
 	switch verb {
