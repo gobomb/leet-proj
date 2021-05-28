@@ -24,9 +24,6 @@ func count(sums []int) (cs int) {
 	return
 }
 
-
-
-
 func combination2(candidates []int, target int, sums []int, choose *[][]int, ind int) bool {
 	sum := count(sums)
 	if sum > target {
