@@ -9,11 +9,30 @@ import (
 	"sync"
 )
 
+var listFree = sync.Pool{
+	New: func() interface{} {
+		vm := list.New()
+		return vm
+	},
+}
+
+var Null = math.MaxInt64
+
+func isNull(val int) bool {
+	return val == Null
+}
+
 //   Definition for a binary tree node.
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
+}
+
+type treePrinter struct {
+	list  *list.List
+	root  *TreeNode
+	count int
 }
 
 // TODO: 按树型打印一颗二叉树
@@ -34,56 +53,6 @@ func (l *TreeNode) Format(s fmt.State, verb rune) {
 	}
 }
 
-type treePrinter struct {
-	list *list.List
-	root *TreeNode
-}
-
-var listFree = sync.Pool{
-	New: func() interface{} {
-		vm := list.New()
-		return vm
-	},
-}
-
-func (t *treePrinter) String() string {
-	defer func() {
-		listFree.Put(t.list.Init())
-	}()
-
-	if t.root != nil {
-		t.list.PushBack(t.root)
-	}
-
-	log.Printf("%v\n", t.root.Val)
-	return t.StringLoop("")
-}
-
-func (t *treePrinter) StringLoop(s string) string {
-	e := t.list.Front()
-	if e == nil {
-		log.Printf("%v\n", "e nil")
-
-		return s
-	}
-	t.list.Remove(e)
-	v := e.Value.(*TreeNode)
-	if v == nil {
-		log.Printf("%v\n", "v nil")
-		s = fmt.Sprintf("%s %v", s, "nil")
-		return t.StringLoop(s)
-	}
-
-	log.Printf("val %v\n", v.Val)
-
-	s = fmt.Sprintf("%s %v ", s, v.Val)
-	t.list.PushBack(v.Left)
-	t.list.PushBack(v.Right)
-
-	return t.StringLoop(s) //fmt.Sprintf("%s %v ", s, )
-
-}
-
 func TreeStringer(l *TreeNode) fmt.Stringer {
 	tp := &treePrinter{
 		list: listFree.Get().(*list.List).Init(),
@@ -93,28 +62,58 @@ func TreeStringer(l *TreeNode) fmt.Stringer {
 	return tp
 }
 
-var Null = math.MaxInt64
+func (t *treePrinter) String() string {
+	defer func() {
+		listFree.Put(t.list.Init())
+	}()
 
-func isNull(val int) bool {
-	return val == Null
+	if t.root != nil {
+		t.list.PushBack(t.root)
+		t.count = 0
+	}
+
+	// log.Printf("%v\n", t.root.Val)
+	return t.StringLoop("")
 }
 
-// 非完全序列
-func MakeTree2(vals []int) *TreeNode {
-	return makeTree3(vals, 0)
-}
+const (
+	gap     = "\t"
+	newline = "\n"
+)
 
-func makeTree3(vals []int, i int) *TreeNode {
-	if i >= len(vals) || isNull(vals[i]) {
-		return nil
-	}
-	// log.Printf("%v\n", vals[i])
+func (t *treePrinter) StringLoop(s string) string {
+	e := t.list.Front()
+	if e == nil {
+		// log.Printf("%v\n", "e nil")
 
-	return &TreeNode{
-		Val:   vals[i],
-		Left:  makeTree3(vals, i+1),
-		Right: makeTree3(vals, i+2),
+		return s
 	}
+	t.list.Remove(e)
+	v := e.Value.(*TreeNode)
+	if v == nil {
+		// log.Printf("%v\n", "v nil")
+		if t.count&(t.count+1) == 0 {
+			s = fmt.Sprintf("%s%v%v", s, gap, newline)
+		}
+		t.count++
+
+		s = fmt.Sprintf("%s%v%v", s, gap, "Null")
+		// t.list.PushBack(new(TreeNode))
+		// t.list.PushBack(new(TreeNode))
+		return t.StringLoop(s)
+	}
+
+	log.Printf("val %v\n", v.Val)
+	if t.count&(t.count+1) == 0 {
+		s = fmt.Sprintf("%s%v%v", s, gap, newline)
+	}
+	t.count++
+
+	s = fmt.Sprintf("%s%v%v", s, gap, v.Val)
+	t.list.PushBack(v.Left)
+	t.list.PushBack(v.Right)
+
+	return t.StringLoop(s) //fmt.Sprintf("%s %v ", s, )
 }
 
 // 完全序列

@@ -3,46 +3,13 @@ package leetcode
 import (
 	"container/list"
 	"log"
+	"reflect"
 	"testing"
 )
 
 func init() {
 	log.SetFlags(log.Lshortfile)
 }
-
-func init() {
-	log.SetFlags(log.Lshortfile)
-}
-
-func init() {
-	log.SetFlags(log.Lshortfile)
-}
-
-// func TestTreeStringer(t *testing.T) {
-// 	type args struct {
-// 		l *TreeNode
-// 	}
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want fmt.Stringer
-// 	}{
-// 		{
-// 			name: "",
-// 			args: args{
-// 				l: MakeTree([]int{1, 2, 3, 4, 5, 6}),
-// 			},
-// 			want: nil,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := TreeStringer(tt.args.l); !reflect.DeepEqual(got, tt.want) {
-// 				t.Errorf("TreeStringer(%v) = %v, want %v", tt.args.l, got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
 
 func Test_treePrinter_String(t *testing.T) {
 	type fields struct {
@@ -87,6 +54,58 @@ func Test_treePrinter_String(t *testing.T) {
 			}
 			if got := tr.String(); got != tt.want {
 				t.Errorf("treePrinter.String() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestMakeTree(t *testing.T) {
+	type args struct {
+		vals []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want *TreeNode
+	}{
+		{
+			name: "1",
+			args: args{
+				vals: []int{1, 2, 3},
+			},
+			want: &TreeNode{
+				Val: 1,
+				Left: &TreeNode{
+					Val: 2,
+				},
+				Right: &TreeNode{
+					Val: 3,
+				},
+			},
+		},
+		{
+			name: "2",
+			args: args{
+				vals: []int{1, Null, 2, Null, Null, 3},
+			},
+			want: &TreeNode{
+				Val:  1,
+				Left: nil,
+				Right: &TreeNode{
+					Val: 2,
+					Left: &TreeNode{
+						Val: 3,
+					},
+				},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := MakeTree(tt.args.vals); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("MakeTree(%v) = %v, want %v", tt.args.vals, got, tt.want)
+			} else {
+				log.Printf("%+v\n", got)
 			}
 		})
 	}
