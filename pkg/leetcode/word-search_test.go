@@ -43,6 +43,22 @@ func Test_exist(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "4",
+			args: args{
+				board: [][]byte{{'a'}},
+				word:  "a",
+			},
+			want: true,
+		},
+		{
+			name: "5",
+			args: args{
+				board: [][]byte{{'C', 'A', 'A'}, {'A', 'A', 'A'}, {'B', 'C', 'D'}},
+				word:  "AAB",
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
