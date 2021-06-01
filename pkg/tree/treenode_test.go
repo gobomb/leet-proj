@@ -1,6 +1,7 @@
 package tree
 
 import (
+	"fmt"
 	"log"
 	"reflect"
 	"testing"
@@ -68,7 +69,49 @@ func TestMakeTree(t *testing.T) {
 		})
 	}
 }
-
+func Test_printer(t *testing.T) {
+	t.Run("test print nil tree", func(t *testing.T) {
+		v := (*TreeNode)(nil)
+		w := "Null"
+		if got := TreeStringer(v).String(); got != w {
+			t.Errorf("print treenode got %v ,want %v", got, w)
+		}
+		t.Logf("%+v", v)
+	})
+	t.Run("test print one node tree ", func(t *testing.T) {
+		v := &TreeNode{}
+		w := "0"
+		if got := TreeStringer(v).String(); got != w {
+			t.Errorf("print treenode got %v ,want %v", got, w)
+		}
+		t.Logf("%+v", v)
+	})
+	t.Run("test print node tree height", func(t *testing.T) {
+		v := MakeTree(trees[4])
+		w := "4"
+		if got := fmt.Sprintf("%h", v); got != w {
+			t.Errorf("print treenode got %v ,want %v", got, w)
+		}
+		t.Logf("%h", v)
+	})
+	t.Run("test print v/fallthrough", func(t *testing.T) {
+		v := MakeTree(trees[4])
+		w := "&TreeNode:{ 1 &TreeNode:{ 2 &TreeNode:{ 3 <nil> &TreeNode:{ 5 <nil> <nil> } } &TreeNode:{ 4 &TreeNode:{ 6 <nil> <nil> } <nil> } } <nil> }"
+		if got := fmt.Sprintf("%v", v); got != w {
+			t.Errorf("print treenode got %v ,want %v", got, w)
+		}
+		t.Logf("%v", v)
+	})
+	// t.Run("test print pointer", func(t *testing.T) {
+	// 	var v *TreeNode
+	// 	v = MakeTree(trees[4])
+	// 	w := fmt.Sprintf("%p", unsafe.Pointer(v))
+	// 	if got := fmt.Sprintf("%p", v); got != w {
+	// 		t.Errorf("print treenode got %v ,want %v", got, w)
+	// 	}
+	// 	t.Logf("%v", w)
+	// })
+}
 func Test_getTreeHeight(t *testing.T) {
 	type args struct {
 		root *TreeNode

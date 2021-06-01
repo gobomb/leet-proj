@@ -2,7 +2,7 @@ package tree
 
 import (
 	"fmt"
-	"io"
+	"log"
 	"strconv"
 )
 
@@ -17,15 +17,18 @@ func TreeStringer(t *TreeNode) fmt.Stringer {
 }
 
 func (p *Printer) String() string {
-	if p == nil {
+	if p.root == nil {
 		return "Null"
+	}
+	if getTreeHeight(p.root) == 1 {
+		return fmt.Sprintf("%v", p.root.Val)
 	}
 	return printAvlTree(p.root)
 }
 
 /**
  * ref: https://zhuanlan.zhihu.com/p/358578675
- * 
+ *
  * row为当前打印行，column为当前打印节点列，treeHeight为真正的树高
  * resArray为输出，填充字符数组
  */
@@ -57,7 +60,7 @@ func writeArray(root *TreeNode, row, column, treeHeight int, resArray [][]string
 // 预先算出高度，通过高度算出宽度，再把全部的空间分配出来，然后递归画图
 func printAvlTree(root *TreeNode) string {
 	height := getTreeHeight(root)
-	// fmt.Printf("height: %v\n", height)
+	fmt.Printf("height: %v\n", height)
 	// 总宽度为节点高度 * 2 - 1, 因为还要画树枝符号
 	totalHeight := height*2 - 1
 	// 最大宽度为3 * 2^(n - 1) + 1，公式如下：
@@ -70,11 +73,11 @@ func printAvlTree(root *TreeNode) string {
 	  第n行：5 * 2 ^ (n - 2) + (2 ^ (n - 2) - 1) + 2 = 6 * 2 ^ (n-2) + 1 = 3 * 2 ^ (n - 1) + 1
 	*/
 	var totalWidth int
-	if height == 0 {
-		totalWidth = 1
-	} else {
-		totalWidth = (2<<(height-2))*3 + 1
-	}
+	// if height == 0 {
+	// 	totalWidth = 1
+	// } else {
+	totalWidth = (2<<(height-2))*3 + 1
+	// }
 
 	// 创建数组
 	printArray := make([][]string, totalHeight)
@@ -102,17 +105,20 @@ func printAvlTree(root *TreeNode) string {
 
 // Ref: github.com/pkg/errors
 func (l *TreeNode) Format(s fmt.State, verb rune) {
+	log.Printf("%v\n", "ssssssssss")
+
 	switch verb {
 	case 'v':
 		if s.Flag('+') {
 			fmt.Fprintf(s, "%+v", TreeStringer(l))
 			return
 		}
-		fallthrough
+		fmt.Fprintf(s, "&TreeNode:{ %v %v %v }", l.Val, l.Left, l.Right)
+		// fallthrough
 	case 'h':
 		fmt.Fprintf(s, "%v", getTreeHeight(l))
 		return
-	case 'p':
-		io.WriteString(s, fmt.Sprintf("%p", l))
+		// case 'p':
+		// 	io.WriteString(s, fmt.Sprintf("%p", l))
 	}
 }

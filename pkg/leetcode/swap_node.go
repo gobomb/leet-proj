@@ -12,7 +12,7 @@ import "fmt"
 
 func testSwapPairs() {
 	tests := []*ListNode{
-		&ListNode{
+		{
 			1,
 			&ListNode{
 				2,
