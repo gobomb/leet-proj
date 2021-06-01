@@ -24,8 +24,8 @@ func Test_generateTrees(t *testing.T) {
 			args: args{
 				n: 3,
 			},
-			want: []*TreeNode{MakeTree2([]int{1, Null, 2, Null, 3}), MakeTree2([]int{1, Null, 3, 2}),
-				MakeTree2([]int{2, 1, 3}), MakeTree2([]int{3, 1, Null, Null, 2}), MakeTree2([]int{3, 2, Null, 1})},
+			// want: []*TreeNode{MakeTree([]int{1, Null, 2, Null, 3}), MakeTree2([]int{1, Null, 3, 2}),
+			// 	MakeTree2([]int{2, 1, 3}), MakeTree2([]int{3, 1, Null, Null, 2}), MakeTree2([]int{3, 2, Null, 1})},
 		},
 	}
 	for _, tt := range tests {

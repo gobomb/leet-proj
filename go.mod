@@ -1,6 +1,6 @@
 module justest
 
-go 1.14
+go 1.16
 
 require (
 	github.com/emicklei/go-restful/v3 v3.4.0
