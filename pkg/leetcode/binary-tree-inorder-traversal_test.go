@@ -57,7 +57,7 @@ func Test_inorderTraversal(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			log.Printf("%+v\n",tt.args.root)
+			log.Printf("%+v\n", tt.args.root)
 			if got := inorderTraversal(tt.args.root); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("inorderTraversal(%+v) = %v, want %v", tt.args.root, got, tt.want)
 			}

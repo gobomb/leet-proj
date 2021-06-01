@@ -167,3 +167,38 @@ func Test_getTreeHeight(t *testing.T) {
 		})
 	}
 }
+
+func TestTreeNode_Insert(t *testing.T) {
+	type args struct {
+		v int
+	}
+	tests := []struct {
+		name   string
+		fields *TreeNode
+		args   args
+		want   *TreeNode
+	}{
+		{
+			"1",
+			MakeTree([]int{1}),
+			args{2},
+			MakeTree([]int{1, Null, 2}),
+		},
+		{
+			"2",
+			MakeTree([]int{1, Null, 4}),
+			args{3},
+			MakeTree([]int{1, Null, 4, Null, Null, 3}),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tt.fields.Insert(tt.args.v)
+			v1 := fmt.Sprintf("%+v", tt.fields)
+			v2 := fmt.Sprintf("%+v", tt.want)
+			if v1 != v2 {
+				t.Errorf("failed insert %v got: %v \n want: %v", tt.args.v, v1, v2)
+			}
+		})
+	}
+}

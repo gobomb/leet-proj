@@ -19,6 +19,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func (t *TreeNode) Insert(v int) {
+	if v > t.Val {
+		if t.Right != nil {
+			t.Right.Insert(v)
+		} else {
+			t.Right = &TreeNode{
+				Val: v,
+			}
+		}
+	} else {
+		if t.Left != nil {
+			t.Left.Insert(v)
+		} else {
+			t.Left = &TreeNode{
+				Val: v,
+			}
+		}
+	}
+}
+
 func getTreeHeight(root *TreeNode) int {
 	if root == nil {
 		return 0
@@ -42,4 +62,9 @@ func makeTree(vals []int, i int) *TreeNode {
 		Left:  makeTree(vals, i*2+1),
 		Right: makeTree(vals, i*2+2),
 	}
+}
+
+type Tree interface {
+	Insert(v int)
+	Heigh() int
 }
