@@ -167,7 +167,48 @@ func Test_getTreeHeight(t *testing.T) {
 		})
 	}
 }
+func TestTreeNode_Remove(t *testing.T) {
+	type args struct {
+		v int
+	}
+	tests := []struct {
+		name   string
+		fields *TreeNode
+		args   args
+		want   *TreeNode
+	}{
+		{
+			"1",
+			MakeTree([]int{1, Null, 2}),
+			args{2},
+			MakeTree([]int{1}),
+		},
+		{
+			"2",
+			MakeTree([]int{1, Null, 4, Null, Null, 3}),
+			args{3},
+			MakeTree([]int{1, Null, 4}),
+		},
+		{
+			"3",
+			MakeTree([]int{6, 2, 8, 1, 4, Null, Null, Null, Null, 3}),
+			args{4},
+			MakeTree([]int{6, 2, 8, 1, 3}),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			v0 := fmt.Sprintf("%+v", tt.fields)
+			tt.fields.Remove(tt.args.v)
 
+			v1 := fmt.Sprintf("%+v", tt.fields)
+			v2 := fmt.Sprintf("%+v", tt.want)
+			if v1 != v2 {
+				t.Errorf("befare %v failed remove %v got: %v \n want: %v", v0, tt.args.v, v1, v2)
+			}
+		})
+	}
+}
 func TestTreeNode_Insert(t *testing.T) {
 	type args struct {
 		v int
