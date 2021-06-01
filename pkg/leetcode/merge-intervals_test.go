@@ -52,7 +52,7 @@ func Test_merge(t *testing.T) {
 		{
 			"6",
 			args{
-				[][]int{{1, 2}, {3, 7}},
+				[][]int{{1, 3}, {3, 7}},
 			},
 			[][]int{{1, 7}},
 		},
@@ -99,7 +99,7 @@ func Test_insert(t *testing.T) {
 				[][]int{{3, 7}, {1, 4}, {4, 5}},
 				[]int{0, 0},
 			},
-			[][]int{{0, 7}},
+			[][]int{{0, 0}, {1, 7}},
 		},
 		{
 			"4",
@@ -115,7 +115,7 @@ func Test_insert(t *testing.T) {
 				[][]int{{3, 7}, {3, 7}, {4, 5}},
 				[]int{1, 2},
 			},
-			[][]int{{1, 7}},
+			[][]int{{1, 2}, {3, 7}},
 		},
 	}
 	for _, tt := range tests {

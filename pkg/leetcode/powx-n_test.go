@@ -1,6 +1,8 @@
 package leetcode
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_myPow(t *testing.T) {
 	type args struct {
@@ -45,9 +47,20 @@ func Test_myPow(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := myPow(tt.args.x, tt.args.n); got != tt.want {
+			if got := myPow(tt.args.x, tt.args.n); !IsEqual(got, tt.want) {
 				t.Errorf("myPow() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+const MIN = 0.00001
+
+// MIN 为用户自定义的比较精度
+func IsEqual(f1, f2 float64) bool {
+	if f1 > f2 {
+		return f1-f2 < MIN
+	} else {
+		return f2-f1 < MIN
 	}
 }

@@ -2,7 +2,6 @@ package tree
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 )
 
@@ -60,7 +59,7 @@ func writeArray(root *TreeNode, row, column, treeHeight int, resArray [][]string
 // 预先算出高度，通过高度算出宽度，再把全部的空间分配出来，然后递归画图
 func printAvlTree(root *TreeNode) string {
 	height := getTreeHeight(root)
-	fmt.Printf("height: %v\n", height)
+	// fmt.Printf("height: %v\n", height)
 	// 总宽度为节点高度 * 2 - 1, 因为还要画树枝符号
 	totalHeight := height*2 - 1
 	// 最大宽度为3 * 2^(n - 1) + 1，公式如下：
@@ -105,8 +104,6 @@ func printAvlTree(root *TreeNode) string {
 
 // Ref: github.com/pkg/errors
 func (l *TreeNode) Format(s fmt.State, verb rune) {
-	log.Printf("%v\n", "ssssssssss")
-
 	switch verb {
 	case 'v':
 		if s.Flag('+') {

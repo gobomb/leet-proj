@@ -44,6 +44,6 @@ func dfsFindKPermut(s string, k int) string {
 	}
 	id := (k - 1) / nextf
 	remainder := (k-1)%nextf + 1
-	log.Printf("id remainder %v %v\n", id, remainder)
+	// log.Printf("id remainder %v %v\n", id, remainder)
 	return s[id:id+1] + dfsFindKPermut(s[:id]+s[id+1:], remainder)
 }

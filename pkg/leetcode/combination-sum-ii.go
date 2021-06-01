@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"justest/pkg/ds"
 	"sort"
 )
@@ -11,7 +10,7 @@ func combinationSum2(candidates []int, target int) [][]int {
 	sort.Ints(candidates)
 
 	combination22(candidates, target, []int{}, choose, 0)
-	fmt.Printf("sums3 %v\n", *choose)
+	// fmt.Printf("sums3 %v\n", *choose)
 
 	// a := []int{1, 2}
 	// testslice(a)
@@ -51,9 +50,4 @@ func combination22(candidates []int, target int, sums []int, choose *[][]int, in
 	}
 
 	return false
-}
-
-func testslice(sums []int) {
-	sums = append(sums, 1)
-	sums = sums[:len(sums)-1]
 }
