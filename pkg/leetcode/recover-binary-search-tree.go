@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"sort"
+)
+
 func recoverTree(root *TreeNode) {
 	var prev, first, second *TreeNode
 	_, first, second = findFaultBST(root, prev, first, second)
@@ -22,4 +26,22 @@ func findFaultBST(root, prev, first, second *TreeNode) (*TreeNode, *TreeNode, *T
 	prev = root
 	prev, first, second = findFaultBST(root.Right, prev, first, second)
 	return prev, first, second
+}
+
+func recoverTree2(root *TreeNode) {
+	rs := []int{}
+	recursInorderTraversal(root, &rs)
+	sort.Ints(rs)
+	i := 0
+	fixTree(root, rs, &i)
+}
+
+func fixTree(root *TreeNode, rs []int, i *int) {
+	if root == nil {
+		return
+	}
+	fixTree(root.Left, rs, i)
+	root.Val = rs[*i]
+	*i++
+	fixTree(root.Right, rs, i)
 }
