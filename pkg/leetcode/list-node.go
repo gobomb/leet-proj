@@ -54,6 +54,10 @@ func (l *ListNode) Format(s fmt.State, verb rune) {
 	}
 }
 
+func MakeListNode(in ...int) *ListNode {
+	return makeListNode(in)
+}
+
 func makeListNode(in []int) *ListNode {
 	var last *ListNode
 	for i := len(in) - 1; i >= 0; i-- {
