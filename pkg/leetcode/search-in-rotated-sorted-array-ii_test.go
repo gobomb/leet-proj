@@ -36,19 +36,27 @@ func Test_searchRotated(t *testing.T) {
 			want: false,
 		},
 		{
-			name: "1",
+			name: "3",
 			args: args{
 				nums:   []int{0, 1, 2, 4, 4, 4, 5, 6, 6, 7},
 				target: 5,
 			},
 			want: true,
 		},
+		{
+			name: "4",
+			args: args{
+				nums:   []int{1, 1, 1, 1, 1, 1, 1, 1, 1, 13, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+				target: 13,
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			// if got := searchRotated(tt.args.nums, tt.args.target); got != tt.want {
-			// 	t.Errorf("searchRotated(%v, %v) = %v, want %v", tt.args.nums, tt.args.target, got, tt.want)
-			// }
+			if got := searchRotated(tt.args.nums, tt.args.target); got != tt.want {
+				t.Errorf("searchRotated(%v, %v) = %v, want %v", tt.args.nums, tt.args.target, got, tt.want)
+			}
 		})
 	}
 }
