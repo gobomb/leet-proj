@@ -1,5 +1,7 @@
 package leetcode
 
+import "log"
+
 // func minWindow(s string, t string) string {
 // 	str := s + " "
 // 	save := &[]int{}
@@ -89,7 +91,7 @@ func minWindow(s string, t string) string {
 				queue = append(queue, j)
 			}
 			str = str + string(s[j])
-			// log.Println(str, i, j)
+			log.Println(str, i, j)
 			if tt.isEnd() {
 				if len(str) < len(rs) {
 					rs = str

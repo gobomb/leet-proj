@@ -63,9 +63,9 @@ func Test_minWindow(t *testing.T) {
 			name: "6",
 			args: args{
 				s: "bccbacaaababaabcbabbbbabbcca",
-				t: "caccabbabcacbabcb",
+				t: "cacca",
 			},
-			want: "bccbacaaababaabcb",
+			want: "ccbaca",
 		},
 	}
 	for _, tt := range tests {
