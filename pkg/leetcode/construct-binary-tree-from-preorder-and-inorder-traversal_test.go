@@ -21,12 +21,12 @@ func Test_buildTree(t *testing.T) {
 		want *TreeNode
 	}{
 		{
-			name: "",
+			name: "1",
 			args: args{
-				preorder: []int{},
-				inorder:  []int{},
+				preorder: []int{3, 9, 20, 15, 7},
+				inorder:  []int{9, 3, 15, 20, 7},
 			},
-			want: nil,
+			want: MakeTree([]int{3, 9, 20, Null, Null, 15, 7}),
 		},
 	}
 	for _, tt := range tests {
