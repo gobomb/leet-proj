@@ -114,7 +114,23 @@ func (t *TreeNode) Remove(v int) *TreeNode {
 	}
 
 	return t
+}
 
+func (t *TreeNode) Height() int {
+	return getTreeHeight(t)
+}
+
+func (t *TreeNode) IsBalanced() bool {
+	return isBalanced(t)
+}
+
+func isBalanced(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	l := getTreeHeight(root.Left)
+	r := getTreeHeight(root.Right)
+	return math.Abs(float64(l-r)) <= 1 && isBalanced(root.Left) && isBalanced(root.Right)
 }
 
 func getTreeHeight(root *TreeNode) int {

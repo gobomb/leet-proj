@@ -10,6 +10,10 @@ func init() {
 	log.SetFlags(log.Lshortfile)
 }
 
+func init() {
+	log.SetFlags(log.Lshortfile)
+}
+
 func Test_sortedArrayToBST(t *testing.T) {
 	type args struct {
 		nums []int
@@ -71,6 +75,46 @@ func Test_sortedListToBST(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := sortedListToBST(tt.args.head); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("sortedListToBST(%v) = %v, want %v", tt.args.head, got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_isBalanced(t *testing.T) {
+	type args struct {
+		root *TreeNode
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "1",
+			args: args{
+				root: MakeTree2(3, 9, 20, null, null, 15, 7),
+			},
+			want: true,
+		},
+		{
+			name: "2",
+			args: args{
+				root: MakeTree2(1, 2, 2, 3, 3, null, null, 4, 4),
+			},
+			want: false,
+		},
+		{
+			name: "3",
+			args: args{
+				root: MakeTree2(),
+			},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isBalanced(tt.args.root); got != tt.want {
+				t.Errorf("isBalanced(%v) = %v, want %v", tt.args.root, got, tt.want)
 			}
 		})
 	}

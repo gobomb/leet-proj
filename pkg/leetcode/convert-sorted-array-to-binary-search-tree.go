@@ -21,3 +21,12 @@ func sortedListToBST(head *ListNode) *TreeNode {
 	}
 	return sortedArrayToBST(nums)
 }
+
+func isBalanced(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	l := maxDepth(root.Left)
+	r := maxDepth(root.Right)
+	return Abs(l-r) <= 1 && isBalanced(root.Left) && isBalanced(root.Right)
+}

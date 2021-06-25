@@ -5,13 +5,6 @@ import (
 	"math"
 )
 
-func Abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-
 func divide(dividend int, divisor int) (rs int) {
 	defer func() {
 		// 默认是64位int，代码不会溢出，但题目要求是32位，超出32位的结果就判定为溢出
