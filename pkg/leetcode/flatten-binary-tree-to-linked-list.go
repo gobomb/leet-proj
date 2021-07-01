@@ -57,14 +57,13 @@ func flatten2(root *TreeNode) {
 	n := root
 	for n != nil {
 		if n.Left != nil {
-			tmp := n.Right
-			n.Right = n.Left
 			next := n.Left
-			n.Left = nil
 			for next.Right != nil {
 				next = next.Right
 			}
-			next.Right = tmp
+			next.Right = n.Right
+			n.Right = n.Left
+			n.Left = nil
 		}
 
 		n = n.Right
