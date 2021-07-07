@@ -24,3 +24,10 @@ func Abs(x int) int {
 func MakeTree2(arg ...int) *TreeNode {
 	return MakeTree(arg)
 }
+
+type Node struct {
+	Val   int
+	Left  *Node
+	Right *Node
+	Next  *Node
+}
