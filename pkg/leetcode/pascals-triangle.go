@@ -14,3 +14,8 @@ func generate(numRows int) [][]int {
 	}
 	return rs
 }
+
+func getRow(rowIndex int) []int {
+	g := generate(rowIndex + 1)
+	return g[rowIndex]
+}
