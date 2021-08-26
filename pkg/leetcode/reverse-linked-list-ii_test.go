@@ -37,11 +37,11 @@ func Test_reverseBetween(t *testing.T) {
 		{
 			name: "3",
 			args: args{
-				head:  MakeListNode(3,5),
+				head:  MakeListNode(3, 5),
 				left:  1,
 				right: 2,
 			},
-			want: MakeListNode(5,3),
+			want: MakeListNode(5, 3),
 		},
 	}
 	for _, tt := range tests {

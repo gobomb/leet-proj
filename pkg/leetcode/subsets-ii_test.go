@@ -19,7 +19,7 @@ func Test_subsetsWithDup(t *testing.T) {
 			args: args{
 				nums: []int{1, 2, 2},
 			},
-			want: [][]int{{}, {1}, {2}, {1, 2}, {2,2}, {1, 2, 2}},
+			want: [][]int{{}, {1}, {2}, {1, 2}, {2, 2}, {1, 2, 2}},
 		},
 		{
 			name: "2",
@@ -27,7 +27,7 @@ func Test_subsetsWithDup(t *testing.T) {
 				nums: []int{0},
 			},
 			want: [][]int{{}, {0}},
-		},	
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

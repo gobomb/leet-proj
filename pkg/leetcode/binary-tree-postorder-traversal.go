@@ -1,6 +1,5 @@
 package leetcode
 
-
 var btpt_rs []int
 
 func postorderTraversal(root *TreeNode) []int {
