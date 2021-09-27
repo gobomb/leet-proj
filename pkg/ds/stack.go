@@ -1,6 +1,8 @@
 package ds
 
-import "sync"
+import (
+	"sync"
+)
 
 type Stack interface {
 	Pop() interface{}
