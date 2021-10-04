@@ -7,6 +7,7 @@ package leetcode
 */
 
 // brute force
+// to be fixed
 func largestRectangleArea(heights []int) int {
 	rs := 0
 	h := 0
