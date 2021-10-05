@@ -30,3 +30,24 @@ func dpClimbStairs(n int) int {
 	}
 	return b
 }
+
+func memoizationClimbStairs(n int) int {
+	mem := make([]int, n+1)
+	var f func(n int) int
+	f = func(n int) int {
+		if n == 0 {
+			return 1
+		}
+		if mem[n] != 0 {
+			return mem[n]
+		}
+
+		if n == 1 {
+			mem[n] = 1
+		} else {
+			mem[n] = f(n-1) + f(n-2)
+		}
+		return mem[n]
+	}
+	return f(n)
+}
