@@ -1,6 +1,6 @@
 package leetcode
 
-/* 
+/*
 	263. Ugly Number
 */
 func isUgly(n int) bool {
