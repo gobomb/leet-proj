@@ -1,5 +1,9 @@
 package leetcode
 
+/*
+	斐波那契数列
+*/
+
 func climbStairs(n int) int {
 	saved := make([]int, n+1)
 	return backtrackClimbStatirs(n, saved)
