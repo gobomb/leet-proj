@@ -29,3 +29,25 @@ func findWords(words []string) []string {
 	}
 	return rs
 }
+
+// https://leetcode.com/problems/keyboard-row/discuss/548831/Golang-O(N)-simple-solution-using-int-array
+
+func findWords2(words []string) []string {
+	rs := []string{}
+	rows := []int{1, 2, 2, 1, 0, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 0, 2, 0, 2}
+	for _, w := range words {
+		s := strings.ToLower(w)
+		level := rows[s[0]-'a']
+		b := true
+		for i := 1; i < len(s); i++ {
+			if level != rows[s[i]-'a'] {
+				b = false
+				break
+			}
+		}
+		if b {
+			rs = append(rs, w)
+		}
+	}
+	return rs
+}
