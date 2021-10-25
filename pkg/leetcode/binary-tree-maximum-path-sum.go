@@ -16,7 +16,8 @@ import "math"
  */
 
 func maxPathSum(root *TreeNode) int {
-	rs := math.MinInt
+	// leetcode 接受 math.MinInt32
+	rs := math.MinInt32
 	getMaxPath(root, &rs)
 	return rs
 }
@@ -24,7 +25,7 @@ func maxPathSum(root *TreeNode) int {
 // https://books.halfrost.com/leetcode/ChapterFour/0100~0199/0124.Binary-Tree-Maximum-Path-Sum/
 func getMaxPath(root *TreeNode, rs *int) int {
 	if root == nil {
-		return math.MinInt
+		return math.MinInt32
 	}
 	// 求左/右不穿过根节点的最大值
 	left := getMaxPath(root.Left, rs)
