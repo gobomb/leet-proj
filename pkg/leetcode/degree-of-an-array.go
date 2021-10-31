@@ -1,5 +1,9 @@
 package leetcode
 
+/*
+	697. Degree of an Array
+*/
+
 import (
 	"math"
 )
