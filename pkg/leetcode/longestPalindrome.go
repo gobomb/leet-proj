@@ -1,5 +1,9 @@
 package leetcode
 
+/*
+	5. Longest Palindromic Substring
+*/
+
 import (
 	"fmt"
 )
@@ -114,31 +118,4 @@ func expendAroundCenter(s string, l, r int) int {
 		r++
 	}
 	return r - l - 1
-}
-
-func testCase(fn func(string) string) {
-	b := fn("aaacccc")
-	fmt.Println(b)
-	b = fn("cbbd")
-	fmt.Println(b)
-	b = fn("ac")
-	fmt.Println(b)
-}
-
-func TestPalindrome() {
-	// s := "babcbabcbaccba"
-	// l := len("babcbabcbaccba")
-	// t := "^#"
-	// for i := 0; i < l; i++ {
-	// 	t += string(s[i])
-	// 	t += "#"
-	// }
-	// t += "$"
-	// fmt.Println(t)
-	// tt := expendAroundCenter(t, 12-(15-12), 15)
-	// print(tt)
-	// return
-	testCase(longestPalindrome)
-	testCase(manacher)
-	testCase(expendPalindrome)
 }

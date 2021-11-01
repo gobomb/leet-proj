@@ -1,6 +1,6 @@
 package leetcode
 
-/* 
+/*
 	131. Palindrome Partitioning
 */
 
