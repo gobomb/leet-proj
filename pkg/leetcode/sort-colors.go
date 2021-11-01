@@ -17,6 +17,4 @@ func sortColors(nums []int) {
 			bucket[i] -= 1
 		}
 	}
-
-	return
 }

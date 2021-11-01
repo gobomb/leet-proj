@@ -25,11 +25,7 @@ func isValidBST2(root *TreeNode) bool {
 	}
 	prev = root.Val
 
-	if !isValidBST2(root.Right) {
-		return false
-	}
-
-	return true
+	return isValidBST2(root.Right)
 }
 
 func isValidBST3(root *TreeNode) bool {

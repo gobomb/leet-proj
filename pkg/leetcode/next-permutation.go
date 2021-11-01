@@ -31,8 +31,6 @@ func nextPermutation(nums []int) {
 	swap(nums, a, b)
 
 	reverseInt(nums[a+1:])
-
-	return
 }
 
 func reverseInt(nums []int) {

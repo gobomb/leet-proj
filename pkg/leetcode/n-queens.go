@@ -2,6 +2,7 @@ package leetcode
 
 func solveNQueens(n int) [][]string {
 	var rst [][]string
+
 	if n == 0 {
 		return [][]string{{}}
 	}
@@ -24,6 +25,7 @@ func solveNQueens(n int) [][]string {
 
 func makeresult(rs [][]string) []string {
 	var rss []string
+
 	for i := range rs {
 		temp := ""
 		for j := range rs {
@@ -52,7 +54,6 @@ func dfsnqueens(rs [][]string, rst *[][]string, r, qs int) {
 			rs[r][j] = "."
 		}
 	}
-	return
 }
 
 func checkQueen(a, b int, rs [][]string) bool {
@@ -89,6 +90,7 @@ func totalNQueens(n int) int {
 		}
 	}
 	var rst2 = new(int)
+
 	dfsnqueens2(rs, rst2, 0, n)
 
 	return *rst2
@@ -111,5 +113,4 @@ func dfsnqueens2(rs [][]string, rst *int, r, qs int) {
 			rs[r][j] = "."
 		}
 	}
-	return
 }

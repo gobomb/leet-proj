@@ -28,8 +28,8 @@ func (this *MinStack) Push(val int) {
 }
 
 func (this *MinStack) Pop() {
-	if this.length == 0 {
-	}
+	// if this.length == 0 {
+	// }
 	top := this.top
 	this.top = top.prev
 	this.length--

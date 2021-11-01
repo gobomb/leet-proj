@@ -1,10 +1,10 @@
 package leetcode
 
 func flatten(root *TreeNode) {
-	new := preorderTraversalFlatten(root)
+	n := preorderTraversalFlatten(root)
 	if root != nil {
-		root.Left = new.Left
-		root.Right = new.Right
+		root.Left = n.Left
+		root.Right = n.Right
 	}
 }
 

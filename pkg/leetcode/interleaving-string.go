@@ -82,7 +82,6 @@ func isInterleave2(s1 string, s2 string, s3 string) (b bool) {
 func isInterleaveCache22(s1 string, s2 string, s3 string, i, j int) (b bool) {
 	defer func() {
 		// log.Printf("%v %v %v %v\n", i, j, arrIsInterleave, b)
-
 		if arrIsInterleave[i][j] == 0 {
 			if b {
 				arrIsInterleave[i][j] = 1

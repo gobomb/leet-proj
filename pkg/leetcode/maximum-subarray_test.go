@@ -50,7 +50,7 @@ func Test_maxSubArray(t *testing.T) {
 			}
 		})
 	}
-	log.Printf("%v\n", time.Now().Sub(now))
+	log.Printf("%v\n", time.Since(now))
 
 	now = time.Now()
 	for _, tt := range tests {
@@ -60,7 +60,7 @@ func Test_maxSubArray(t *testing.T) {
 			}
 		})
 	}
-	log.Printf("%v\n", time.Now().Sub(now))
+	log.Printf("%v\n", time.Since(now))
 
 	now = time.Now()
 	for _, tt := range tests {
@@ -70,7 +70,7 @@ func Test_maxSubArray(t *testing.T) {
 			}
 		})
 	}
-	log.Printf("%v\n", time.Now().Sub(now))
+	log.Printf("%v\n", time.Since(now))
 
 	now = time.Now()
 	for _, tt := range tests {
@@ -80,5 +80,5 @@ func Test_maxSubArray(t *testing.T) {
 			}
 		})
 	}
-	log.Printf("%v\n", time.Now().Sub(now))
+	log.Printf("%v\n", time.Since(now))
 }

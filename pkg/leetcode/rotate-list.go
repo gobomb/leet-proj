@@ -1,16 +1,16 @@
 package leetcode
 
 func rotateRight(head *ListNode, k int) *ListNode {
-	len := LenOfList(head)
-	if len == 0 || len == 1 {
+	length := LenOfList(head)
+	if length == 0 || length == 1 {
 		return head
 	}
-	nk := k % len
+	nk := k % length
 	if nk == 0 {
 		return head
 	}
 	c := head
-	for i := 1; i <= len-nk-1; i++ {
+	for i := 1; i <= length-nk-1; i++ {
 		c = c.Next
 	}
 	newh := c.Next

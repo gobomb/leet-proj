@@ -8,6 +8,7 @@ func subsetsWithDup(nums []int) [][]int {
 	rs := [][]int{}
 	r := []int{}
 	rs = append(rs, r)
+
 	sort.Ints(nums)
 	subsetsBT2(nums, &rs, r, 0)
 	return rs

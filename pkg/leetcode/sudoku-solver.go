@@ -17,7 +17,6 @@ func solveSudoku(board [][]byte) {
 		}
 	}
 	dfsSudoku(&board, pos, &find, 0)
-	return
 }
 
 func dfsSudoku(board *[][]byte, pos []position, find *bool, index int) {

@@ -38,6 +38,5 @@ func pathSum2(root *TreeNode, targetSum int, rs *[][]int, nums []int) {
 	pathSum2(root.Left, targetSum, rs, nums)
 
 	pathSum2(root.Right, targetSum, rs, nums)
-	nums = nums[:len(nums)-1]
-	return
+	// nums = nums[:len(nums)-1]
 }

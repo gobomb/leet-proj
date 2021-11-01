@@ -26,6 +26,7 @@ func isNumber(s string) bool {
 	for i := range s {
 		c := s[i]
 		tp := INVALID
+
 		switch c {
 		case ' ':
 			tp = SPACE
@@ -43,6 +44,7 @@ func isNumber(s string) bool {
 			return false
 		}
 	}
+
 	switch state {
 	case 1, 4, 7, 8:
 		return true

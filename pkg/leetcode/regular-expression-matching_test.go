@@ -4,10 +4,6 @@ import "testing"
 
 // ref https://jaycechant.info/2020/rapidly-generate-unit-tests-in-vs-code/
 func Test_isMatch(t *testing.T) {
-	type args struct {
-		s string
-		p string
-	}
 	tests := []struct {
 		name string
 		s    string

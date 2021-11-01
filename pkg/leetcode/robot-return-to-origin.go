@@ -2,6 +2,7 @@ package leetcode
 
 func judgeCircle(moves string) bool {
 	u := [4]int{}
+
 	for i := range moves {
 		switch moves[i] {
 		case 'U':

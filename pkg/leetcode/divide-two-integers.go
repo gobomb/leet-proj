@@ -16,7 +16,7 @@ func divide(dividend int, divisor int) (rs int) {
 			rs = math.MaxInt32
 		}
 	}()
-	var sign int = -1
+	var sign int
 
 	if dividend == 0 {
 		return 0

@@ -5,6 +5,7 @@ func merge88(nums1 []int, m int, nums2 []int, n int) {
 	a, b := m-1, n-1
 	for i := m + n - 1; i >= 0; i-- {
 		tmp := 0
+
 		if a < 0 {
 			b--
 			tmp = nums2[b+1]
@@ -25,7 +26,6 @@ func merge88(nums1 []int, m int, nums2 []int, n int) {
 
 		nums1[i] = tmp
 	}
-	return
 }
 
 // 	0 ms	2.3 MB

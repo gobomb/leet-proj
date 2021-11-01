@@ -33,7 +33,6 @@ func jump(nums []int) int {
 	return step
 }
 
-var memo []int
 var dept *int
 
 func canJump(nums []int) bool {
@@ -47,6 +46,7 @@ func canJump(nums []int) bool {
 		}
 		if i+n > canReach {
 			canReach = i + n
+
 			if i+n >= len(nums)-1 {
 				return true
 			}
@@ -55,10 +55,11 @@ func canJump(nums []int) bool {
 			needChoose = canReach
 			step++
 		}
-
 	}
 	return false
 }
+
+var memo []int
 
 func jump2(nums []int) int {
 	memo = make([]int, len(nums))
@@ -67,6 +68,7 @@ func jump2(nums []int) int {
 	}
 	dept = new(int)
 	*dept = -1
+
 	tryJump(&nums, 0)
 	log.Printf("%v\n", memo)
 
@@ -95,6 +97,7 @@ func tryJump(nums *[]int, i int) (b bool, maxd int) {
 	}
 
 	var found bool
+
 	if memo[i] == math.MaxInt64 {
 		for j := 1; j <= (*nums)[i]; j++ {
 			ok, maxd1 := tryJump(nums, i+j)

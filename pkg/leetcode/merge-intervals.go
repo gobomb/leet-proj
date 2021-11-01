@@ -41,6 +41,7 @@ func merge(intervals [][]int) [][]int {
 	for i := range intervals {
 		is.slice = append(is.slice, interval{intervals[i][0], intervals[i][1]})
 	}
+
 	sort.Sort(is)
 	rs := [][]int{}
 
@@ -70,10 +71,7 @@ type intervalSlice struct {
 }
 
 func (is *intervalSlice) Less(i, j int) bool {
-	if is.slice[i].start < is.slice[j].start {
-		return true
-	}
-	return false
+	return is.slice[i].start < is.slice[j].start
 }
 
 func (is *intervalSlice) Len() int {

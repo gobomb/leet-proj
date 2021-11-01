@@ -20,7 +20,7 @@ func fullJustify(words []string, maxWidth int) []string {
 			}
 
 			rs = append(rs, cachestr)
-			strs = []string{}
+			// strs = []string{}
 			break
 		}
 		if len(strs)+lenc+len(words[i+1]) > maxWidth {

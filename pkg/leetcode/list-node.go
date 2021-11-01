@@ -50,7 +50,10 @@ func (l *ListNode) Format(s fmt.State, verb rune) {
 		fmt.Fprintf(s, "%v", ListLen(l))
 		return
 	case 'p':
-		io.WriteString(s, fmt.Sprintf("%p", l))
+		_, err := io.WriteString(s, fmt.Sprintf("%p", l))
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 
@@ -88,6 +91,7 @@ func LNDeepCopy(o *ListNode) (n *ListNode) {
 		for k := range ldc.vm {
 			delete(ldc.vm, k)
 		}
+
 		vmFree.Put(ldc.vm)
 	}()
 	n = ldc.lnDeepCopy(o)
@@ -124,7 +128,7 @@ type ListPrinter struct {
 	head     *ListNode
 	cur      *ListNode
 	len      int
-	isLoop   bool
+	// isLoop   bool
 }
 
 func ListStringer(l *ListNode) fmt.Stringer {
@@ -145,6 +149,7 @@ func ListLen(l *ListNode) int {
 		for k := range lp.visitMap {
 			delete(lp.visitMap, k)
 		}
+
 		vmFree.Put(lp.visitMap)
 	}()
 
@@ -182,9 +187,10 @@ func (l *ListPrinter) String() string {
 			for k := range l.visitMap {
 				delete(l.visitMap, k)
 			}
+
 			vmFree.Put(l.visitMap)
 		}()
-		return fmt.Sprintf("(nil)")
+		return "(nil)"
 	}
 	if loop := l.Loop(l.cur, nil); loop {
 		for k := range l.visitMap {

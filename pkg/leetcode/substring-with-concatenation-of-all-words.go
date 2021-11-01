@@ -33,6 +33,7 @@ func resetCount(countMap map[string]int, words []string) {
 	for k := range countMap {
 		delete(countMap, k)
 	}
+
 	for _, w := range words {
 		countMap[w]++
 	}

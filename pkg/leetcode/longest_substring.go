@@ -34,7 +34,7 @@ func longestSubstringWithoutRepeatingCharacters(s string) int {
 	result, left, right := 0, 0, 0
 
 	for left < len(s) {
-		if right < len(s) && freq[s[right]-'a'] == false {
+		if right < len(s) && !freq[s[right]-'a'] {
 			freq[s[right]-'a'] = true
 			right++
 		} else {

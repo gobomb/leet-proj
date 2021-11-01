@@ -4,6 +4,7 @@ import "sort"
 
 func groupAnagrams(strs []string) [][]string {
 	strmap := make(map[string][]string)
+
 	for i := range strs {
 		s := SortString(strs[i])
 		sli := strmap[s]

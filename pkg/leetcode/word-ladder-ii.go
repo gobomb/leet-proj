@@ -63,6 +63,7 @@ func bfsFindLadders(beginWord, endWord string, wordset map[string]struct{}, step
 
 		for _, currWord := range queue {
 			queue = queue[1:]
+
 			for j, l := range currWord {
 				for c := 'a'; c <= 'z'; c++ {
 					if l != c {

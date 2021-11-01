@@ -17,7 +17,7 @@ func fourSum(nums []int, target int) [][]int {
 		for j := range subrss {
 			subrss[j][0] = nums[i]
 
-			if ma[subrss[j]] != true {
+			if !ma[subrss[j]] {
 				ma[subrss[j]] = true
 				rss = append(rss, subrss[j][:])
 			}

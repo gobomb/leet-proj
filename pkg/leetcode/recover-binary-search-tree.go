@@ -40,8 +40,10 @@ func fixTree(root *TreeNode, rs []int, i *int) {
 	if root == nil {
 		return
 	}
+
 	fixTree(root.Left, rs, i)
 	root.Val = rs[*i]
 	*i++
+
 	fixTree(root.Right, rs, i)
 }

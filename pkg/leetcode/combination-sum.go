@@ -62,7 +62,6 @@ func combination(candidates []int, target int, sum int, choose *[]*[]int) bool {
 		if combination(candidates, target, sum, choose) {
 			*(*choose)[len(*choose)-1] = append(*(*choose)[len(*choose)-1], candidates[i])
 			fmt.Printf("sum %v i %v\n", sum, candidates[i])
-			sum -= candidates[i]
 			return true
 		}
 		sum -= candidates[i]
@@ -87,8 +86,5 @@ func compSliceSlice(a, b [][]int) bool {
 			}
 		}
 	}
-	if len(cmap) == len(a) {
-		return true
-	}
-	return false
+	return len(cmap) == len(a)
 }

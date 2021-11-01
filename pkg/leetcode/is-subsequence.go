@@ -13,9 +13,7 @@ func isSubsequence(s string, t string) bool {
 				j++
 				break
 			}
-
 		}
-
 	}
 	return true
 }

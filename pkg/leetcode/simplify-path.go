@@ -29,6 +29,7 @@ func simplifyPath(path string) string {
 		if f == nil {
 			break
 		}
+
 		ls.Remove(f)
 
 		s := f.Value.(string)

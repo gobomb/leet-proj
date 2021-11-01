@@ -2,10 +2,7 @@ package leetcode
 
 func isSameTree(root, root2 *TreeNode) bool {
 	if root == nil || root2 == nil {
-		if root == root2 {
-			return true
-		}
-		return false
+		return root == root2
 	}
 
 	if !isSameTree(root.Left, root2.Left) {

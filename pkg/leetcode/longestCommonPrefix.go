@@ -50,8 +50,8 @@ func testlongestCommonPrefix() {
 	strs1 = []string{"ab", "a"}
 	str = longestCommonPrefix(strs1)
 	fmt.Println(str == "a")
-	strs1 = []string{"", "flight"}
-	str = longestCommonPrefix(strs1)
+	// strs1 = []string{"", "flight"}
+	// str = longestCommonPrefix(strs1)
 
 	strs1 = []string{"acb", "b", "", ""}
 	str = longestCommonPrefix(strs1)

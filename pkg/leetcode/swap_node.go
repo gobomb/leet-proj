@@ -45,6 +45,7 @@ func testSwapPairs() {
 		println("before:")
 		printList(tests[i])
 		r := swapPairs(tests[i])
+
 		println("after:")
 		printList(r)
 	}

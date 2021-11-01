@@ -8,6 +8,7 @@ package leetcode
 func findDisappearedNumbers(nums []int) []int {
 	for i := range nums {
 		tmp := nums[i] - 1
+
 		for {
 			if tmp < 0 {
 				break

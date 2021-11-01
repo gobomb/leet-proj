@@ -43,6 +43,7 @@ func generateMatrix(n int) [][]int {
 		if k == len(rs) {
 			return matrix
 		}
+
 		switch d {
 		case right:
 			matrix[i][j] = rs[k]
@@ -63,6 +64,7 @@ func generateMatrix(n int) [][]int {
 
 		if j == rt {
 			ut = i
+
 			turn(&d)
 			j--
 			i++
@@ -70,6 +72,7 @@ func generateMatrix(n int) [][]int {
 		}
 		if i == dt {
 			rt = j
+
 			turn(&d)
 			i--
 			j--
@@ -77,6 +80,7 @@ func generateMatrix(n int) [][]int {
 		}
 		if j == lt {
 			dt = i
+
 			turn(&d)
 			j++
 			i--
@@ -85,6 +89,7 @@ func generateMatrix(n int) [][]int {
 
 		if i == ut {
 			lt = j
+
 			turn(&d)
 			i++
 			j++
@@ -112,6 +117,7 @@ func spiralOrder(matrix [][]int) []int {
 		if k == len(rs) {
 			return rs
 		}
+
 		switch d {
 		case right:
 			rs[k] = matrix[i][j]
@@ -129,6 +135,7 @@ func spiralOrder(matrix [][]int) []int {
 
 		if j == rt {
 			ut = i
+
 			turn(&d)
 			j--
 			i++
@@ -136,6 +143,7 @@ func spiralOrder(matrix [][]int) []int {
 		}
 		if i == dt {
 			rt = j
+
 			turn(&d)
 			i--
 			j--
@@ -143,6 +151,7 @@ func spiralOrder(matrix [][]int) []int {
 		}
 		if j == lt {
 			dt = i
+
 			turn(&d)
 			j++
 			i--
@@ -151,6 +160,7 @@ func spiralOrder(matrix [][]int) []int {
 
 		if i == ut {
 			lt = j
+
 			turn(&d)
 			i++
 			j++

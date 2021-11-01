@@ -19,6 +19,7 @@ type Employee struct {
 
 func getImportance(employees []*Employee, id int) int {
 	var rs int
+
 	for _, e := range employees {
 		if e.Id == id {
 			rs += e.Importance

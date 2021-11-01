@@ -88,6 +88,7 @@ func (this *DulLink) Remove(node *DulNode) {
 
 	if node == this.head {
 		this.head = node.next
+
 		if node.next != nil {
 			node.next.prior = nil
 		}

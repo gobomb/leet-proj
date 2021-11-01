@@ -57,5 +57,4 @@ func setZeroes(matrix [][]int) {
 			matrix[0][i] = 0
 		}
 	}
-	return
 }

@@ -17,7 +17,7 @@ func isValidSudoku(board [][]byte) bool {
 				continue
 			}
 			bi := b - '0' - 1
-			if bi < 0 || bi > 8 {
+			if bi > 8 {
 				return false
 			}
 			if row[i][bi] || col[j][bi] || box[i/3*3+j/3][bi] {

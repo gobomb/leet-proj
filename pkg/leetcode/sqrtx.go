@@ -1,7 +1,8 @@
 package leetcode
 
 func mySqrt(x int) int {
-	var hi, lo, mi = x, 0, x / 2
+	var hi, lo = x, 0
+	var mi int
 	for hi >= lo {
 		mi = (hi + lo) / 2
 		if mi*mi == x {

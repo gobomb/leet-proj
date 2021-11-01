@@ -25,5 +25,4 @@ func combineBacktrack(a, n, k int, aa []int, rs *[][]int) {
 		combineBacktrack(i+1, n, k, aa, rs)
 		aa = aa[:len(aa)-1]
 	}
-	return
 }

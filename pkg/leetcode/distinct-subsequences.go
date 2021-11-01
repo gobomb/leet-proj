@@ -48,7 +48,7 @@ func numDistinct2(s string, t string) int {
 		mem[j] = 0
 	}
 	mem[len(t)] = 1
-	tp, tp2 := 1, 0
+	tp, tp2 := 0, 0
 	for i := len(s) - 1; i >= 0; i-- {
 		tp = 1
 		for j := len(t) - 1; j >= 0; j-- {

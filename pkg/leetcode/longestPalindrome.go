@@ -114,7 +114,6 @@ func expendAroundCenter(s string, l, r int) int {
 	for l >= 0 && r < len(s) && s[l] == s[r] {
 		l--
 		r++
-
 	}
 	return r - l - 1
 }
@@ -126,17 +125,12 @@ func testCase(fn func(string) string) {
 	fmt.Println(b)
 	b = fn("ac")
 	fmt.Println(b)
-	// b := fn("babcbabcbaccba")
-	// // b = fn("cbcbcbde")
-	// fmt.Println(b)
-
 }
 
 func TestPalindrome() {
 	// s := "babcbabcbaccba"
 	// l := len("babcbabcbaccba")
 	// t := "^#"
-
 	// for i := 0; i < l; i++ {
 	// 	t += string(s[i])
 	// 	t += "#"
