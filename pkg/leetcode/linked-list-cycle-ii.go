@@ -4,20 +4,20 @@ func detectCycle(head *ListNode) *ListNode {
 	fast := head
 	slow := head
 
-	if c := checkCycle(head); c == nil {
+	c := checkCycle(head)
+	if c == nil {
 		return c
-	} else {
-		step := getCycleStep(c)
-
-		for i := 0; i < step; i++ {
-			fast = fast.Next
-		}
-		for fast != slow {
-			fast = fast.Next
-			slow = slow.Next
-		}
-		return fast
 	}
+	step := getCycleStep(c)
+
+	for i := 0; i < step; i++ {
+		fast = fast.Next
+	}
+	for fast != slow {
+		fast = fast.Next
+		slow = slow.Next
+	}
+	return fast
 }
 
 func checkCycle(head *ListNode) *ListNode {
@@ -49,7 +49,7 @@ func checkCycle(head *ListNode) *ListNode {
 
 func getCycleStep(h *ListNode) int {
 	n := h
-	var i int = 1
+	var i = 1
 	for n.Next != h {
 		n = n.Next
 		i++

@@ -95,7 +95,6 @@ func generateMatrix(n int) [][]int {
 			j++
 			continue
 		}
-
 	}
 }
 
@@ -166,6 +165,5 @@ func spiralOrder(matrix [][]int) []int {
 			j++
 			continue
 		}
-
 	}
 }

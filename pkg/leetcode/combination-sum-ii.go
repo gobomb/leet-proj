@@ -7,6 +7,7 @@ import (
 
 func combinationSum2(candidates []int, target int) [][]int {
 	choose := &[][]int{}
+
 	sort.Ints(candidates)
 
 	combination22(candidates, target, []int{}, choose, 0)
@@ -43,6 +44,7 @@ func combination22(candidates []int, target int, sums []int, choose *[][]int, in
 
 		sums = append(sums, candidates[i])
 		rs := combination22(candidates, target, sums, choose, i+1)
+
 		if rs {
 			*choose = append(*choose, ds.DeepCopyIntSlice(sums))
 		}

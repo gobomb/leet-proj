@@ -14,21 +14,21 @@ func Constructor2(big int, medium int, small int) ParkingSystem {
 	}
 }
 
-func (this *ParkingSystem) AddCar(carType int) bool {
+func (ps *ParkingSystem) AddCar(carType int) bool {
 	switch carType {
 	case 3:
-		if this.small != 0 {
-			this.small--
+		if ps.small != 0 {
+			ps.small--
 			return true
 		}
 	case 2:
-		if this.medium != 0 {
-			this.medium--
+		if ps.medium != 0 {
+			ps.medium--
 			return true
 		}
 	case 1:
-		if this.big != 0 {
-			this.big--
+		if ps.big != 0 {
+			ps.big--
 			return true
 		}
 	}

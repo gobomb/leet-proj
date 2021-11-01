@@ -13,11 +13,11 @@ func intToRoman(num int) string {
 			if a < 0 {
 				break
 			}
-			r = r + rm[i]
+			r += rm[i]
 			last = a
 		}
 	}
-	return string(r)
+	return r
 }
 
 func testIntToRoman() {

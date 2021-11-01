@@ -15,7 +15,6 @@ func findMode(root *TreeNode) []int {
 
 	for k, v := range m {
 		if v == max {
-
 			rs = append(rs, k)
 		}
 	}
@@ -27,7 +26,7 @@ func computeMode(root *TreeNode, m map[int]int) {
 		return
 	}
 
-	m[root.Val] = m[root.Val] + 1
+	m[root.Val]++
 
 	computeMode(root.Left, m)
 	computeMode(root.Right, m)

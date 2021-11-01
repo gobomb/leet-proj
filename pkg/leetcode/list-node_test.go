@@ -210,8 +210,8 @@ func TestListNode_String_loop(t *testing.T) {
 	if got := ListStringer(loop).String(); got != want {
 		t.Errorf("ListNode.String() = %v, want %v", got, want)
 	}
-	t.Logf("%v\n", ListStringer(loop))
 
+	t.Logf("%v\n", ListStringer(loop))
 }
 
 func TestListPrinter_String(t *testing.T) {

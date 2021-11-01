@@ -11,11 +11,11 @@ func threeSum(nums []int) [][]int {
 	result := [][]int{}
 	sum := 0
 	start, end := 0, 0
-	lenght := len(nums)
+	length := len(nums)
 
-	for index := 1; index < lenght-1; index++ {
+	for index := 1; index < length-1; index++ {
 		// key
-		start, end = 0, lenght-1
+		start, end = 0, length-1
 
 		if index > 1 && nums[index] == nums[index-1] {
 			// ?
@@ -25,15 +25,13 @@ func threeSum(nums []int) [][]int {
 
 		//for
 		for start < index && index < end {
-
 			// fmt.Println(start, index, end)
-
 			// 去重
 			if start > 0 && nums[start] == nums[start-1] {
 				start++
 				continue
 			}
-			if end < lenght-1 && nums[end] == nums[end+1] {
+			if end < length-1 && nums[end] == nums[end+1] {
 				end--
 				continue
 			}
@@ -59,5 +57,4 @@ func Test3sum() {
 	fmt.Printf("%#v \n", threeSum(nums))
 	fmt.Printf("%#v \n", threeSum([]int{}))
 	fmt.Printf("%#v \n", threeSum([]int{0}))
-
 }

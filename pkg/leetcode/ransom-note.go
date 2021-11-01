@@ -3,7 +3,7 @@ package leetcode
 func canConstruct(ransomNote string, magazine string) bool {
 	m := make(map[byte]int)
 	for i := range ransomNote {
-		m[ransomNote[i]] = m[ransomNote[i]] + 1
+		m[ransomNote[i]]++
 	}
 	for j := 0; j < len(magazine); j++ {
 		if v, ok := m[magazine[j]]; ok {

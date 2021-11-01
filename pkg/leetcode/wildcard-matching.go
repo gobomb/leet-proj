@@ -29,9 +29,8 @@ func checkMatchWC(s, p string, si, pi int) (b bool) {
 	if si == len(s) && pi < len(p) {
 		if p[pi] != '*' {
 			return false
-		} else {
-			return checkMatchWC(s, p, si, pi+1)
 		}
+		return checkMatchWC(s, p, si, pi+1)
 	}
 
 	if matchmap[si][pi] == notcheck {

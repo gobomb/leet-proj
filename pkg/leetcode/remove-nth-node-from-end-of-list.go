@@ -11,6 +11,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	cur := head
 	pointerMap := make(map[int]*ListNode)
 	i := 0
+
 	for {
 		pointerMap[i] = cur
 
@@ -88,6 +89,7 @@ func removeNthFromEndFastSlowP(head *ListNode, n int) *ListNode {
 	slow := head
 	fast := head
 	i := 0
+
 	for {
 		if fast.Next == nil {
 			break

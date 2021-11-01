@@ -18,33 +18,34 @@ func Constructor() MinStack {
 	}
 }
 
-func (this *MinStack) Push(val int) {
+func (ms *MinStack) Push(val int) {
 	top := &no{
-		prev:  this.top,
+		prev:  ms.top,
 		value: val,
 	}
-	this.top = top
-	this.length++
+	ms.top = top
+	ms.length++
 }
 
-func (this *MinStack) Pop() {
+func (ms *MinStack) Pop() {
 	// if this.length == 0 {
 	// }
-	top := this.top
-	this.top = top.prev
-	this.length--
+	top := ms.top
+	ms.top = top.prev
+	ms.length--
 }
 
-func (this *MinStack) Top() int {
-	if this.length == 0 {
+func (ms *MinStack) Top() int {
+	if ms.length == 0 {
 		return 0
 	}
-	return this.top.value
+	return ms.top.value
 }
 
-func (this *MinStack) GetMin() int {
-	t := this.top
+func (ms *MinStack) GetMin() int {
+	t := ms.top
 	mi := t.value
+
 	for {
 		if t == nil {
 			break

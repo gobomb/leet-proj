@@ -17,6 +17,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
 	c.Next = nil
 
 	l := newh
+
 	for {
 		if l.Next == nil {
 			l.Next = head

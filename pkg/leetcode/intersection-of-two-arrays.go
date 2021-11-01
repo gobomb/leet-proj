@@ -22,7 +22,7 @@ func intersect2(nums1 []int, nums2 []int) []int {
 	for i := range nums1 {
 		_, ok := m[nums1[i]]
 		if ok {
-			m[nums1[i]] = m[nums1[i]] + 1
+			m[nums1[i]]++
 			continue
 		}
 		m[nums1[i]] = 1
@@ -31,7 +31,7 @@ func intersect2(nums1 []int, nums2 []int) []int {
 		_, ok := m[nums2[i]]
 		if ok {
 			rs = append(rs, nums2[i])
-			m[nums2[i]] = m[nums2[i]] - 1
+			m[nums2[i]]--
 			if m[nums2[i]] == 0 {
 				delete(m, nums2[i])
 			}

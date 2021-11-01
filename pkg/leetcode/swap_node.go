@@ -55,6 +55,7 @@ func printList(h *ListNode) {
 	if h == nil {
 		return
 	}
+
 	printListNode(h)
 	println()
 }
@@ -91,6 +92,5 @@ func swapPairs(head *ListNode) *ListNode {
 		} else {
 			return head
 		}
-
 	}
 }

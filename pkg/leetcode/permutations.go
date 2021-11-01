@@ -35,7 +35,7 @@ func dfsPermut(nums []int, rs [][]int, r []int, d int) [][]int {
 func hashSlice(nums, sl []int) string {
 	var s string
 	for i := range sl {
-		s = s + fmt.Sprint(nums[sl[i]])
+		s += fmt.Sprint(nums[sl[i]])
 	}
 	return s
 }
@@ -69,9 +69,8 @@ func dfsPermutii(nums []int, rs [][]int, r []int, d int) [][]int {
 				copy(rcopy, r)
 				rs = append(rs, rcopy)
 				return rs
-			} else {
-				return rs
 			}
+			return rs
 		}
 	}
 	for i := 0; i < len(nums); i++ {

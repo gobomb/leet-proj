@@ -8,6 +8,7 @@ func firstMissingPositive(nums []int) int {
 	for i := 0; i < len(nums); i++ {
 		m[nums[i]] = struct{}{}
 	}
+
 	for i := 1; ; i++ {
 		_, ok := m[i]
 		if !ok {

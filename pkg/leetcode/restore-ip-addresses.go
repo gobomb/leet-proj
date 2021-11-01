@@ -9,8 +9,7 @@ import (
 	93. Restore IP Addresses
 */
 
-func restoreIpAddresses(s string) []string {
-
+func restoreIPAddresses(s string) []string {
 	rs := []string{}
 	ip := []string{}
 	if len(s) < 4 {
@@ -18,16 +17,16 @@ func restoreIpAddresses(s string) []string {
 	}
 
 	for i := 0; i < len(s) && i < 3; i++ {
-		if checkIpSep(s[0 : i+1]) {
+		if checkIPSep(s[0 : i+1]) {
 			ip = append(ip, s[0:i+1])
-			rs = dfsIpAddr(s[i+1:], rs, ip)
+			rs = dfsIPAddr(s[i+1:], rs, ip)
 			ip = ip[:len(ip)-1]
 		}
 	}
 	return rs
 }
 
-func checkIpSep(s string) bool {
+func checkIPSep(s string) bool {
 	if s == "" || len(s) != 1 && s[0] == '0' {
 		return false
 	}
@@ -38,22 +37,21 @@ func checkIpSep(s string) bool {
 	return true
 }
 
-func dfsIpAddr(s string, rs []string, ip []string) []string {
+func dfsIPAddr(s string, rs []string, ip []string) []string {
 	if len(ip) == 3 {
-		if checkIpSep(s) {
+		if checkIPSep(s) {
 			ip = append(ip, s)
 			ipStr := strings.Join(ip, ".")
 			rs = append(rs, ipStr)
 			return rs
-		} else {
-			return rs
 		}
+		return rs
 	}
 
 	for i := 0; i < len(s) && i < 3; i++ {
-		if checkIpSep(s[0 : i+1]) {
+		if checkIPSep(s[0 : i+1]) {
 			ip = append(ip, s[0:i+1])
-			rs = dfsIpAddr(s[i+1:], rs, ip)
+			rs = dfsIPAddr(s[i+1:], rs, ip)
 			ip = ip[:len(ip)-1]
 		}
 	}

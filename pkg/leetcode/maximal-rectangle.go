@@ -15,7 +15,7 @@ func maximalRectangle(matrix [][]byte) int {
 	for i := 0; i < rows; i++ {
 		for j := 0; j < len(matrix[i]); j++ {
 			if matrix[i][j] != '0' {
-				nums[j] = nums[j] + 1
+				nums[j]++
 			} else {
 				nums[j] = 0
 			}

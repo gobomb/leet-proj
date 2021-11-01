@@ -89,7 +89,6 @@ func Test_dpClimbStairs(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 func Test_memoizationClimbStairs(t *testing.T) {

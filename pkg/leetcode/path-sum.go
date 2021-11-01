@@ -9,7 +9,7 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	if targetSum == root.Val && root.Left == nil && root.Right == nil {
 		return true
 	}
-	targetSum = targetSum - root.Val
+	targetSum -= root.Val
 
 	if hasPathSum(root.Left, targetSum) {
 		return true
@@ -33,10 +33,9 @@ func pathSum2(root *TreeNode, targetSum int, rs *[][]int, nums []int) {
 		*rs = append(*rs, ds.DeepCopyIntSlice(nums))
 		return
 	}
-	targetSum = targetSum - root.Val
+	targetSum -= root.Val
 	nums = append(nums, root.Val)
 	pathSum2(root.Left, targetSum, rs, nums)
 
 	pathSum2(root.Right, targetSum, rs, nums)
-	// nums = nums[:len(nums)-1]
 }

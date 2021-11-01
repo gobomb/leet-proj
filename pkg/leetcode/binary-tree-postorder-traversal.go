@@ -1,18 +1,19 @@
 package leetcode
 
-var btpt_rs []int
+var btptRs []int
 
 func postorderTraversal(root *TreeNode) []int {
-	btpt_rs = btpt_rs[:0]
+	btptRs = btptRs[:0]
+
 	postorder(root)
 
-	return btpt_rs
+	return btptRs
 }
 
 func postorder(r *TreeNode) {
 	if r != nil {
 		postorder(r.Left)
 		postorder(r.Right)
-		btpt_rs = append(btpt_rs, r.Val)
+		btptRs = append(btptRs, r.Val)
 	}
 }

@@ -42,5 +42,4 @@ func dfsSolve(i, j int, board [][]byte) {
 		dfsSolve(i-1, j, board)
 		dfsSolve(i+1, j, board)
 	}
-
 }

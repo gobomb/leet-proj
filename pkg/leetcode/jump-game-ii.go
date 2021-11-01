@@ -81,7 +81,6 @@ func jump2(nums []int) int {
 func tryJump(nums *[]int, i int) (b bool, maxd int) {
 	*dept++
 	defer func() {
-
 		*dept--
 	}()
 	if i >= len(*nums) {

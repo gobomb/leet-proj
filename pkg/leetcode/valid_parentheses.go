@@ -10,7 +10,7 @@ func isValid(s string) bool {
 	if s == "" {
 		return false
 	}
-	st := NewStack()
+	st := newStack()
 	pmap := make(map[byte]byte)
 	pmap['['] = ']'
 	pmap['('] = ')'
@@ -23,6 +23,7 @@ func isValid(s string) bool {
 			if !ok {
 				return false
 			}
+
 			st.Push(s[i])
 			continue
 		}
@@ -42,6 +43,7 @@ func isValid(s string) bool {
 			st.Pop()
 			continue
 		}
+
 		st.Push(s[i])
 	}
 	return st.Length() == 0
@@ -57,7 +59,7 @@ type node struct {
 	value interface{}
 }
 
-func NewStack() *stack {
+func newStack() *stack {
 	return &stack{
 		length: 0,
 		top:    nil,

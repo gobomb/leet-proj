@@ -18,9 +18,9 @@ func minimumTotal(triangle [][]int) int {
 	for i := 1; i < len(triangle); i++ {
 		for j := len(triangle[i]) - 1; j >= 0; j-- {
 			if j == 0 {
-				dp[j] = dp[j] + triangle[i][j]
+				dp[j] += triangle[i][j]
 			} else if j == len(triangle[i])-1 {
-				dp[j] = dp[j] + dp[j-1] + triangle[i][j]
+				dp[j] += dp[j-1] + triangle[i][j]
 			} else {
 				dp[j] = min(dp[j-1]+triangle[i][j], dp[j]+triangle[i][j])
 			}

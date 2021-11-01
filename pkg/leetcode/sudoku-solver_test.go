@@ -13,9 +13,9 @@ func (m matrix) String() string {
 
 	for i := 0; i < len(m); i++ {
 		for j := 0; j < len(m); j++ {
-			r = r + fmt.Sprintf("%v ", string((m)[i][j]))
+			r += fmt.Sprintf("%v ", string((m)[i][j]))
 			if j == len(m)-1 {
-				r = r + "\n" //fmt.Sprintf("%s\n", r)
+				r += "\n" //fmt.Sprintf("%s\n", r)
 			}
 		}
 	}

@@ -16,7 +16,6 @@ func subsetsWithDup(nums []int) [][]int {
 
 func subsetsBT2(nums []int, rs *[][]int, r []int, a int) {
 	for i := a; i < len(nums); i++ {
-
 		if i > a && nums[i] == nums[i-1] {
 			continue
 		}

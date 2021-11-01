@@ -52,7 +52,6 @@ func largestRectangleArea2(heights []int) int {
 			if area > rs {
 				rs = area
 			}
-
 		}
 	}
 	return rs

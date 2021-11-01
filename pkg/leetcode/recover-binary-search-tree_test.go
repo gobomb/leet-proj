@@ -37,13 +37,10 @@ func Test_recoverTree(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// log.Printf("%+v\n", tt.args.root)
-
 			recoverTree(tt.args.root)
 			if !reflect.DeepEqual(tt.args.root, tt.want) {
 				t.Errorf("failed at recoverTree got: %+v, but want %+v\n", tt.args.root, tt.want)
 			}
-			// log.Printf("%+v\n", tt.args.root)
-
 		})
 	}
 }

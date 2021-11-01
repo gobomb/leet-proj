@@ -10,6 +10,7 @@ func recursInorderTraversal(root *TreeNode, rs *[]int) {
 	if root == nil {
 		return
 	}
+
 	recursInorderTraversal(root.Left, rs)
 	*rs = append(*rs, root.Val)
 	recursInorderTraversal(root.Right, rs)

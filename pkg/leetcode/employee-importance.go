@@ -12,7 +12,7 @@ package leetcode
  */
 
 type Employee struct {
-	Id           int
+	ID           int
 	Importance   int
 	Subordinates []int
 }
@@ -21,7 +21,7 @@ func getImportance(employees []*Employee, id int) int {
 	var rs int
 
 	for _, e := range employees {
-		if e.Id == id {
+		if e.ID == id {
 			rs += e.Importance
 
 			for _, s := range e.Subordinates {

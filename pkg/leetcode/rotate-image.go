@@ -9,10 +9,7 @@ func rotate(matrix [][]int) {
 			lasttmp := matrix[i][j]
 
 			for t := 0; t < 4; t++ {
-				tmp := matrix[j][len(matrix[i])-1-i]
-
-				matrix[j][len(matrix[i])-1-i] = lasttmp
-				lasttmp = tmp
+				matrix[j][len(matrix[i])-1-i], lasttmp = lasttmp, matrix[j][len(matrix[i])-1-i]
 
 				//  注意这里 i 会变
 				ti := i

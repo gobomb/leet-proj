@@ -9,7 +9,6 @@ func grayCode(n int) []int {
 	bin := make([]int, n)
 	rs := make([]int, 0)
 	for i := 0; i < l; i++ {
-
 		if i%2 == 1 {
 			bin[n-1] = flip(bin[n-1])
 		} else {

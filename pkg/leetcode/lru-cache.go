@@ -28,66 +28,62 @@ func ConstructorLRU(capacity int) LRUCache {
 	}
 }
 
-func (this *LRUCache) Get(key int) int {
-	if v, ok := this.cache[key]; ok {
+func (lc *LRUCache) Get(key int) int {
+	if v, ok := lc.cache[key]; ok {
 		// 从任意位置删除
-		this.Remove(v)
-		this.Add(v)
+		lc.Remove(v)
+		lc.Add(v)
 		return v.val
 	}
 
 	return -1
-
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if v, ok := this.cache[key]; ok {
+func (lc *LRUCache) Put(key int, value int) {
+	if v, ok := lc.cache[key]; ok {
 		v.val = value
-		this.Remove(v)
-		this.Add(v)
+		lc.Remove(v)
+		lc.Add(v)
 	} else {
 		node := &DulNode{
 			key: key,
 			val: value,
 		}
-		this.cache[key] = node
-		this.Add(node)
+		lc.cache[key] = node
+		lc.Add(node)
 	}
 
-	if len(this.cache) > this.Cap {
-		delete(this.cache, this.tail.key)
-		this.Remove(this.tail)
+	if len(lc.cache) > lc.Cap {
+		delete(lc.cache, lc.tail.key)
+		lc.Remove(lc.tail)
 	}
 }
 
 // 添加到头部
 // node的prior和next不一定为nil
-func (this *DulLink) Add(node *DulNode) {
+func (dl *DulLink) Add(node *DulNode) {
 	// 把node的prior清除
 	node.prior = nil
 	//
-	node.next = this.head
-	if this.head != nil {
-		this.head.prior = node
+	node.next = dl.head
+	if dl.head != nil {
+		dl.head.prior = node
 	}
-	this.head = node
-	if this.tail == nil {
-		this.tail = node
-		//
-		this.tail.next = nil
-		//
+	dl.head = node
+	if dl.tail == nil {
+		dl.tail = node
+		dl.tail.next = nil
 	}
 }
 
 // 从任意位置删除
-func (this *DulLink) Remove(node *DulNode) {
+func (dl *DulLink) Remove(node *DulNode) {
 	// if node == this.head {
 	// 	this.head = nil
 	// 	return
 	// }
-
-	if node == this.head {
-		this.head = node.next
+	if node == dl.head {
+		dl.head = node.next
 
 		if node.next != nil {
 			node.next.prior = nil
@@ -103,9 +99,9 @@ func (this *DulLink) Remove(node *DulNode) {
 	// 	return
 	// }
 
-	if node == this.tail {
+	if node == dl.tail {
 		node.prior.next = nil
-		this.tail = node.prior
+		dl.tail = node.prior
 		//把node的prior清除
 		node.prior = nil
 		//

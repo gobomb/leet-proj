@@ -59,7 +59,7 @@ func Test_restoreIpAddresses(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := restoreIpAddresses(tt.args.s); !reflect.DeepEqual(got, tt.want) {
+			if got := restoreIPAddresses(tt.args.s); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("restoreIpAddresses() = %v, want %v", got, tt.want)
 			}
 		})
@@ -106,7 +106,7 @@ func Test_checkIpSep(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checkIpSep(tt.args.s); got != tt.want {
+			if got := checkIPSep(tt.args.s); got != tt.want {
 				t.Errorf("checkIpSep() = %v, want %v", got, tt.want)
 			}
 		})

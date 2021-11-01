@@ -18,17 +18,17 @@ func Test_getImportance(t *testing.T) {
 			args: args{
 				employees: []*Employee{
 					{
-						Id:           1,
+						ID:           1,
 						Importance:   5,
 						Subordinates: []int{2, 3},
 					},
 					{
-						Id:           2,
+						ID:           2,
 						Importance:   3,
 						Subordinates: []int{},
 					},
 					{
-						Id:           3,
+						ID:           3,
 						Importance:   3,
 						Subordinates: []int{},
 					},
@@ -42,12 +42,12 @@ func Test_getImportance(t *testing.T) {
 			args: args{
 				employees: []*Employee{
 					{
-						Id:           1,
+						ID:           1,
 						Importance:   2,
 						Subordinates: []int{5},
 					},
 					{
-						Id:           5,
+						ID:           5,
 						Importance:   -3,
 						Subordinates: []int{},
 					},

@@ -10,15 +10,15 @@ func isUgly(n int) bool {
 	var b bool
 	for {
 		if n%2 == 0 {
-			n = n / 2
+			n /= 2
 			b = true
 		}
 		if n%3 == 0 {
-			n = n / 3
+			n /= 3
 			b = true
 		}
 		if n%5 == 0 {
-			n = n / 5
+			n /= 5
 			b = true
 		}
 		if !b {

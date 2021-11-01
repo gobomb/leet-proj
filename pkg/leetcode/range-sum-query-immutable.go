@@ -8,10 +8,10 @@ func Constructor3(nums []int) NumArray {
 	return NumArray{nums: nums}
 }
 
-func (this *NumArray) SumRange(left int, right int) int {
+func (na *NumArray) SumRange(left int, right int) int {
 	var sum int
 	for i := left; i <= right; i++ {
-		sum += this.nums[i]
+		sum += na.nums[i]
 	}
 	return sum
 }

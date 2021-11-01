@@ -35,15 +35,10 @@ func merge881(nums1 []int, m int, nums2 []int, n int) {
 	}
 	for i := 0; i < m; i++ {
 		if nums1[i] > nums2[0] {
-			tmp := nums2[0]
-			nums2[0] = nums1[i]
-			nums1[i] = tmp
+			nums2[0], nums1[i] = nums1[i], nums2[0]
 
 			for j := 0; j < n-1 && nums2[j] > nums2[j+1]; j++ {
-				tmp2 := nums2[j]
-
-				nums2[j] = nums2[j+1]
-				nums2[j+1] = tmp2
+				nums2[j], nums2[j+1] = nums2[j+1], nums2[j]
 			}
 		}
 	}

@@ -10,7 +10,7 @@ func strStr(haystack string, needle string) int {
 	if len(haystack) < len(needle) {
 		return -1
 	}
-	var r int = -1
+	r := -1
 	for i := range haystack {
 		k := i
 		for j := 0; j < len(needle); j++ {

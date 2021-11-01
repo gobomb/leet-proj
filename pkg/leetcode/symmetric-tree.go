@@ -46,7 +46,6 @@ func checkSymmetric(l, r *TreeNode) bool {
 	}
 	if checkSymmetric(l.Left, r.Right) {
 		return checkSymmetric(l.Right, r.Left)
-	} else {
-		return false
 	}
+	return false
 }

@@ -35,7 +35,7 @@ func threeSumClosestDoublePointer(nums []int, target int) int {
 				sub = abs(sum - target)
 				res = sum
 			}
-			//println(i, j, k, nums[i], nums[j], nums[k], sum, res)
+			// println(i, j, k, nums[i], nums[j], nums[k], sum, res)
 
 			if sum == target {
 				return sum

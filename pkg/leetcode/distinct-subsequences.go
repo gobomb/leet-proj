@@ -22,7 +22,6 @@ func numDistinct(s string, t string) int {
 
 	for i := len(s) - 1; i >= 0; i-- {
 		for j := len(t) - 1; j >= 0; j-- {
-
 			if s[i] == t[j] {
 				// 选择：是否匹配当前字符
 				// 匹配取 mem[i+1][j+1]

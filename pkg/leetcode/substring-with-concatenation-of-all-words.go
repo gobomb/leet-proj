@@ -11,6 +11,7 @@ func findSubstring(s string, words []string) []int {
 		if t == len(words) {
 			rs = append(rs, i)
 		}
+
 		resetCount(countMap, words)
 	}
 	return rs

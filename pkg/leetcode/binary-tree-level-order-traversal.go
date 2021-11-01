@@ -14,6 +14,7 @@ func getLevelOrder(root *TreeNode, depth int, rs *[][]int) {
 	if len(*rs) == depth {
 		*rs = append(*rs, []int{})
 	}
+
 	(*rs)[depth] = append((*rs)[depth], root.Val)
 
 	getLevelOrder(root.Left, depth+1, rs)

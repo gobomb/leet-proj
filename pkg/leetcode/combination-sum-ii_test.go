@@ -80,7 +80,6 @@ func Test_combinationSum2(t *testing.T) {
 		// 	continue
 		// }
 		t.Run(tt.name, func(t *testing.T) {
-
 			if got := combinationSum2(tt.args.candidates, tt.args.target); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("combinationSum2() = %#v, want %#v", got, tt.want)
 			}

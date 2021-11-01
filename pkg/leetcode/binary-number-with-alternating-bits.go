@@ -25,7 +25,7 @@ func hasAlternatingBits(n int) bool {
 		if m < 0 {
 			break
 		}
-		m = m - int(math.Pow(2, float64(i)))
+		m -= int(math.Pow(2, float64(i)))
 	}
 	return false
 }

@@ -21,10 +21,8 @@ func searchRotated(nums []int, target int) bool {
 				return true
 			}
 			if nums[mid] < target && target < nums[hi] {
-
 				lo = mid + 1
 			} else {
-
 				hi = mid - 1
 			}
 		} else {

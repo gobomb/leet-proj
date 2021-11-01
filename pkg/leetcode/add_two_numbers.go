@@ -29,6 +29,7 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 		current.Next = &ListNode{Val: (x + y + carry) % 10, Next: nil}
 		current = current.Next
 		carry = (x + y + carry) / 10
+
 		if l1 != nil {
 			l1 = l1.Next
 		}
@@ -45,7 +46,6 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 }
 
 func TestAddTwoNumbers() {
-
 	func() {
 		v1 := &ListNode{Val: 2, Next: nil}
 		v1.Next = &ListNode{Val: 4, Next: nil}

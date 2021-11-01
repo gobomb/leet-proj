@@ -12,16 +12,16 @@ func preorderTraversalFlatten(root *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
 	}
-	new := &TreeNode{
+	newNode := &TreeNode{
 		Val: root.Val,
 	}
 
 	right := preorderTraversalFlatten(root.Left)
 	if right != nil {
-		new.Right = right
+		newNode.Right = right
 	}
 	right = preorderTraversalFlatten(root.Right)
-	next := new
+	next := newNode
 	for next.Right != nil {
 		next = next.Right
 	}
@@ -29,7 +29,7 @@ func preorderTraversalFlatten(root *TreeNode) *TreeNode {
 		next.Right = right
 	}
 
-	return new
+	return newNode
 }
 
 func preorderTraversalFlatten2(root *TreeNode) {

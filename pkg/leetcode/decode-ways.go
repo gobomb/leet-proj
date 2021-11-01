@@ -84,9 +84,8 @@ func numDecodings(s string) int {
 	if s[0] == '0' {
 		rs[0] = 0
 		return rs[0]
-	} else {
-		rs[0] = 1
 	}
+	rs[0] = 1
 
 	if len(s) == 1 {
 		return rs[0]

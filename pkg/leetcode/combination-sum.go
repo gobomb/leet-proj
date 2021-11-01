@@ -82,6 +82,7 @@ func compSliceSlice(a, b [][]int) bool {
 					return false
 				}
 				cmap[j] = true
+
 				break
 			}
 		}

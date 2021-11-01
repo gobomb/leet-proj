@@ -6,7 +6,7 @@ import (
 )
 
 func TestLruCache(t *testing.T) {
-	var null int = -1
+	var null = -1
 	var lRUCache LRUCache
 
 	type testData struct {
@@ -40,6 +40,7 @@ func TestLruCache(t *testing.T) {
 					t.Errorf("failed at want %v but got %v", num[i][0], rs)
 				}
 			}
+
 			log.Printf("%+v,%v,%v", lRUCache.cache, lRUCache.head, lRUCache.tail)
 		}
 	}

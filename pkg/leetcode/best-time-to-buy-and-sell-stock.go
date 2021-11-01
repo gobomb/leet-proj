@@ -7,6 +7,7 @@ package leetcode
 func maxProfit(prices []int) int {
 	max := 0
 	min := prices[0]
+
 	for i := 1; i < len(prices); i++ {
 		if prices[i]-min > max {
 			max = prices[i] - min
@@ -27,7 +28,7 @@ func maxProfitIII(prices []int) int {
 	if len(prices) == 0 {
 		return 0
 	}
-	var minINT int = -10001
+	minINT := -10001
 
 	s1, s2, s3, s4 := -prices[0], minINT, minINT, minINT
 	for i := 1; i < len(prices); i++ {
@@ -51,6 +52,7 @@ func maxProfitIIIdp(prices []int) int {
 
 	t := 2
 	dp := make([][]int, len(prices))
+
 	for i := range dp {
 		dp[i] = make([]int, t+1)
 	}

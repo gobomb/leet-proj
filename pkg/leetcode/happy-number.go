@@ -8,7 +8,7 @@ func isHappy(nn int) bool {
 
 	for n != 0 {
 		i := n % 10
-		n = n / 10
+		n /= 10
 		rs += i * i
 
 		if n == 0 {
@@ -31,7 +31,7 @@ func isHappy2(nn int) bool {
 	n := nn
 	for n != 0 {
 		i := n % 10
-		n = n / 10
+		n /= 10
 		rs += i * i
 
 		if n == 0 {

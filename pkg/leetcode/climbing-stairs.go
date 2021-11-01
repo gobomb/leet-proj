@@ -37,6 +37,7 @@ func dpClimbStairs(n int) int {
 
 func memoizationClimbStairs(n int) int {
 	mem := make([]int, n+1)
+
 	var f func(n int) int
 	f = func(n int) int {
 		if n == 0 {

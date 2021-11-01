@@ -12,7 +12,6 @@ func removeElement(nums []int, val int) int {
 		}
 		nums[j] = nums[i]
 		j++
-
 	}
 	return j
 }

@@ -3,7 +3,7 @@ package leetcode
 import "fmt"
 
 func smallerNumbersThanCurrent(nums []int) []int {
-	var rs []int = make([]int, len(nums))
+	rs := make([]int, len(nums))
 	for i := range nums {
 		rs[i] = 0
 
@@ -21,7 +21,7 @@ func smallerNumbersThanCurrent2(nums []int) []int {
 
 	bk := make([]int, 101)
 	for i := range nums {
-		bk[nums[i]] += 1
+		bk[nums[i]]++
 	}
 	for i := 1; i <= 100; i++ {
 		bk[i] += bk[i-1]

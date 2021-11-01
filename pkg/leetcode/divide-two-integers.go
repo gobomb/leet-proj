@@ -16,6 +16,7 @@ func divide(dividend int, divisor int) (rs int) {
 			rs = math.MaxInt32
 		}
 	}()
+
 	var sign int
 
 	if dividend == 0 {
@@ -47,6 +48,7 @@ func divide(dividend int, divisor int) (rs int) {
 	quo := 1
 	// 余数
 	var remainder int
+
 	for {
 		// 计算余数，被除数-除数
 		remainder = dd - dr // 64 - 32
@@ -65,9 +67,10 @@ func divide(dividend int, divisor int) (rs int) {
 		// 余数等于原始除数，商+除数倍数+余数本身，返回
 		if remainder == sdr {
 			rs += quo
-			rs += 1
+			rs++
 			break
 		}
+
 		// 余数等于除数，商+除数倍数+余数倍数，返回
 		if remainder == dr {
 			rs += quo
@@ -104,6 +107,7 @@ func divide(dividend int, divisor int) (rs int) {
 
 func testDivide() {
 	var r int
+
 	divide(10, 3)
 	divide(19, 5)
 	divide(7, -3)
@@ -121,5 +125,4 @@ func testDivide() {
 	fmt.Printf("result %v \n", r)
 	fmt.Println(math.MaxInt32)
 	fmt.Println(math.MinInt32)
-
 }

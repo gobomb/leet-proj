@@ -5,7 +5,7 @@ func sortColors(nums []int) {
 	bucket := make([]int, 3)
 
 	for i := 0; i < len(nums); i++ {
-		bucket[nums[i]] += 1
+		bucket[nums[i]]++
 	}
 
 	sorti := 0
@@ -13,8 +13,8 @@ func sortColors(nums []int) {
 	for i := 0; i < 3; i++ {
 		for bucket[i] > 0 {
 			nums[sorti] = i
-			sorti += 1
-			bucket[i] -= 1
+			sorti++
+			bucket[i]--
 		}
 	}
 }

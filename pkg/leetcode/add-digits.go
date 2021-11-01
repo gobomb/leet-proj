@@ -7,6 +7,7 @@ package leetcode
 func addDigits(num int) int {
 	var rs int
 	rs = num
+
 	for {
 		if rs/10 == 0 {
 			return rs

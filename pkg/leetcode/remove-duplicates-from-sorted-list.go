@@ -94,10 +94,8 @@ func deleteDuplicatesII2(head *ListNode) *ListNode {
 
 	if front.Val == cur.Val {
 		last.Next = nil
-	} else {
-		if cur.Next != front {
-			last.Next = front
-		}
+	} else if cur.Next != front {
+		last.Next = front
 	}
 
 	return newHead.Next

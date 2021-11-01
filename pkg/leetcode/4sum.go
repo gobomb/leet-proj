@@ -13,7 +13,7 @@ func fourSum(nums []int, target int) [][]int {
 	// var rs []int
 	for i := 0; i < len(nums)-3; i++ {
 		subtarget := target - nums[i]
-		subrss := threeSumTarget(nums[i+1:], subtarget, i)
+		subrss := threeSumTarget(nums[i+1:], subtarget)
 		for j := range subrss {
 			subrss[j][0] = nums[i]
 
@@ -28,15 +28,15 @@ func fourSum(nums []int, target int) [][]int {
 	return rss
 }
 
-func threeSumTarget(nums []int, target, first int) [][4]int {
+func threeSumTarget(nums []int, target int) [][4]int {
 	result := [][4]int{}
 	sum := 0
 	start, end := 0, 0
-	lenght := len(nums)
+	length := len(nums)
 
-	for index := 1; index < lenght-1; index++ {
+	for index := 1; index < length-1; index++ {
 		// key
-		start, end = 0, lenght-1
+		start, end = 0, length-1
 
 		if index > 1 && nums[index] == nums[index-1] {
 			// ?
@@ -46,15 +46,12 @@ func threeSumTarget(nums []int, target, first int) [][4]int {
 
 		//for
 		for start < index && index < end {
-
-			// fmt.Println(start, index, end)
-
 			// 去重
 			if start > 0 && nums[start] == nums[start-1] {
 				start++
 				continue
 			}
-			if end < lenght-1 && nums[end] == nums[end+1] {
+			if end < length-1 && nums[end] == nums[end+1] {
 				end--
 				continue
 			}

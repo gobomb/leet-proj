@@ -16,9 +16,7 @@ func myPow(x float64, n int) float64 {
 	res := myPow(x, n/2)
 
 	if n%2 != 0 {
-
 		return res * res * x
-	} else {
-		return res * res
 	}
+	return res * res
 }

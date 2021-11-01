@@ -45,10 +45,10 @@ func cmpStrFreq(s1, s2 string) bool {
 	}
 	m := make(map[byte]int)
 	for i := range s1 {
-		m[s1[i]] = m[s1[i]] + 1
+		m[s1[i]]++
 	}
 	for i := range s2 {
-		m[s2[i]] = m[s2[i]] - 1
+		m[s2[i]]--
 	}
 	for _, v := range m {
 		if v != 0 {

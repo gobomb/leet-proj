@@ -22,7 +22,6 @@ func maxSubArray(nums []int) int {
 				maxRecord = temp
 			}
 		}
-
 	}
 	return maxRecord
 }

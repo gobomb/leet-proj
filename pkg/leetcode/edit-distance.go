@@ -35,7 +35,6 @@ func dpMinDistaance(a, b int, word1, word2 string) int {
 		y := dpMinDistaance(a, b-1, word1, word2) + 1
 		z := dpMinDistaance(a-1, b-1, word1, word2) + d
 		dp[a][b] = min(x, min(y, z))
-
 	}
 	return dp[a][b]
 }

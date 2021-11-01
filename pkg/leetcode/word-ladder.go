@@ -6,6 +6,7 @@ package leetcode
 
 func isWordInList(s string, wordList []string) bool {
 	found := false
+
 	for _, w := range wordList {
 		if w == s {
 			found = true
@@ -61,7 +62,6 @@ func ladderLength(beginWord string, endWord string, wordList []string) int {
 				}
 			}
 		}
-
 	}
 	return 0
 }

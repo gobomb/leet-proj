@@ -24,14 +24,14 @@ func solveNQueens(n int) [][]string {
 }
 
 func makeresult(rs [][]string) []string {
-	var rss []string
+	rss := make([]string, len(rs))
 
 	for i := range rs {
 		temp := ""
 		for j := range rs {
-			temp = temp + rs[i][j]
+			temp += rs[i][j]
 		}
-		rss = append(rss, temp)
+		rss[i] = temp
 	}
 	return rss
 }

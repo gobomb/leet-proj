@@ -14,7 +14,7 @@ func constructMaximumBinaryTree(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
 	}
-	var max, ind int = -1, -1
+	max, ind := -1, -1
 	for i := range nums {
 		if nums[i] > max {
 			max = nums[i]

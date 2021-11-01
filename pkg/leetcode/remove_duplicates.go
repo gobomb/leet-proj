@@ -6,7 +6,7 @@ func removeDuplicates2(nums []int) int {
 	var j int
 	for i := 0; i < len(nums)-1; i++ {
 		if nums[i] != nums[i+1] {
-			j = j + 1
+			j++
 			nums[j] = nums[i+1]
 		}
 	}

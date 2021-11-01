@@ -4,8 +4,8 @@ func constructRectangle(area int) []int {
 	var l, w, sub int
 	l = area
 	res := []int{0, 0}
-	for w = 1; w <= l; w++ {
 
+	for w = 1; w <= l; w++ {
 		if area%w != 0 {
 			continue
 		}
@@ -15,7 +15,6 @@ func constructRectangle(area int) []int {
 			return []int{l, w}
 		}
 		if sub == 0 || l-w < sub {
-
 			sub = l - w
 			// log.Println(l, w, sub)
 

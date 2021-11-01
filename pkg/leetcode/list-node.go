@@ -159,6 +159,7 @@ func ListLen(l *ListNode) int {
 func (l *ListPrinter) Len() int {
 	cur := l.cur
 	l.len = 0
+
 	for i := 0; ; i++ {
 		if cur == nil {
 			return l.len

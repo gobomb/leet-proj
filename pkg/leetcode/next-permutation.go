@@ -17,7 +17,7 @@ func nextPermutation(nums []int) {
 	}
 	// 从尾部算全部都是降序，已经是最大了。直接逆序返回
 	if i == 0 {
-		reverseInt(nums[:])
+		reverseInt(nums)
 		return
 	}
 
