@@ -9,6 +9,7 @@ func Test_cloneGraph(t *testing.T) {
 	type args struct {
 		node *GraphNode
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -43,6 +44,7 @@ func Test_cloneGraph(t *testing.T) {
 			want: makeGraphNode([][]int{{2}, {1}}),
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := cloneGraph(tt.args.node); !reflect.DeepEqual(got, tt.want) {
@@ -57,6 +59,7 @@ func Test_makeGraphNode(t *testing.T) {
 		input [][]int
 		val   int
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -69,6 +72,7 @@ func Test_makeGraphNode(t *testing.T) {
 			},
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := makeGraphNode(tt.args.input)

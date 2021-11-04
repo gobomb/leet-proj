@@ -31,6 +31,7 @@ func makeGraphNode(input [][]int) *GraphNode {
 	if len(m.list) == 0 {
 		return nil
 	}
+
 	return m.makeGraphNode(1)
 }
 
@@ -39,6 +40,7 @@ func (m GraphNodeMaker) makeGraphNode(val int) *GraphNode {
 		Val: val,
 	}
 	m.list[val-1] = g
+
 	for _, neighbor := range m.input[val-1] {
 		if m.list[neighbor-1] == nil {
 			g.Neighbors = append(g.Neighbors, m.makeGraphNode(neighbor))
@@ -46,6 +48,7 @@ func (m GraphNodeMaker) makeGraphNode(val int) *GraphNode {
 			g.Neighbors = append(g.Neighbors, m.list[neighbor-1])
 		}
 	}
+
 	return g
 }
 
@@ -63,6 +66,7 @@ func (gc graphCloner) cloneGraph(node *GraphNode) *GraphNode {
 	if node == nil {
 		return nil
 	}
+
 	if v, ok := gc.visited[node.Val]; ok {
 		return v
 	}

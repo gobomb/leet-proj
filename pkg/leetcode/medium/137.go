@@ -12,5 +12,6 @@ func singleNumber(nums []int) int {
 		lo = ^hi & (lo ^ n)
 		hi = ^lo & (hi ^ n)
 	}
+
 	return lo
 }

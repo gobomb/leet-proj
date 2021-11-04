@@ -8,7 +8,7 @@ import (
 var Null = math.MaxInt64
 var max = utils.Max
 
-func isNull(val int) bool {
+func IsNull(val int) bool {
 	return val == Null
 }
 
@@ -146,7 +146,7 @@ func MakeTree(vals []int) *TreeNode {
 }
 
 func makeTree(vals []int, i int) *TreeNode {
-	if i >= len(vals) || isNull(vals[i]) {
+	if i >= len(vals) || IsNull(vals[i]) {
 		return nil
 	}
 	// log.Printf("%v\n", vals[i])

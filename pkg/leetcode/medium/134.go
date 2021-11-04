@@ -9,11 +9,13 @@ func canCompleteCircuit(gas []int, cost []int) int {
 	for i := 0; i < len(gas); i++ {
 		tank += gas[i] - cost[i]
 		sum += gas[i] - cost[i]
+
 		if sum < 0 {
 			start = i + 1
 			sum = 0
 		}
 	}
+
 	if tank < 0 {
 		return -1
 	}

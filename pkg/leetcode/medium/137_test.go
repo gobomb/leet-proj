@@ -6,6 +6,7 @@ func Test_singleNumber(t *testing.T) {
 	type args struct {
 		nums []int
 	}
+
 	tests := []struct {
 		name string
 		args args

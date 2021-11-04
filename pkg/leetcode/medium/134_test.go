@@ -7,6 +7,7 @@ func Test_canCompleteCircuit(t *testing.T) {
 		gas  []int
 		cost []int
 	}
+
 	tests := []struct {
 		name string
 		args args
