@@ -35,7 +35,7 @@ linters:
       - gocritic
       - gofmt
       - goimports
-      # - gomnd
+      - gomnd
       - gocyclo
       - gosec
       - gosimple
@@ -57,7 +57,7 @@ linters:
       - unparam
       - varcheck
       - whitespace
-      # - wsl
+      - wsl
 
 
 run:

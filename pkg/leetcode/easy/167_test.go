@@ -10,6 +10,7 @@ func Test_twoSum(t *testing.T) {
 		numbers []int
 		target  int
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -68,6 +69,7 @@ func Test_twoSum(t *testing.T) {
 			want: []int{1, 2},
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := twoSum(tt.args.numbers, tt.args.target); !reflect.DeepEqual(got, tt.want) {
@@ -75,6 +77,7 @@ func Test_twoSum(t *testing.T) {
 			}
 		})
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := twoSumBiSe(tt.args.numbers, tt.args.target); !reflect.DeepEqual(got, tt.want) {

@@ -13,6 +13,7 @@ func twoSum(numbers []int, target int) []int {
 			}
 		}
 	}
+
 	return []int{}
 }
 
@@ -21,6 +22,7 @@ func twoSumBiSe(numbers []int, target int) []int {
 	for i := range numbers {
 		target -= numbers[i]
 		lo, hi, mid := i+1, len(numbers)-1, 0
+
 		for lo <= hi {
 			mid = (lo + hi) / 2
 
@@ -33,7 +35,9 @@ func twoSumBiSe(numbers []int, target int) []int {
 				return []int{i + 1, mid + 1}
 			}
 		}
+
 		target += numbers[i]
 	}
+
 	return []int{}
 }
