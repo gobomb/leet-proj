@@ -18,26 +18,26 @@ var testsRmNthFE = []struct {
 	{
 		name: "1",
 		args: argsRmNthFE{
-			head: makeListNode([]int{1, 2, 3, 4, 5}),
+			head: MakeListNode(1, 2, 3, 4, 5),
 			n:    2,
 		},
-		want: makeListNode([]int{1, 2, 3, 5}),
+		want: MakeListNode(1, 2, 3, 5),
 	},
 	{
 		name: "2",
 		args: argsRmNthFE{
-			head: makeListNode([]int{1}),
+			head: MakeListNode(1),
 			n:    1,
 		},
-		want: makeListNode([]int{}),
+		want: MakeListNode(),
 	},
 	{
 		name: "3",
 		args: argsRmNthFE{
-			head: makeListNode([]int{1, 2}),
+			head: MakeListNode(1, 2),
 			n:    1,
 		},
-		want: makeListNode([]int{1}),
+		want: MakeListNode(1),
 	},
 }
 

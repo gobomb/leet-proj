@@ -63,11 +63,11 @@ func Test_mergeTwoLists(t *testing.T) {
 		{
 			"1make",
 			args{
-				l1: makeListNode([]int{1, 2, 4}),
+				l1: MakeListNode(1, 2, 4),
 
-				l2: makeListNode([]int{1, 2, 4}),
+				l2: MakeListNode(1, 2, 4),
 			},
-			makeListNode([]int{1, 1, 2, 2, 4, 4}),
+			MakeListNode(1, 1, 2, 2, 4, 4),
 		},
 		{
 			"2",
@@ -80,11 +80,11 @@ func Test_mergeTwoLists(t *testing.T) {
 		{
 			"2make",
 			args{
-				l1: makeListNode([]int{}),
+				l1: MakeListNode(),
 
-				l2: makeListNode([]int{}),
+				l2: MakeListNode(),
 			},
-			makeListNode([]int{}),
+			MakeListNode(),
 		},
 		{
 			"3",
@@ -103,11 +103,11 @@ func Test_mergeTwoLists(t *testing.T) {
 		{
 			"3make",
 			args{
-				l1: makeListNode([]int{}),
+				l1: MakeListNode(),
 
-				l2: makeListNode([]int{0}),
+				l2: MakeListNode(0),
 			},
-			makeListNode([]int{0}),
+			MakeListNode(0),
 		},
 	}
 	for _, tt := range tests {

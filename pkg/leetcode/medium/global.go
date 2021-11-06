@@ -1,19 +1,26 @@
 package medium
 
 import (
-	"justest/pkg/tree"
+	"justest/pkg/ds/listnode"
+	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
 )
 
-var max = utils.Max
-var min = utils.Min
+var (
+	max          = utils.Max
+	min          = utils.Min
+	Null         = tree.Null
+	null         = tree.Null
+	MakeListNode = listnode.MakeListNode
+	LNDeepCopy   = listnode.LNDeepCopy
+	isNull       = tree.IsNull
+)
 
-var Null = tree.Null
-var null = tree.Null
-
-var isNull = tree.IsNull
-
-type TreeNode = tree.TreeNode
+type (
+	ListNode     = listnode.ListNode
+	LNDeepCopyer = listnode.LNDeepCopyer
+	TreeNode     = tree.TreeNode
+)
 
 func Abs(x int) int {
 	if x < 0 {

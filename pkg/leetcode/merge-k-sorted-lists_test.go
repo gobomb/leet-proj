@@ -18,12 +18,12 @@ func Test_mergeKLists(t *testing.T) {
 			"1",
 			args{
 				lists: []*ListNode{
-					makeListNode([]int{1, 4, 5}),
-					makeListNode([]int{1, 3, 4}),
-					makeListNode([]int{2, 6}),
+					MakeListNode(1, 4, 5),
+					MakeListNode(1, 3, 4),
+					MakeListNode(2, 6),
 				},
 			},
-			makeListNode([]int{1, 1, 2, 3, 4, 4, 5, 6}),
+			MakeListNode(1, 1, 2, 3, 4, 4, 5, 6),
 		},
 		{
 			"2",
@@ -36,7 +36,7 @@ func Test_mergeKLists(t *testing.T) {
 			"3",
 			args{
 				[]*ListNode{
-					makeListNode([]int{}),
+					MakeListNode(),
 				},
 			},
 			nil,

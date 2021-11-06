@@ -1,24 +1,32 @@
 package leetcode
 
 import (
-	"justest/pkg/tree"
+	"justest/pkg/ds/listnode"
+	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
 )
 
-var max = utils.Max
-var min = utils.Min
+var (
+	max          = utils.Max
+	min          = utils.Min
+	MakeTree     = tree.MakeTree
+	Null         = tree.Null
+	null         = tree.Null
+	MakeListNode = listnode.MakeListNode
+	LNDeepCopy   = listnode.LNDeepCopy
+)
 
-var MakeTree = tree.MakeTree
-var Null = tree.Null
-var null = tree.Null
-
-type TreeNode = tree.TreeNode
+type (
+	ListNode     = listnode.ListNode
+	LNDeepCopyer = listnode.LNDeepCopyer
+	TreeNode = tree.TreeNode
+)
 
 func Abs(x int) int {
 	if x < 0 {
 		return -x
 	}
-	
+
 	return x
 }
 
