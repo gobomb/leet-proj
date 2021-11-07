@@ -19,34 +19,34 @@ func Test_reverseKGroup(t *testing.T) {
 		{
 			"1",
 			args{
-				makeListNode([]int{1, 2, 3, 4, 5}),
+				MakeListNode(1, 2, 3, 4, 5),
 				2,
 			},
-			makeListNode([]int{2, 1, 4, 3, 5}),
+			MakeListNode(2, 1, 4, 3, 5),
 		},
 		{
 			"2",
 			args{
-				makeListNode([]int{1, 2, 3, 4, 5}),
+				MakeListNode(1, 2, 3, 4, 5),
 				3,
 			},
-			makeListNode([]int{3, 2, 1, 4, 5}),
+			MakeListNode(3, 2, 1, 4, 5),
 		},
 		{
 			"3",
 			args{
-				makeListNode([]int{1, 2, 3, 4, 5}),
+				MakeListNode(1, 2, 3, 4, 5),
 				1,
 			},
-			makeListNode([]int{1, 2, 3, 4, 5}),
+			MakeListNode(1, 2, 3, 4, 5),
 		},
 		{
 			"4",
 			args{
-				makeListNode([]int{1}),
+				MakeListNode(1),
 				3,
 			},
-			makeListNode([]int{1}),
+			MakeListNode(1),
 		},
 	}
 	for _, tt := range tests {
@@ -71,18 +71,18 @@ func Test_reverse(t *testing.T) {
 		{
 			"1",
 			args{
-				makeListNode([]int{1, 2, 3, 4, 5}),
+				MakeListNode(1, 2, 3, 4, 5),
 				nil,
 			},
-			makeListNode([]int{5, 4, 3, 2, 1}),
+			MakeListNode(5, 4, 3, 2, 1),
 		},
 		{
 			"1",
 			args{
-				makeListNode([]int{1, 2}),
+				MakeListNode(1, 2),
 				nil,
 			},
-			makeListNode([]int{2, 1}),
+			MakeListNode(2, 1),
 		},
 	}
 	for _, tt := range tests {
