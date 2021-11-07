@@ -33,6 +33,13 @@ func Test_hammingWeight(t *testing.T) {
 			},
 			want: 31,
 		},
+		{
+			name: "4",
+			args: args{
+				num: 0b00000000000001111111100000001001,
+			},
+			want: 10,
+		},
 	}
 
 	for _, tt := range tests {
