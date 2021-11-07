@@ -15,6 +15,7 @@ func hammingWeight(num uint32) int {
 }
 
 // 4 ms	2.1 MB
+// https://leetcode.com/problems/number-of-1-bits/discuss/285270/Golang-faster-than-100
 func hammingWeight2(num uint32) int {
 	val := 0
 	for num > 0 {
@@ -26,6 +27,7 @@ func hammingWeight2(num uint32) int {
 }
 
 // 0 ms	2 MB
+// https://books.halfrost.com/leetcode/ChapterFour/0100~0199/0191.Number-of-1-Bits/
 func hammingWeight3(num uint32) int {
 	count := 0
 
