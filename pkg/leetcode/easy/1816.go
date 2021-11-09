@@ -1,6 +1,6 @@
 package easy
 
-/* 
+/*
 	1816. Truncate Sentence
 */
 
