@@ -9,6 +9,47 @@ func sortList(head *ListNode) *ListNode {
 	return insertionSortList(head)
 }
 
+// https://books.halfrost.com/leetcode/ChapterFour/0100~0199/0148.Sort-List/
+func sortList1(head *ListNode) *ListNode {
+	length := 0
+	cur := head
+	for cur != nil {
+		length++
+		cur = cur.Next
+	}
+	if length <= 1 {
+		return head
+	}
+
+	middleNode := middleNode(head)
+	// log.Printf("%+v %+v", head, middleNode)
+
+	// 利用中间节点的前一个节点，来切割左右半部分的连接
+	cur = middleNode.Next
+	middleNode.Next = nil
+	middleNode = cur
+
+	// log.Printf("%+v %+v", head, middleNode)
+
+	left := sortList(head)
+	right := sortList(middleNode)
+	return mergeTwoLists(left, right)
+}
+
+// 返回的是中间节点的前一个节点
+func middleNode(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	p1 := head
+	p2 := head
+	for p2.Next != nil && p2.Next.Next != nil {
+		p1 = p1.Next
+		p2 = p2.Next.Next
+	}
+	return p1
+}
+
 // 36 ms	9 MB
 func sortListMerge(head *ListNode) *ListNode {
 	return partion(head, nil)

@@ -44,19 +44,15 @@ func Test_sortList(t *testing.T) {
 		}
 	}
 
-	for _, tt := range genTests() {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := sortList(tt.args.head); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("sortList() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+	toTest := []func(*ListNode) *ListNode{sortList, sortListMerge, sortList1}
 
-	for _, tt := range genTests() {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := sortListMerge(tt.args.head); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("sortListMerge() = %+v, want %+v", got, tt.want)
-			}
-		})
+	for _, f := range toTest {
+		for _, tt := range genTests() {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.head); !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("%v() = %+v, want %+v", funcName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }

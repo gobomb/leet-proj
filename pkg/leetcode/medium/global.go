@@ -5,6 +5,9 @@ import (
 	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
 	"log"
+	"reflect"
+	"runtime"
+	"strings"
 )
 
 var (
@@ -44,4 +47,9 @@ type Node struct {
 	Left  *Node
 	Right *Node
 	Next  *Node
+}
+
+func funcName(f interface{}) string {
+	sp := strings.Split(runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name(), ".")
+	return sp[len(sp)-1]
 }
