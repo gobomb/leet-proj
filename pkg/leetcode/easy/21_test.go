@@ -1,4 +1,4 @@
-package leetcode
+package easy
 
 import (
 	"reflect"
@@ -10,6 +10,7 @@ func Test_mergeTwoLists(t *testing.T) {
 		l1 *ListNode
 		l2 *ListNode
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -19,46 +20,28 @@ func Test_mergeTwoLists(t *testing.T) {
 			"1",
 			args{
 				l1: &ListNode{
-					1,
-					&ListNode{
-						2,
-						&ListNode{
-							4,
-							nil,
+					Val: 1,
+					Next: &ListNode{
+						Val: 2,
+						Next: &ListNode{
+							Val:  4,
+							Next: nil,
 						},
 					},
 				},
 
 				l2: &ListNode{
-					1,
-					&ListNode{
-						2,
-						&ListNode{
-							4,
-							nil,
+					Val: 1,
+					Next: &ListNode{
+						Val: 2,
+						Next: &ListNode{
+							Val:  4,
+							Next: nil,
 						},
 					},
 				},
 			},
-			&ListNode{
-				1,
-				&ListNode{
-					1,
-					&ListNode{
-						2,
-						&ListNode{
-							2,
-							&ListNode{
-								4,
-								&ListNode{
-									4,
-									nil,
-								},
-							},
-						},
-					},
-				},
-			},
+			MakeListNode(1, 1, 2, 2, 4, 4),
 		},
 		{
 			"1make",
@@ -90,15 +73,9 @@ func Test_mergeTwoLists(t *testing.T) {
 			"3",
 			args{
 				l1: nil,
-				l2: &ListNode{
-					0,
-					nil,
-				},
+				l2: MakeListNode(0),
 			},
-			&ListNode{
-				0,
-				nil,
-			},
+			MakeListNode(0),
 		},
 		{
 			"3make",
@@ -110,6 +87,7 @@ func Test_mergeTwoLists(t *testing.T) {
 			MakeListNode(0),
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := mergeTwoLists(tt.args.l1, tt.args.l2); !reflect.DeepEqual(got, tt.want) {

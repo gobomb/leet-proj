@@ -4,6 +4,7 @@ import (
 	"justest/pkg/ds/listnode"
 	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
+	"log"
 )
 
 var (
@@ -21,6 +22,10 @@ type (
 	LNDeepCopyer = listnode.LNDeepCopyer
 	TreeNode     = tree.TreeNode
 )
+
+func init() {
+	log.SetFlags(log.Lshortfile)
+}
 
 func Abs(x int) int {
 	if x < 0 {

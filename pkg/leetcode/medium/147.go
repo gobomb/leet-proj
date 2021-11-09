@@ -1,12 +1,8 @@
 package medium
 
-/* 
+/*
 	147. Insertion Sort List
 */
-
-import (
-	"log"
-)
 
 /**
  * Definition for singly-linked list.
@@ -15,10 +11,6 @@ import (
  *     Next *ListNode
  * }
  */
-
-func init() {
-	log.SetFlags(log.Lshortfile)
-}
 
 func insertionSortList(head *ListNode) *ListNode {
 	if head == nil {
