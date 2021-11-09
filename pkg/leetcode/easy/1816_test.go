@@ -7,6 +7,7 @@ func Test_truncateSentence(t *testing.T) {
 		s string
 		k int
 	}
+	
 	tests := []struct {
 		name string
 		args args
@@ -37,6 +38,7 @@ func Test_truncateSentence(t *testing.T) {
 			want: "chopper is not a tanuki",
 		},
 	}
+	
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := truncateSentence(tt.args.s, tt.args.k); got != tt.want {
