@@ -57,7 +57,7 @@ func Test_wordBreakII(t *testing.T) {
 		s        string
 		wordDict []string
 	}
-	
+
 	tests := []struct {
 		name string
 		args args
