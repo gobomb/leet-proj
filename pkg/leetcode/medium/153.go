@@ -9,9 +9,13 @@ func findMin(nums []int) int {
 	lo, hi, mi := 0, len(nums)-1, 0
 
 	for lo <= hi {
-		mi = (hi + lo) / 2
+		mi = lo + (hi-lo)/2
 
 		switch {
+		// 处于正常升序，直接返回最低位置
+		// 需要加等号防止无限循环
+		case nums[lo] <= nums[hi]:
+			return nums[lo]
 		// 比最高的大，最小值在右边
 		case nums[mi] > nums[hi]:
 			lo = mi + 1
@@ -23,11 +27,54 @@ func findMin(nums []int) int {
 			}
 
 			hi = mi - 1
-		// 处于正常升序，直接返回最低位置
-		case nums[lo] <= nums[mi] && nums[mi] <= nums[hi]:
-			return nums[lo]
 		}
 	}
 
 	return 0
+}
+
+func findMin1(nums []int) int {
+	lo, hi, mi := 0, len(nums)-1, 0
+
+	for lo < hi {
+		mi = lo + (hi-lo)/2
+
+		if nums[lo] < nums[hi] {
+			return nums[lo]
+		} else if nums[mi] < nums[lo] {
+			hi = mi
+		} else if nums[mi] >= nums[lo] {
+			lo = mi + 1
+		}
+	}
+
+	return nums[lo]
+}
+
+/*
+	154. Find Minimum in Rotated Sorted Array II
+*/
+
+func findMinII(nums []int) int {
+	lo, hi, mi := 0, len(nums)-1, 0
+
+	for lo < hi {
+		mi = lo + (hi-lo)/2
+
+		switch {
+		// 处于正常升序，直接返回最低位置
+		case nums[lo] < nums[hi]:
+			return nums[lo]
+		// 比最高的大，最小值在右边
+		case nums[mi] > nums[hi]:
+			lo = mi + 1
+		// 最小值在左边或中间,hi 向左逼近
+		case nums[mi] < nums[hi]:
+			hi = mi
+		case nums[mi] == nums[hi]:
+			hi--
+		}
+	}
+
+	return nums[lo]
 }
