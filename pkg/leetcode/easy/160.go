@@ -33,5 +33,6 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 			h2 = h2.Next
 		}
 	}
+
 	return h1
 }

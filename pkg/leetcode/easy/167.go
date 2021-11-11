@@ -24,7 +24,7 @@ func twoSumBiSe(numbers []int, target int) []int {
 		lo, hi, mid := i+1, len(numbers)-1, 0
 
 		for lo <= hi {
-			mid = (lo + hi) / 2
+			mid = lo + (hi-lo)>>1
 
 			switch {
 			case target > numbers[mid]:
