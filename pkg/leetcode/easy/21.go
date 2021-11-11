@@ -29,3 +29,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) (l3 *ListNode) {
 
 	return l2
 }
+
+func MergeTwoLists(l1 *ListNode, l2 *ListNode) (l3 *ListNode) {
+	return mergeTwoLists(l1, l2)
+}

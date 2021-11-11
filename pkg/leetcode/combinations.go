@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-	"justest/pkg/ds"
+	"justest/pkg/utils"
 )
 
 func combine(n int, k int) [][]int {
@@ -14,7 +14,7 @@ func combine(n int, k int) [][]int {
 
 func combineBacktrack(a, n, k int, aa []int, rs *[][]int) {
 	if len(aa) == k {
-		*rs = append(*rs, ds.DeepCopyIntSlice(aa))
+		*rs = append(*rs, utils.DeepCopyIntSlice(aa))
 		return
 	}
 	if len(aa) > k {

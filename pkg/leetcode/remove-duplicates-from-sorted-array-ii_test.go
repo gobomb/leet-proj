@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-	"justest/pkg/ds"
+	"justest/pkg/utils"
 	"log"
 	"reflect"
 	"testing"
@@ -56,7 +56,7 @@ func Test_removeDuplicatesII(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			before := ds.DeepCopyIntSlice(tt.args.nums)
+			before := utils.DeepCopyIntSlice(tt.args.nums)
 			if _ = removeDuplicatesII(tt.args.nums); !reflect.DeepEqual(tt.args.nums[:tt.want], tt.wantInt) {
 				t.Errorf("removeDuplicatesII(%#v) = %#v, want %#v", before, tt.args.nums[:tt.want], tt.wantInt)
 			}

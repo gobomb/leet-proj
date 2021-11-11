@@ -1,6 +1,7 @@
-package ds
+package algorithm
 
 import (
+	"justest/pkg/utils"
 	"testing"
 )
 
@@ -43,12 +44,27 @@ func TestBin(t *testing.T) {
 			},
 			-1,
 		},
+		{
+			"4",
+			args{
+				[]int{0, 14, 23, 23, 28, 40, 50, 66, 86, 92},
+				92,
+			},
+			9,
+		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Bin(tt.args.arr, tt.args.k); got != tt.want {
-				t.Errorf("Bin() = %v, want %v", got, tt.want)
-			}
-		})
+
+	testFunc := []func([]int, int) int{
+		BinSearch,
+		BinSearch1,
+	}
+	for _, f := range testFunc {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.arr, tt.args.k); got != tt.want {
+					t.Errorf("%v() = %v, want %v", utils.FuncName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }

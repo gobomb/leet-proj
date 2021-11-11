@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-	"justest/pkg/ds"
+	"justest/pkg/utils"
 	"sort"
 )
 
@@ -46,7 +46,7 @@ func combination22(candidates []int, target int, sums []int, choose *[][]int, in
 		rs := combination22(candidates, target, sums, choose, i+1)
 
 		if rs {
-			*choose = append(*choose, ds.DeepCopyIntSlice(sums))
+			*choose = append(*choose, utils.DeepCopyIntSlice(sums))
 		}
 		sums = sums[:len(sums)-1]
 	}

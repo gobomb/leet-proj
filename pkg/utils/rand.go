@@ -1,4 +1,4 @@
-package ds
+package utils
 
 import (
 	"crypto/rand"
@@ -18,16 +18,16 @@ func randSliceInt(max int, length int) []int {
 	return rs
 }
 
-func genSortedSlices(n int) [][]int {
+func GenSortedSlices(n int) [][]int {
 	rs := [][]int{}
 	for i := 0; i < n; i++ {
-		_, r := genRandSlice(10, 100)
+		_, r := GenRandSlice(10, 100)
 		rs = append(rs, r)
 	}
 	return rs
 }
 
-func genRandSlice(length, max int) ([]int, []int) {
+func GenRandSlice(length, max int) ([]int, []int) {
 	r := randSliceInt(max, length)
 	rcopy := DeepCopyIntSlice(r)
 	sort.Ints(rcopy)

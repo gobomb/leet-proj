@@ -1,6 +1,6 @@
 package leetcode
 
-import "justest/pkg/ds"
+import "justest/pkg/utils"
 
 func hasPathSum(root *TreeNode, targetSum int) bool {
 	if root == nil {
@@ -30,7 +30,7 @@ func pathSum2(root *TreeNode, targetSum int, rs *[][]int, nums []int) {
 	}
 	if targetSum == root.Val && root.Left == nil && root.Right == nil {
 		nums = append(nums, root.Val)
-		*rs = append(*rs, ds.DeepCopyIntSlice(nums))
+		*rs = append(*rs, utils.DeepCopyIntSlice(nums))
 		return
 	}
 	targetSum -= root.Val
