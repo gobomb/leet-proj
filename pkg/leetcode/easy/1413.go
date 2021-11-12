@@ -1,5 +1,9 @@
 package easy
 
+/*
+	1413. Minimum Value to Get Positive Step by Step Sum
+*/
+
 func minStartValue(nums []int) int {
 	for i := 1; ; i++ {
 		sum := i
