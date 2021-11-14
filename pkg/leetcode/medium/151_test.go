@@ -1,6 +1,9 @@
 package medium
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Test_reverseWords(t *testing.T) {
 	type args struct {
@@ -33,12 +36,72 @@ func Test_reverseWords(t *testing.T) {
 			},
 			want: "example good a",
 		},
+		{
+			name: "",
+			args: args{
+				s: "F R  I   E    N     D      S      ",
+			},
+			want: "S D N E I R F",
+		},
+	}
+
+	toTest := [](func(s string) string){reverseWords, reverseWordsWithOutStl}
+
+	for _, f := range toTest {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.s); got != tt.want {
+					t.Errorf("%v() = %v, want %v", funcName(f), got, tt.want)
+				}
+			})
+		}
+	}
+}
+
+func Test_trimSpace(t *testing.T) {
+	type args struct {
+		b []byte
+	}
+
+	tests := []struct {
+		name string
+		args args
+		want []byte
+	}{
+		{
+			name: "去除开头的空格",
+			args: args{
+				b: []byte(string("    aabb")),
+			},
+			want: []byte(string("aabb")),
+		},
+		{
+			name: "去除中间的空格",
+			args: args{
+				b: []byte(string("   aabb    def    g      glklsd")),
+			},
+			want: []byte(string("aabb def g glklsd")),
+		},
+		{
+			name: "去除结尾的空格",
+			args: args{
+				b: []byte(string("   aabb    def    g      glklsd      ")),
+			},
+			want: []byte(string("aabb def g glklsd")),
+		},
+		{
+			name: "",
+			args: args{
+				b: []byte(string("F R  I   E    N     D      S      ")),
+			},
+			want: []byte("F R I E N D S"),
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := reverseWords(tt.args.s); got != tt.want {
-				t.Errorf("reverseWords() = %v, want %v", got, tt.want)
+			if got := trimSpace(tt.args.b); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("trimSpace() = %s, want %s", got, tt.want)
 			}
 		})
 	}
