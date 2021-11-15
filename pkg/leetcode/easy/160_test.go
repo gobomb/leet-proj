@@ -59,11 +59,15 @@ func Test_getIntersectionNode(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := getIntersectionNode(tt.args.headA, tt.args.headB); got != tt.want {
-				t.Errorf("getIntersectionNode() = %+v, want %+v", got, tt.want)
-			}
-		})
+	toTest := []func(*ListNode, *ListNode) *ListNode{getIntersectionNode, getIntersectionNode1}
+
+	for _, f := range toTest {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.headA, tt.args.headB); got != tt.want {
+					t.Errorf("%v() = %+v, want %+v", funcName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }

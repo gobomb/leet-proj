@@ -16,6 +16,7 @@ var (
 
 	MakeListNode = listnode.MakeListNode
 	LNDeepCopy   = listnode.LNDeepCopy
+	funcName     = utils.FuncName
 )
 
 type (
