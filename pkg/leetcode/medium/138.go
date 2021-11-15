@@ -1,5 +1,7 @@
 package medium
 
+import "log"
+
 /*
 	138. Copy List with Random Pointer
 */
@@ -100,4 +102,61 @@ func copyRandomList(head *RandomNode) *RandomNode {
 	return randomCopyer{
 		visited: make(map[*RandomNode]*RandomNode),
 	}.copyRandomList(head)
+}
+
+func (head *RandomNode) print() {
+	h := head
+	
+	for h != nil {
+		log.Println(h)
+		h = h.Next
+	}
+}
+
+// 剑指offer 26
+/*
+	Runtime: 0 ms, faster than 100.00% of Go online submissions for Copy List with Random Pointer.
+	Memory Usage: 3.5 MB, less than 100.00% of Go online submissions for Copy List with Random Pointer.
+*/
+func copyRandomList1(head *RandomNode) *RandomNode {
+	if head == nil {
+		return nil
+	}
+	h := head
+
+	for h != nil {
+		n := h.Next
+		h.Next = &RandomNode{
+			Val:  h.Val,
+			Next: n,
+		}
+		h = n
+	}
+
+	h = head
+
+	for h != nil {
+		if h.Random != nil {
+			h.Next.Random = h.Random.Next
+		}
+
+		h = h.Next.Next
+	}
+
+	h = head
+	hn := head.Next
+	nh := head.Next
+
+	for nh != nil && h != nil {
+		h.Next = nh.Next
+		h = h.Next
+
+		if nh.Next != nil {
+			nh.Next = nh.Next.Next
+		}
+
+		nh = nh.Next
+	}
+
+	return hn
 }

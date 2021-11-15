@@ -36,29 +36,46 @@ func Test_copyRandomList(t *testing.T) {
 			},
 			want: makeRandomNode([][]int{{3, null}, {3, 0}, {3, null}}),
 		},
+		{
+			name: "",
+			args: args{
+				head: makeRandomNode([][]int{}),
+			},
+			want: makeRandomNode([][]int{}),
+		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := copyRandomList(tt.args.head)
-			switch {
-			case got.Val != tt.want.Val:
-				t.Errorf("copyRandomList() = %v, want %v failed at case 1", got, tt.want)
 
-			case got.Next == tt.want.Next && got.Next != nil:
-				t.Errorf("copyRandomList() = %v, want %v failed at case 2", got, tt.want)
+	toTest := []func(*RandomNode) *RandomNode{copyRandomList, copyRandomList1}
 
-			case !(got.Next == nil || tt.want.Next == nil) && got.Next.Val != tt.want.Next.Val:
-				t.Errorf("copyRandomList() = %v, want %v failed at case 3", got, tt.want)
+	for _, f := range toTest {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				got := f(tt.args.head)
 
-			case (got.Random != nil && tt.want.Random == nil) || (got.Random == nil && tt.want.Random != nil):
-				t.Errorf("copyRandomList() = %v, want %v failed at case 4", got, tt.want)
+				switch {
+				case tt.want == nil && got != nil:
+					t.Errorf("copyRandomList() = %v, want %v failed at case 0", got, tt.want)
+				case tt.want == nil && got == nil:
+					t.Logf("ok")
+				case got.Val != tt.want.Val:
+					t.Errorf("copyRandomList() = %v, want %v failed at case 1", got, tt.want)
 
-			case !(got.Random == nil || tt.want.Random == nil) && got.Random.Val != tt.want.Random.Val:
-				t.Errorf("copyRandomList() = %v, want %v failed at case 5", got, tt.want)
+				case got.Next == tt.want.Next && got.Next != nil:
+					t.Errorf("copyRandomList() = %v, want %v failed at case 2", got, tt.want)
 
-			default:
-			}
-		})
+				case !(got.Next == nil || tt.want.Next == nil) && got.Next.Val != tt.want.Next.Val:
+					t.Errorf("copyRandomList() = %v, want %v failed at case 3", got, tt.want)
+
+				case (got.Random != nil && tt.want.Random == nil) || (got.Random == nil && tt.want.Random != nil):
+					t.Errorf("copyRandomList() = %v, want %v failed at case 4", got, tt.want)
+
+				case !(got.Random == nil || tt.want.Random == nil) && got.Random.Val != tt.want.Random.Val:
+					t.Errorf("copyRandomList() = %v, want %v failed at case 5", got, tt.want)
+
+				default:
+				}
+			})
+		}
 	}
 }
 
