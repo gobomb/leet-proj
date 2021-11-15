@@ -114,3 +114,22 @@ func BinSearch4(arr []int, k int) int {
 
 	return hi - 1
 }
+
+// 剑指offer面试题38：数字在排序数组中出现的次数
+
+func getNumberOfK(arr []int, k int) int {
+	if len(arr) == 0 {
+		return 0
+	}
+	
+	var res int
+
+	first := BinSearch1(arr, k)
+	last := BinSearch2(arr, k)
+
+	if first > -1 && last > -1 {
+		res = last - first + 1
+	}
+
+	return res
+}

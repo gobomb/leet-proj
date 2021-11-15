@@ -243,3 +243,44 @@ func TestBinSearch4(t *testing.T) {
 		})
 	}
 }
+
+func Test_getNumberOfK(t *testing.T) {
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "",
+			args: args{
+				arr: []int{1, 2, 3, 3, 3, 3, 4, 5, 6},
+				k:   3,
+			},
+			want: 4,
+		},
+		{
+			name: "大于全部的数",
+			args: args{
+				arr: []int{1, 2, 3, 3, 3, 3, 4, 5, 6},
+				k:   8,
+			},
+			want: 0,
+		},
+		{
+			name: "",
+			args: args{
+				arr: []int{1, 2, 3, 3, 3, 3, 4, 5, 6},
+				k:   2,
+			},
+			want: 1,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := getNumberOfK(tt.args.arr, tt.args.k); got != tt.want {
+				t.Errorf("getNumberOfK() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
