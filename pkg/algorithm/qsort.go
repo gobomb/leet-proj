@@ -27,6 +27,7 @@ func partition(arr []int, startIndex, endIndex int) int {
 		for i < j && arr[j] > piv {
 			j--
 		}
+
 		for i < j && arr[i] <= piv {
 			i++
 		}
@@ -36,6 +37,7 @@ func partition(arr []int, startIndex, endIndex int) int {
 		}
 	}
 	swap(arr, startIndex, i)
+
 	return i
 }
 

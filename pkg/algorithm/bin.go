@@ -2,7 +2,6 @@ package algorithm
 
 import (
 	"fmt"
-	"log"
 )
 
 // https://mp.weixin.qq.com/s/uA2suoVykENmCQcKFMOSuQ
@@ -27,23 +26,91 @@ func BinSearch(arr []int, k int) int {
 	return -1
 }
 
+// https://labuladong.gitee.io/algo/1/9/
+// 找相同数字的左侧边界
 func BinSearch1(arr []int, k int) int {
 	mi, lo, hi := 0, 0, len(arr)
 	for lo < hi {
-		// fmt.Println(arr[lo], arr[mi], arr[hi])
-		// fmt.Println(" lo mid hi", lo, mi, hi)
 		mi = lo + (hi-lo)>>1
 
-		if arr[mi] >= k {
+		if arr[mi] > k {
 			hi = mi
 		} else if arr[mi] < k {
 			lo = mi + 1
+		} else if arr[mi] == k {
+			hi = mi
 		}
 	}
-	if lo < 0 || lo == len(arr) || arr[lo] != k {
+
+	if lo == len(arr) || arr[lo] != k {
 		return -1
 	}
 
-	log.Println(lo, hi)
 	return lo
+}
+
+// 找相同数字的右侧边界
+func BinSearch2(arr []int, k int) int {
+	mi, lo, hi := 0, 0, len(arr)
+	for lo < hi {
+		mi = lo + (hi-lo)>>1
+
+		if arr[mi] > k {
+			hi = mi
+		} else if arr[mi] < k {
+			lo = mi + 1
+		} else if arr[mi] == k {
+			lo = mi + 1
+		}
+	}
+
+	if arr[lo-1] != k {
+		return -1
+	}
+
+	return lo - 1
+}
+
+// 找大于k的最小数字下标
+func BinSearch3(arr []int, k int) int {
+	mi, lo, hi := 0, 0, len(arr)
+	for lo < hi {
+		mi = lo + (hi-lo)>>1
+
+		if arr[mi] > k {
+			hi = mi
+		} else if arr[mi] < k {
+			lo = mi + 1
+		} else if arr[mi] == k {
+			lo = mi + 1
+		}
+	}
+
+	if lo >= len(arr) {
+		return -1
+	}
+
+	return lo
+}
+
+// 找小于k的最大数字下标
+func BinSearch4(arr []int, k int) int {
+	mi, lo, hi := 0, 0, len(arr)
+	for lo < hi {
+		mi = lo + (hi-lo)>>1
+
+		if arr[mi] > k {
+			hi = mi
+		} else if arr[mi] < k {
+			lo = mi + 1
+		} else if arr[mi] == k {
+			hi = mi
+		}
+	}
+
+	if lo > len(arr) {
+		return -1
+	}
+
+	return hi - 1
 }

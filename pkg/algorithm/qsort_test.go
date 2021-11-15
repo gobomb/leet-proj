@@ -11,6 +11,7 @@ func Test_quick(t *testing.T) {
 	type args struct {
 		arr []int
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -28,9 +29,11 @@ func Test_quick(t *testing.T) {
 		}{"", args{r}, sr})
 		t.Logf("%v\n", tests[i])
 	}
+
 	arr := []int{15, 25, 25, 18, 17, 48, 12, 25, 2, 8, 15, 20, 27, 46, 48}
 	sarr := utils.DeepCopyIntSlice(arr)
 	sort.Ints(sarr)
+
 	tests = append(tests, struct {
 		name string
 		args args
@@ -44,7 +47,6 @@ func Test_quick(t *testing.T) {
 			args args
 			want []int
 		}{"", args{r}, sr})
-		// t.Logf("%v\n", tests[i])
 	}
 
 	for _, tt := range tests {
