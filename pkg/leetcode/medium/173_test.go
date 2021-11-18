@@ -31,7 +31,7 @@ func TestConstructorBSTIterator(t *testing.T) {
 				if !bSTIterator.HasNext() {
 					break
 				}
-				
+
 				if bSTIterator.Next() != tt.want[i] {
 					t.Fail()
 				}
