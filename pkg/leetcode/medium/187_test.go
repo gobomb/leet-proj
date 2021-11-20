@@ -31,11 +31,15 @@ func Test_findRepeatedDnaSequences(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := findRepeatedDnaSequences(tt.args.s); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("findRepeatedDnaSequences() = %v, want %v", got, tt.want)
-			}
-		})
+	toTest := []func(string) []string{findRepeatedDnaSequences, findRepeatedDnaSequences1}
+
+	for _, f := range toTest {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.s); !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("%v() = %v, want %v",funcName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }
