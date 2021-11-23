@@ -9,7 +9,7 @@ import (
 */
 
 // https://leetcode-cn.com/problems/largest-divisible-subset/solution/gong-shui-san-xie-noxiang-xin-ke-xue-xi-0a3jc/
-/* 
+/*
 	Runtime: 36 ms, faster than 100.00% of Go online submissions for Largest Divisible Subset.
 	Memory Usage: 3 MB, less than 100.00% of Go online submissions for Largest Divisible Subset.
 */

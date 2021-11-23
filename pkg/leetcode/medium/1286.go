@@ -4,7 +4,12 @@ package medium
 	1286. Iterator for Combination
 */
 
-type CombinationIterator struct {
+type CombinationIterator interface {
+	Next() string
+	HasNext() bool
+}
+
+type CombinationIterator1 struct {
 	cache []string
 	cur   int
 }
@@ -14,7 +19,7 @@ type CombinationIterator struct {
 	Memory Usage: 7.6 MB, less than 12.50% of Go online submissions for Iterator for Combination.
 */
 func Constructor(characters string, combinationLength int) CombinationIterator {
-	return CombinationIterator{
+	return &CombinationIterator1{
 		cache: makePermutation(characters, 0, combinationLength, []byte{}),
 	}
 }
@@ -34,7 +39,7 @@ func makePermutation(s string, ind int, length int, bs []byte) (res []string) {
 	return
 }
 
-func (ci *CombinationIterator) Next() string {
+func (ci *CombinationIterator1) Next() string {
 	if !ci.HasNext() {
 		return ""
 	}
@@ -44,7 +49,7 @@ func (ci *CombinationIterator) Next() string {
 	return ci.cache[ci.cur-1]
 }
 
-func (ci *CombinationIterator) HasNext() bool {
+func (ci *CombinationIterator1) HasNext() bool {
 	return ci.cur < len(ci.cache)
 }
 
@@ -54,3 +59,7 @@ func (ci *CombinationIterator) HasNext() bool {
  * param_1 := obj.Next();
  * param_2 := obj.HasNext();
  */
+
+// TODO:
+// 1. 动态计算
+// 2. 使用 bitmask

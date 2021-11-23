@@ -106,7 +106,7 @@ func copyRandomList(head *RandomNode) *RandomNode {
 
 func (head *RandomNode) print() {
 	h := head
-	
+
 	for h != nil {
 		log.Println(h)
 		h = h.Next

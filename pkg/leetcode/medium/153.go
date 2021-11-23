@@ -78,3 +78,33 @@ func findMinII(nums []int) int {
 
 	return nums[lo]
 }
+
+// 剑指 offer
+func findMinII1(nums []int) int {
+	lo, hi, mi := 0, len(nums)-1, 0
+
+	for lo < hi {
+		// 保证hi在右半部分，lo在左半部分
+		if hi-lo == 1 {
+			mi = hi
+			break
+		}
+		mi = lo + (hi-lo)/2
+		// 处于正常升序，直接返回最低位置
+		if nums[lo] < nums[hi] {
+			mi = lo
+			break
+		} else if nums[mi] > nums[hi] {
+			// 比最高的大，最小值在右边
+			lo = mi
+		} else if nums[mi] < nums[lo] {
+			// 最小值在左边,hi 向左逼近
+			hi = mi
+		} else if nums[mi] == nums[hi] {
+			// 退化成线性查找
+			hi--
+		}
+	}
+
+	return nums[mi]
+}

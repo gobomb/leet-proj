@@ -64,7 +64,6 @@ func trimSpace(b []byte) []byte {
 	group := 0
 
 	for i := range b {
-		// log.Printf("%s %v %v %v", b, i, group, count)
 		// b[i] may be changed
 		temp := b[i]
 
@@ -76,13 +75,9 @@ func trimSpace(b []byte) []byte {
 			count++
 		}
 
-		// log.Printf("%s %v %v %v %c", b, i, group, count, temp)
-
 		if i+1 != len(b) && temp != ' ' && b[i+1] == ' ' {
 			group++
 		}
-		// log.Printf("%s %v %v %v", b, i, group, count)
-		// log.Printf("\n\n")
 	}
 
 	if b[len(b)-1] == ' ' {

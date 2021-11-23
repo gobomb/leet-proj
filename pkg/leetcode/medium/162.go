@@ -17,5 +17,5 @@ func findPeakElement(nums []int) int {
 		}
 	}
 
-	return hi
+	return lo
 }

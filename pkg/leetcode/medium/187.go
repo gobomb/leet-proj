@@ -4,7 +4,7 @@ package medium
 	187. Repeated DNA Sequences
 */
 
-/* 
+/*
 	16 ms	9.7 MB
 */
 func findRepeatedDnaSequences(s string) []string {
@@ -36,7 +36,7 @@ var numMap = map[byte]uint32{
 
 var upperMask uint32 = 0xFFF00000
 
-/* 
+/*
 	Runtime: 12 ms, faster than 85.88% of Go online submissions for Repeated DNA Sequences.
 	Memory Usage: 5.4 MB, less than 90.59% of Go online submissions for Repeated DNA Sequences.
 

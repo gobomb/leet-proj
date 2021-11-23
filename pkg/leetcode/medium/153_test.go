@@ -75,27 +75,28 @@ func Test_findMinII(t *testing.T) {
 	type args struct {
 		nums []int
 	}
+
 	tests := []struct {
 		name string
 		args args
 		want int
 	}{
 		{
-			name: "1",
+			name: "升序无重复",
 			args: args{
 				nums: []int{1, 3, 5},
 			},
 			want: 1,
 		},
 		{
-			name: "2",
+			name: "旋转无重复",
 			args: args{
-				nums: []int{2, 2, 2, 0, 1},
+				nums: []int{3, 4, 5, 1, 2},
 			},
-			want: 0,
+			want: 1,
 		},
 		{
-			name: "3",
+			name: "旋转重复",
 			args: args{
 				nums: []int{12, 12, 12, 12, 12, 12, 13, 15, 17, 11},
 			},
@@ -109,9 +110,16 @@ func Test_findMinII(t *testing.T) {
 			want: 12,
 		},
 		{
-			name: "5",
+			name: "第一和倒数第一相等，最小值在右半部分",
 			args: args{
-				nums: []int{3, 3, 1, 3},
+				nums: []int{3, 3, 3, 1, 3},
+			},
+			want: 1,
+		},
+		{
+			name: "第一和倒数第一相等，最小值在左半部分",
+			args: args{
+				nums: []int{3, 1, 3, 3, 3},
 			},
 			want: 1,
 		},
@@ -129,19 +137,17 @@ func Test_findMinII(t *testing.T) {
 			},
 			want: 1,
 		},
-		{
-			name: "8",
-			args: args{
-				nums: []int{10, 1, 10, 10, 10},
-			},
-			want: 1,
-		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := findMinII(tt.args.nums); got != tt.want {
-				t.Errorf("findMinII() = %v, want %v", got, tt.want)
-			}
-		})
+
+	totests := []func([]int) int{findMinII, findMinII1}
+
+	for _, f := range totests {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.nums); got != tt.want {
+					t.Errorf("%v() = %#v, want %#v", funcName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }

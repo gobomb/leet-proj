@@ -15,7 +15,6 @@ func TestConstructor(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want CombinationIterator
 	}{
 		{
 			name: "",
@@ -23,7 +22,6 @@ func TestConstructor(t *testing.T) {
 				characters:        "abc",
 				combinationLength: 2,
 			},
-			want: CombinationIterator{},
 		},
 	}
 
