@@ -30,6 +30,6 @@ func reverseBits1(num uint32) uint32 {
 		res = res<<1 + num&1
 		num >>= 1
 	}
-	
+
 	return res
 }
