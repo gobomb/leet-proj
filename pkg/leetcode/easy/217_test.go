@@ -1,6 +1,8 @@
 package easy
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_containsDuplicate(t *testing.T) {
 	type args struct {
