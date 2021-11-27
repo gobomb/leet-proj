@@ -67,7 +67,7 @@ func Test_containsNearbyAlmostDuplicate(t *testing.T) {
 			args: args{
 				nums: []int{1, 2},
 				k:    0,
-				t:    1,
+				t:    3,
 			},
 			want: false,
 		},
