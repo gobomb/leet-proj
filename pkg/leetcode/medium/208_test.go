@@ -8,7 +8,7 @@ import (
 func Test_ConstructorTrie(t *testing.T) {
 	trie := ConstructorTrie()
 	rs := false
-	
+
 	trie.Insert("apple")
 
 	rs = trie.Search("apple") // return True
