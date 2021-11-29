@@ -61,6 +61,31 @@ func (t *Trie) StartsWith(prefix string) bool {
 	return true
 }
 
+func (t *Trie) SearchWithDots(word string) bool {
+	p := t
+
+	for i, c := range word {
+		k := c - 'a'
+
+		if c == '.' {
+			found := false
+			for _, v := range p.children {
+				if v != nil && v.SearchWithDots(word[i+1:]) {
+					found = true
+				}
+			}
+
+			return found
+		} else if next := p.children[k]; next != nil {
+			p = next
+		} else {
+			return false
+		}
+	}
+
+	return p.isEnd
+}
+
 /**
  * Your Trie object will be instantiated and called as such:
  * obj := Constructor();
