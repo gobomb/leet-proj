@@ -26,13 +26,24 @@ func Test_rob(t *testing.T) {
 			},
 			want: 12,
 		},
+		{
+			name: "",
+			args: args{
+				nums: []int{1, 1},
+			},
+			want: 1,
+		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := rob(tt.args.nums); got != tt.want {
-				t.Errorf("rob() = %v, want %v", got, tt.want)
-			}
-		})
+	toTest := []func([]int) int{rob, rob1}
+
+	for _, f := range toTest {
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.nums); got != tt.want {
+					t.Errorf("%v(%+v) = %+v, want %+v", tt.args, funcName(f), got, tt.want)
+				}
+			})
+		}
 	}
 }

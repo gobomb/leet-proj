@@ -1,9 +1,12 @@
 package medium
 
+import "log"
+
 /*
 	198. House Robber
 */
 
+// 0 ms	2.1 MB
 func rob(nums []int) int {
 	if len(nums) == 0 {
 		return 0
@@ -31,5 +34,40 @@ func rob(nums []int) int {
 		}
 	}
 
+	log.Println(dp)
+
 	return dp[len(nums)-1]
+}
+
+// 0 ms	2 MB
+func rob1(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	a, b, c := 0, 0, 0
+	a = nums[0]
+
+	if nums[0] < nums[1] {
+		b = nums[1]
+	} else {
+		b = a
+	}
+
+	for i := 2; i < len(nums); i++ {
+		if nums[i]+a > b {
+			c = nums[i] + a
+		} else {
+			c = b
+		}
+		a, b = b, c
+	}
+
+	// log.Println(b, c)
+
+	return b
 }
