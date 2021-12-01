@@ -6,6 +6,9 @@ import (
 
 /*
 	216. Combination Sum III
+
+	Runtime: 0 ms, faster than 100.00% of Go online submissions for Combination Sum III.
+	Memory Usage: 2 MB, less than 55.56% of Go online submissions for Combination Sum III.
 */
 
 func combinationSum3(k int, n int) [][]int {
