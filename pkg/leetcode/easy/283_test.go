@@ -10,40 +10,49 @@ func Test_moveZeroes(t *testing.T) {
 		nums []int
 	}
 
-	tests := []struct {
+	tests := func() []struct {
 		name string
 		args args
-		rs   []int
-	}{
-		{
-			name: "",
-			args: args{
-				nums: []int{0, 1, 0, 3, 12},
+		want []int
+	} {
+		return []struct {
+			name string
+			args args
+			want []int
+		}{
+			{
+				name: "",
+				args: args{
+					nums: []int{0, 1, 0, 3, 12},
+				},
+				want: []int{1, 3, 12, 0, 0},
 			},
-			rs: []int{1, 3, 12, 0, 0},
-		},
-		{
-			name: "",
-			args: args{
-				nums: []int{0},
+			{
+				name: "",
+				args: args{
+					nums: []int{0},
+				},
+				want: []int{0},
 			},
-			rs: []int{0},
-		},
-		{
-			name: "",
-			args: args{
-				nums: []int{0, 1, 0, 3, 12, 0, 0, 0, 0, 1},
+			{
+				name: "",
+				args: args{
+					nums: []int{0, 1, 0, 3, 12, 0, 0, 0, 0, 1},
+				},
+				want: []int{1, 3, 12, 1, 0, 0, 0, 0, 0, 0},
 			},
-			rs: []int{1, 3, 12, 1, 0, 0, 0, 0, 0, 0},
-		},
+		}
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			moveZeroes(tt.args.nums)
-			if !reflect.DeepEqual(tt.args.nums, tt.rs) {
-				t.Fatalf("failed want %v got %v", tt.rs, tt.args.nums)
-			}
-		})
+	toTest := []func([]int){moveZeroes, moveZeroes1}
+
+	for _, f := range toTest {
+		for _, tt := range tests() {
+			t.Run(tt.name, func(t *testing.T) {
+				if f(tt.args.nums); !reflect.DeepEqual(tt.args.nums, tt.want) {
+					t.Errorf("%v(%+v) = %+v, want %+v", funcName(f), tt.args, tt.args.nums, tt.want)
+				}
+			})
+		}
 	}
 }

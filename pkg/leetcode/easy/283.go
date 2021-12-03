@@ -12,3 +12,17 @@ func moveZeroes(nums []int) {
 		}
 	}
 }
+
+func moveZeroes1(nums []int) {
+	for i := range nums {
+		if nums[i] == 0 {
+			for j := i + 1; j < len(nums); j++ {
+				if nums[j] != 0 {
+					nums[i], nums[j] = nums[j], nums[i]
+
+					break
+				}
+			}
+		}
+	}
+}
