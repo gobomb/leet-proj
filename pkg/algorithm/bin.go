@@ -121,7 +121,7 @@ func getNumberOfK(arr []int, k int) int {
 	if len(arr) == 0 {
 		return 0
 	}
-	
+
 	var res int
 
 	first := BinSearch1(arr, k)

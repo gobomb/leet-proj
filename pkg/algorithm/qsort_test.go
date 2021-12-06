@@ -1,6 +1,7 @@
 package algorithm
 
 import (
+	"fmt"
 	"justest/pkg/utils"
 	"reflect"
 	"sort"
@@ -12,48 +13,57 @@ func Test_quick(t *testing.T) {
 		arr []int
 	}
 
-	tests := []struct {
+	tests := func() []struct {
 		name string
 		args args
 		want []int
-	}{
-		// TODO: Add test cases.
-	}
-
-	for i := 0; i < 3; i++ {
-		r, sr := utils.GenRandSlice(3, 50)
-		tests = append(tests, struct {
+	} {
+		cases := []struct {
 			name string
 			args args
 			want []int
-		}{"", args{r}, sr})
-		t.Logf("%v\n", tests[i])
-	}
+		}{}
+		for i := 0; i < 3; i++ {
+			r, sr := utils.GenRandSlice(3, 50)
+			cases = append(cases, struct {
+				name string
+				args args
+				want []int
+			}{"", args{r}, sr})
+			t.Logf("%v\n", cases[i])
+		}
 
-	arr := []int{15, 25, 25, 18, 17, 48, 12, 25, 2, 8, 15, 20, 27, 46, 48}
-	sarr := utils.DeepCopyIntSlice(arr)
-	sort.Ints(sarr)
+		arr := []int{15, 25, 25, 18, 17, 48, 12, 25, 2, 8, 15, 20, 27, 46, 48}
+		sarr := utils.DeepCopyIntSlice(arr)
+		sort.Ints(sarr)
 
-	tests = append(tests, struct {
-		name string
-		args args
-		want []int
-	}{"", args{arr}, sarr})
-
-	for i := 0; i < 15; i++ {
-		r, sr := utils.GenRandSlice(15, 50)
-		tests = append(tests, struct {
+		cases = append(cases, struct {
 			name string
 			args args
 			want []int
-		}{"", args{r}, sr})
+		}{"", args{arr}, sarr})
+
+		for i := 0; i < 10; i++ {
+			r, sr := utils.GenRandSlice(10, 50)
+			cases = append(cases, struct {
+				name string
+				args args
+				want []int
+			}{"", args{r}, sr})
+		}
+		return cases
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := quick(utils.DeepCopyIntSlice(tt.args.arr)); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("quick(%v) = %v, want %v", tt.args.arr, got, tt.want)
-			}
-		})
+	toTest := []func([]int){quick, bubSort, selectSort, insertSort, mergeSort, shellSort, heapSort}
+
+	for _, f := range toTest {
+		for _, tt := range tests() {
+			t.Run(tt.name, func(t *testing.T) {
+				argsPrint := fmt.Sprintf("%v(%+v) ", utils.FuncName(f), tt.args)
+				if f(tt.args.arr); !reflect.DeepEqual(tt.args.arr, tt.want) {
+					t.Errorf("%v = %+v, want %+v", argsPrint, tt.args.arr, tt.want)
+				}
+			})
+		}
 	}
 }

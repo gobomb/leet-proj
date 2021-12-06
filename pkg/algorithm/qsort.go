@@ -1,9 +1,9 @@
 package algorithm
 
-func quick(arr []int) []int {
+func quick(arr []int) {
 	QuickSort(arr, 0, len(arr)-1)
-	return arr
 }
+
 func QuickSort(arr []int, startIndex, endIndex int) {
 	if startIndex >= endIndex {
 		return
