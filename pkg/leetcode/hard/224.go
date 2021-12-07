@@ -1,5 +1,9 @@
 package hard
 
+/*
+	224. Basic Calculator
+*/
+
 // https://leetcode.com/problems/basic-calculator/discuss/1457982/Clear-Go-Solution
 func calculate(s string) int {
 	res, num, op := 0, 0, add
@@ -48,6 +52,65 @@ func add(a, b int) int {
 }
 func sub(a, b int) int {
 	return a - b
+}
+
+func calculate1(s string) int {
+	var p int
+	res := calculate2(s, &p)
+	return res
+}
+
+// 1. 处理括号：使用递归，同时注意括号结束位置
+// 2. 处理负号，入栈数字取反
+// 3. 第一个数字和符号设为0和+，方便统一处理；每轮处理需要上一次的符号和数字
+// 4. 最终将栈里的数字全部加起来
+// 5. 乘除立即计算并入栈
+func calculate2(s string, p *int) int {
+	res := 0
+	stack := []int{}
+	sigh := uint8('+')
+	num := 0
+
+	for i := 0; i < len(s); i++ {
+		ch := s[i]
+
+		isDigit := '0' <= ch && ch <= '9'
+
+		if isDigit {
+			num = num*10 + int(ch-'0')
+		}
+
+		if ch == '(' {
+			num = calculate2(s[i+1:], p)
+			i = i + *p + 1
+		}
+
+		if !isDigit && ch != ' ' || i == len(s)-1 {
+			if sigh == '+' {
+				stack = append(stack, num)
+			} else if sigh == '-' {
+				stack = append(stack, -num)
+			} else if sigh == '*' {
+				stack[len(stack)-1] *= num
+			} else if sigh == '/' {
+				stack[len(stack)-1] /= num
+			}
+
+			num = 0
+			sigh = ch
+		}
+
+		if ch == ')' {
+			*p = i
+			break
+		}
+	}
+
+	for i := range stack {
+		res += stack[i]
+	}
+
+	return res
 }
 
 // // wrong answer
