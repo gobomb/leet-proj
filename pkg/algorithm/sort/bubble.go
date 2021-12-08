@@ -1,6 +1,4 @@
-package algorithm
-
-import "log"
+package sort
 
 func bubSort(arr []int) {
 	for j := len(arr) - 1; j > 0; j-- {
@@ -10,5 +8,5 @@ func bubSort(arr []int) {
 			}
 		}
 	}
-	log.Println(arr)
+	// log.Println(arr)
 }

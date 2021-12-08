@@ -1,4 +1,4 @@
-package algorithm
+package sort
 
 func mergeSort(arr []int) {
 	tmp := mergeSort1(arr)
