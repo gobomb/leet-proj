@@ -1,5 +1,9 @@
 package leetcode
 
+/*
+	136. Single Number
+*/
+
 func singleNumber(nums []int) int {
 	mp := make(map[int]struct{})
 	for i := range nums {
@@ -23,6 +27,7 @@ func sigleNumberXor(nums []int) int {
 	}
 	return rs
 }
+
 
 func singleNumberXor2(nums []int) int {
 	if len(nums) == 1 {

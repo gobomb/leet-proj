@@ -14,12 +14,13 @@ var (
 	null         = tree.Null
 	MakeListNode = listnode.MakeListNode
 	LNDeepCopy   = listnode.LNDeepCopy
+	funcName     = utils.FuncName
 )
 
 type (
 	ListNode     = listnode.ListNode
 	LNDeepCopyer = listnode.LNDeepCopyer
-	TreeNode = tree.TreeNode
+	TreeNode     = tree.TreeNode
 )
 
 func Abs(x int) int {
