@@ -17,7 +17,5 @@ import "sort"
 var isBadVersion func(version int) bool
 
 func firstBadVersion(n int) int {
-	return sort.Search(n, func(ver int) bool {
-		return isBadVersion(ver)
-	})
+	return sort.Search(n, isBadVersion)
 }
