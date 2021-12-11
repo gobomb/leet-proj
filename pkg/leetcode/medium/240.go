@@ -11,7 +11,7 @@ import (
 func searchMatrix(matrix [][]int, target int) bool {
 	cal, row := 0, 0
 	row = len(matrix)
-	
+
 	if len(matrix) != 0 {
 		cal = len(matrix[0])
 	}
