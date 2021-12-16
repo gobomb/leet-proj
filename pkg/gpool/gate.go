@@ -34,7 +34,8 @@ func (g gateSth) doSth() {
 	defer g.leave()
 
 	log.Println(runtime.NumGoroutine(), len(g.gate))
-	time.Sleep(g.sleep * time.Second)
+	// log.Println(g.sleep)
+	time.Sleep(g.sleep)
 	// ...
 	// fmt.Println("do sth")
 }
