@@ -16,3 +16,5 @@
 justest
 
 .vscode
+
+pkg/golang/testmain
