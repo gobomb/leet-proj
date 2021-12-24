@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"log"
 	"sort"
 )
 
