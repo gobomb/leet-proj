@@ -4,11 +4,15 @@ package medium
 	318. Maximum Product of Word Lengths
 */
 
-/* 
+/*
 	Runtime: 14 ms, faster than 57.69% of Go online submissions for Maximum Product of Word Lengths.
 	Memory Usage: 6.8 MB, less than 15.38% of Go online submissions for Maximum Product of Word Lengths.
 */
 func maxProduct2(words []string) int {
+	var slot **[]int
+	ptr := &[]int{}
+	*slot = ptr
+
 	var rs int
 	bm := make([]uint32, len(words))
 
@@ -32,7 +36,8 @@ func maxProduct2(words []string) int {
 
 	return rs
 }
-/* 
+
+/*
 	Runtime: 105 ms, faster than 7.69% of Go online submissions for Maximum Product of Word Lengths.
 	Memory Usage: 7.9 MB, less than 11.54% of Go online submissions for Maximum Product of Word Lengths.
 */
