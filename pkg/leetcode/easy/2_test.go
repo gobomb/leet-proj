@@ -51,7 +51,7 @@ func Test_addTwoNumbers(t *testing.T) {
 			},
 		}
 	}
-	
+
 	toTest := []func(l1, l2 *ListNode) *ListNode{addTwoNumbers}
 
 	for _, f := range toTest {
