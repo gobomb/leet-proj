@@ -46,7 +46,7 @@ func TestConstructorWordDictionary(t *testing.T) {
 
 			if rs != output[i] {
 				t.Fatalf("failed at %v opt: %v, args: %v, output: %v\n %v", i, opt[i], args[i], output[i], obj.t.children)
-			} else {
+				// } else {
 				// log.Printf("%v opt: %v, args: %v, output: %v\n", i, opt[i], args[i], output[i])
 			}
 		}
