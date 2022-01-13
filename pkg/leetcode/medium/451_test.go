@@ -1,6 +1,8 @@
 package medium
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_frequencySort(t *testing.T) {
 	type args struct {

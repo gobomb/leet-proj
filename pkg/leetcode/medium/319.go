@@ -1,6 +1,8 @@
 package medium
 
-import "math"
+import (
+	"math"
+)
 
 /*
 	319. Bulb Switcher
