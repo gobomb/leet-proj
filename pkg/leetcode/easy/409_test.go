@@ -1,6 +1,8 @@
 package easy
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_longestPalindrome(t *testing.T) {
 	type args struct {
