@@ -26,19 +26,18 @@ func Example_Twitter() {
 
 func Example_Twitter2() {
 	twitter := ConstructorTwitter()
-	twitter.PostTweet(1, 5)             
-	fmt.Println(twitter.GetNewsFeed(1)) 
-	twitter.Follow(1, 2)                
-	twitter.PostTweet(2, 6)             
-	fmt.Println(twitter.GetNewsFeed(1)) 
-	twitter.Unfollow(1, 2)             
-	fmt.Println(twitter.GetNewsFeed(1)) 
+	twitter.PostTweet(1, 5)
+	fmt.Println(twitter.GetNewsFeed(1))
+	twitter.Follow(1, 2)
+	twitter.PostTweet(2, 6)
+	fmt.Println(twitter.GetNewsFeed(1))
+	twitter.Unfollow(1, 2)
+	fmt.Println(twitter.GetNewsFeed(1))
 	// OutPut:
 	// [5]
 	// [6 5]
 	// [5]
 }
-
 
 // need to pull tweets of followee when followed
 func Example_Twitter3() {

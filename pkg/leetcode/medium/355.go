@@ -9,12 +9,11 @@ import (
 */
 
 /*
-Runtime: 3 ms, faster than 26.09% of Go online submissions for Design Twitter.
-Memory Usage: 2.3 MB, less than 43.48% of Go online submissions for Design Twitter.
+Runtime: 0 ms, faster than 100.00% of Go online submissions for Design Twitter.
+Memory Usage: 2.2 MB, less than 60.87% of Go online submissions for Design Twitter.
 */
 
 type Twitter struct {
-	recv        map[int][]int
 	users       map[int]*user
 	tweetStamps map[int]int
 	autoIncr    int
@@ -23,11 +22,11 @@ type Twitter struct {
 type user struct {
 	followrs []int
 	tweets   []int
+	recv     []int
 }
 
 func ConstructorTwitter() Twitter {
 	return Twitter{
-		make(map[int][]int),
 		make(map[int]*user),
 		make(map[int]int),
 		0,
@@ -35,11 +34,6 @@ func ConstructorTwitter() Twitter {
 }
 
 func (t *Twitter) insertUserIfNotEx(userId int) {
-	if _, ok := t.recv[userId]; ok {
-		return
-	}
-	t.recv[userId] = []int{}
-
 	if _, ok := t.users[userId]; ok {
 		return
 	}
@@ -48,7 +42,7 @@ func (t *Twitter) insertUserIfNotEx(userId int) {
 }
 
 func (t *Twitter) updateFeeds(userId int, tweetId int) {
-	t.recv[userId] = append([]int{tweetId}, t.recv[userId]...)
+	t.users[userId].recv = append([]int{tweetId}, t.users[userId].recv...)
 }
 
 func (t *Twitter) updateTweetStamps(tweetId int) {
@@ -62,10 +56,7 @@ func (t *Twitter) updateTweetStamps(tweetId int) {
 }
 
 func (t *Twitter) PostTweet(userId int, tweetId int) {
-	_, ok := t.recv[userId]
-	if !ok {
-		t.insertUserIfNotEx(userId)
-	}
+	t.insertUserIfNotEx(userId)
 
 	for _, f := range t.users[userId].tweets {
 		if f == tweetId {
@@ -84,7 +75,9 @@ func (t *Twitter) PostTweet(userId int, tweetId int) {
 }
 
 func (t *Twitter) get10News(userId int) []int {
-	feeds := t.recv[userId]
+	t.insertUserIfNotEx(userId)
+
+	feeds := t.users[userId].recv
 
 	if len(feeds) <= 10 {
 		return feeds
@@ -112,8 +105,8 @@ func (t *Twitter) Follow(followerId int, followeeId int) {
 }
 
 func (t *Twitter) sortFeeds(followerId int) {
-	sort.Slice(t.recv[followerId], func(i, j int) bool {
-		return t.tweetStamps[t.recv[followerId][i]] > t.tweetStamps[t.recv[followerId][j]]
+	sort.Slice(t.users[followerId].recv, func(i, j int) bool {
+		return t.tweetStamps[t.users[followerId].recv[i]] > t.tweetStamps[t.users[followerId].recv[j]]
 	})
 }
 
@@ -138,7 +131,7 @@ func (t *Twitter) Unfollow(followerId int, followeeId int) {
 func (t *Twitter) removeFolloweeTweets(followerId int, followeeId int) {
 	temp := []int{}
 
-	for _, msg := range t.recv[followerId] {
+	for _, msg := range t.users[followerId].recv {
 		found := false
 
 		for _, tweet := range t.users[followeeId].tweets {
@@ -153,14 +146,5 @@ func (t *Twitter) removeFolloweeTweets(followerId int, followeeId int) {
 		}
 	}
 
-	t.recv[followerId] = temp
+	t.users[followerId].recv = temp
 }
-
-/**
- * Your Twitter object will be instantiated and called as such:
- * obj := Constructor();
- * obj.PostTweet(userId,tweetId);
- * param_2 := obj.GetNewsFeed(userId);
- * obj.Follow(followerId,followeeId);
- * obj.Unfollow(followerId,followeeId);
- */
