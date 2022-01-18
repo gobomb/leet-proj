@@ -1,38 +1,71 @@
 package easy
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Test_countSegments(t *testing.T) {
 	type args struct {
 		s string
 	}
 
-	tests := []struct {
+	tests := func() []struct {
 		name string
 		args args
 		want int
-	}{
-		{
-			name: "",
-			args: args{
-				s: "Hello, my name is John",
+	} {
+		return []struct {
+			name string
+			args args
+			want int
+		}{
+			{
+				name: "",
+				args: args{
+					s: "Hello, my name is John",
+				},
+				want: 5,
 			},
-			want: 5,
-		},
-		{
-			name: "",
-			args: args{
-				s: "Hello",
+			{
+				name: "",
+				args: args{
+					s: "Hello",
+				},
+				want: 1,
 			},
-			want: 1,
-		},
+			{
+				name: "",
+				args: args{
+					s: " Hello",
+				},
+				want: 1,
+			},
+			{
+				name: "",
+				args: args{
+					s: "  Hello",
+				},
+				want: 1,
+			},
+			{
+				name: "",
+				args: args{
+					s: "He  llo",
+				},
+				want: 2,
+			},
+		}
 	}
+	toTest := []func(string) int{countSegments, countSegments1}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := countSegments(tt.args.s); got != tt.want {
-				t.Errorf("countSegments() = %v, want %v", got, tt.want)
-			}
-		})
+	for _, f := range toTest {
+		for _, tt := range tests() {
+			t.Run(tt.name, func(t *testing.T) {
+				if got := f(tt.args.s); !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("%v(%+v) = %+v, want %+v", funcName(f), tt.args, got, tt.want)
+				}
+			})
+		}
 	}
 }
