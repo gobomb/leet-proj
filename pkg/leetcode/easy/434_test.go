@@ -55,9 +55,30 @@ func Test_countSegments(t *testing.T) {
 				},
 				want: 2,
 			},
+			{
+				name: "",
+				args: args{
+					s: "H",
+				},
+				want: 1,
+			},
+			{
+				name: "",
+				args: args{
+					s: " ",
+				},
+				want: 0,
+			},
+			{
+				name: "",
+				args: args{
+					s: "",
+				},
+				want: 0,
+			},
 		}
 	}
-	toTest := []func(string) int{countSegments, countSegments1}
+	toTest := []func(string) int{countSegments, countSegments1, countSegments2}
 
 	for _, f := range toTest {
 		for _, tt := range tests() {

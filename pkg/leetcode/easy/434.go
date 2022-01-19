@@ -25,3 +25,19 @@ func countSegments1(s string) int {
 
 	return rs
 }
+
+func countSegments2(s string) int {
+	rs := 0
+
+	for i := 1; i < len(s); i++ {
+		if s[i] == ' ' && s[i-1] != ' ' {
+			rs++
+		}
+	}
+
+	if len(s) != 0 && s[len(s)-1] != ' ' {
+		rs++
+	}
+
+	return rs
+}

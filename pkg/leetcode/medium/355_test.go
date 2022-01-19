@@ -2,7 +2,7 @@ package medium
 
 import "fmt"
 
-func Example_Twitter() {
+func ExampleTwitter() {
 	t := ConstructorTwitter()
 	fmt.Println(t.GetNewsFeed(1))
 	t.Follow(1, 2)
@@ -24,7 +24,7 @@ func Example_Twitter() {
 	// [33]
 }
 
-func Example_Twitter2() {
+func ExampleTwitter_2() {
 	twitter := ConstructorTwitter()
 	twitter.PostTweet(1, 5)
 	fmt.Println(twitter.GetNewsFeed(1))
@@ -40,7 +40,7 @@ func Example_Twitter2() {
 }
 
 // need to pull tweets of followee when followed
-func Example_Twitter3() {
+func ExampleTwitter3() {
 	twitter := ConstructorTwitter()
 	twitter.PostTweet(1, 1)
 	fmt.Println(twitter.GetNewsFeed(1))
@@ -55,7 +55,7 @@ func Example_Twitter3() {
 }
 
 // try follow twice
-func Example_Twitter4() {
+func ExampleTwitter4() {
 	twitter := ConstructorTwitter()
 	twitter.PostTweet(2, 5)
 	twitter.Follow(1, 2)
@@ -67,7 +67,7 @@ func Example_Twitter4() {
 }
 
 // test the order of tweets
-func Example_Twitter5() {
+func ExampleTwitter5() {
 	twitter := ConstructorTwitter()
 	twitter.PostTweet(2, 22)
 	twitter.PostTweet(3, 33)

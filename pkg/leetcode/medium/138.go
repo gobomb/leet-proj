@@ -1,7 +1,5 @@
 package medium
 
-import "log"
-
 /*
 	138. Copy List with Random Pointer
 */
@@ -104,14 +102,14 @@ func copyRandomList(head *RandomNode) *RandomNode {
 	}.copyRandomList(head)
 }
 
-func (head *RandomNode) print() {
-	h := head
+// func (head *RandomNode) print() {
+// 	h := head
 
-	for h != nil {
-		log.Println(h)
-		h = h.Next
-	}
-}
+// 	for h != nil {
+// 		log.Println(h)
+// 		h = h.Next
+// 	}
+// }
 
 // 剑指offer 26
 /*
