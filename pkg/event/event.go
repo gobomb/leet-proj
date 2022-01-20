@@ -14,7 +14,7 @@ type SubPub interface {
 	Publish(ctx context.Context, key, val interface{})
 }
 
-func NewEventServer() SubPub {
+func NewEventServer() *EventServer {
 	return &EventServer{
 		subscribers: map[key]subscriberList{},
 	}

@@ -6,7 +6,7 @@ type Subject interface {
 	NotifyAll()
 }
 
-func NewItem(s string) Subject {
+func NewItem(s string) *item {
 	return &item{
 		name: s,
 	}
