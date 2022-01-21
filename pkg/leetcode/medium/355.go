@@ -123,7 +123,7 @@ func (t *Twitter) Unfollow(followerId int, followeeId int) {
 		if follower == followerId {
 			t.users[followeeId].followrs[i] = t.users[followeeId].followrs[len(t.users[followeeId].followrs)-1]
 			t.users[followeeId].followrs = t.users[followeeId].followrs[:len(t.users[followeeId].followrs)-1]
-			
+
 			t.removeFolloweeTweets(followerId, followeeId)
 			return
 		}

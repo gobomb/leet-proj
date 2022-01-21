@@ -10,7 +10,7 @@ func findPoisonedDuration(timeSeries []int, duration int) int {
 	}
 
 	rs := 0
-	
+
 	for i := 1; i < len(timeSeries); i++ {
 		if timeSeries[i]-timeSeries[i-1] < duration {
 			rs += timeSeries[i] - timeSeries[i-1]
