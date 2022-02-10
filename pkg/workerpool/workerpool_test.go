@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
+	"runtime"
 	"testing"
 	"time"
 )
@@ -22,7 +23,7 @@ func Test_WorkerPool(t *testing.T) {
 	dispatcher.Run()
 
 	var content = &PayloadCollection{}
-	paylength := 1000
+	paylength := 300
 	content.Payloads = make([]Payload, paylength)
 	for i := 0; i < paylength; i++ {
 		content.Payloads[i].N = i
@@ -50,6 +51,8 @@ func Test_WorkerPool(t *testing.T) {
 	// directly and pass in our Request and ResponseRecorder.
 	handler.ServeHTTP(rr, req)
 
+	t.Log(runtime.NumGoroutine())
+
 	// Check the status code is what we expect.
 	if status := rr.Code; status != http.StatusOK {
 		log.Panicf("handler returned wrong status code: got %v want %v",
@@ -58,7 +61,12 @@ func Test_WorkerPool(t *testing.T) {
 		log.Println(rr.Code)
 	}
 
-	// time.Sleep(15 * time.Second)
+	time.Sleep(5 * time.Second)
+	t.Log(runtime.NumGoroutine())
+	time.Sleep(10 * time.Second)
+	t.Log(runtime.NumGoroutine())
+	time.Sleep(20 * time.Second)
+	t.Log(runtime.NumGoroutine())
 	// log.Println("stop")
 
 	// dispatcher.Stop()

@@ -44,6 +44,7 @@ func (d *Dispatcher) dispatch() {
 	for {
 		select {
 		case job := <-JobQueue:
+			// 接收请求会启动大量协程，但这里不做耗时操作，只是分发，不会占用太多内存
 			// a job request has been received
 			go func(job Job) {
 				// 获取一个可用的 job channel

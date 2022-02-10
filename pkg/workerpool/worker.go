@@ -52,6 +52,7 @@ func (w Worker) Start() {
 
 			select {
 			case job := <-w.JobChannel:
+				// 占用内存，耗费时间的工作在这个协程内
 				// we have received a work request.
 				if err := job.Payload.UploadToS3(); err != nil {
 					fmt.Printf("Error uploading to S3: %s", err.Error())
