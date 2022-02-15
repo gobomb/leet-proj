@@ -77,7 +77,7 @@ func binAll(arr []int, k int, t T) int {
 		return index
 	case T2:
 		// 找相同数字的右侧边界
-		// 相当于大于target的最小下标--
+		// 相当于大于target的最小下标-1
 		index = binSearchR(arr, k)
 		index--
 

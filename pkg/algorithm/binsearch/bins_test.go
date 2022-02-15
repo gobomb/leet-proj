@@ -87,7 +87,6 @@ func Test_binAll(t *testing.T) {
 			want: -1,
 		},
 
-
 		{
 			name: "找小于target的最大下标",
 			args: args{
