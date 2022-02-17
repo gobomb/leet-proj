@@ -1,5 +1,5 @@
 //Limit 限速
-package main
+package limit
 
 import (
 	"sync"
