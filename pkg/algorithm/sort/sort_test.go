@@ -8,12 +8,6 @@ import (
 )
 
 func Test_sort(t *testing.T) {
-	s1 := "string"
-	s2 := s1
-	s3 := s1[3:]
-	fmt.Println(&s1, &s2, &s3)
-
-	return
 	type args struct {
 		arr []int
 	}

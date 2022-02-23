@@ -10,6 +10,7 @@ func QuickSort(arr []int, startIndex, endIndex int) {
 	}
 
 	pivotIndex := partition(arr, startIndex, endIndex)
+	// pivotIndex 的数字已经在正确的位置上了
 	QuickSort(arr, startIndex, pivotIndex-1)
 	QuickSort(arr, pivotIndex+1, endIndex)
 }
@@ -36,6 +37,7 @@ func partition(arr []int, startIndex, endIndex int) int {
 			swap(arr, i, j)
 		}
 	}
+	// i j 交错
 	swap(arr, startIndex, i)
 
 	return i
