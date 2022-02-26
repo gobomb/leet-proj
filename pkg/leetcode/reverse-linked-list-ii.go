@@ -1,36 +1,51 @@
 package leetcode
 
-func reverseBetween(head *ListNode, left int, right int) *ListNode {
-	indirect := head
-	var count int
+func reverseBetween2(head *ListNode, left int, right int) *ListNode {
+	i := head
+	c := 0
 
-	var dummy, ll, rr, llsave *ListNode
-	for (indirect) != nil {
-		count++
-		if count >= left && count <= right {
-			tmp := dummy
-			dummy = indirect
-			indirect = indirect.Next
-			dummy.Next = tmp
+	// lastSave 存left前一个节点
+	// h, t 子链的头和尾
+	// last i的前一个节点
+	var last, t, h, lastSave *ListNode
 
-			if count == left {
-				llsave = ll
-				rr = dummy
-			}
-			rr.Next = indirect
-		} else {
-			ll = indirect
-			indirect = indirect.Next
+	for i != nil {
+		c++
+
+		if c == left {
+			t = i
+			h = i
+
+			// 保存 last
+			lastSave = last
+
+			i = t.Next
+			continue
 		}
+
+		if c > left && c <= right {
+			// t 总是不变
+			t.Next = i.Next
+
+			// h 每轮都要更新
+			oldh := h
+			h = i
+			h.Next = oldh
+
+			i = t.Next
+
+			continue
+		}
+
+		last = i
+		i = i.Next
 	}
 
-	// log.Printf("%+v\n", llsave)
-	// log.Printf("%+v\n", dummy)
-
-	if llsave != nil {
-		llsave.Next = dummy
-	} else {
-		return dummy
+	if left == 1 {
+		return h
 	}
+
+	lastSave.Next = h
+
 	return head
 }
