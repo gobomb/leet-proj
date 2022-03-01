@@ -18,18 +18,18 @@ func Test_rotateRight(t *testing.T) {
 		{
 			"1",
 			args{
-				MakeListNode( 1, 2, 3, 4, 5 ),
+				MakeListNode(1, 2, 3, 4, 5),
 				2,
 			},
-			MakeListNode( 4, 5, 1, 2, 3 ),
+			MakeListNode(4, 5, 1, 2, 3),
 		},
 		{
 			"2",
 			args{
-				MakeListNode( 0, 1, 2 ),
+				MakeListNode(0, 1, 2),
 				4,
 			},
-			MakeListNode( 2, 0, 1 ),
+			MakeListNode(2, 0, 1),
 		},
 	}
 	for _, tt := range tests {

@@ -28,7 +28,6 @@ func sigleNumberXor(nums []int) int {
 	return rs
 }
 
-
 func singleNumberXor2(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
