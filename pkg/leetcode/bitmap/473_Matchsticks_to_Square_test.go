@@ -1,4 +1,4 @@
-package dynamicprogram
+package bitmap
 
 import (
 	"reflect"

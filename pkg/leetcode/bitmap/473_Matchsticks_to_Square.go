@@ -1,4 +1,4 @@
-package dynamicprogram
+package bitmap
 
 /*
 	473. Matchsticks to Square
