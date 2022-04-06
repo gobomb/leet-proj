@@ -34,10 +34,13 @@ func Test_sort(t *testing.T) {
 		return cases
 	}
 
-	toTest := []func([]int){bubSort, insertSort, insertSort1, mergeSort,
+	toTest := []func([]int){
+		bubSort,
+		mergeSort,
 		countSort, radixSort, bucketSort,
-		quick, selectSort,
-		shellSort, heapSort,
+		quick, insertSort, insertSort1,
+		selectSort, shellSort,
+		heapSort, heapSortSTL,
 	}
 
 	for _, f := range toTest {
