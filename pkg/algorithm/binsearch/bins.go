@@ -18,14 +18,15 @@ func binSearchL(arr []int, k int) int {
 		mi = lo + (hi-lo)>>1
 
 		if arr[mi] > k {
-			hi = mi
+			hi = mi // arr[mi]!=k 因为 hi 是开区间，所以可以设置为 mi
 		} else if arr[mi] < k {
-			lo = mi + 1
+			lo = mi + 1 // arr[mi]!=k 不需要再搜索，lo是闭区间，设置为mi+1
 		} else if arr[mi] == k {
-			hi = mi
+			hi = mi // 取决于要找左端点还是右端点，要找左端点，则右下标向左趋近；找右端点，左下标向右趋近
 		}
 	}
 
+	// 循环结束 lo==hi
 	return lo
 }
 

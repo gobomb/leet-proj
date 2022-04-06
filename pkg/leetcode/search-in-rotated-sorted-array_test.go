@@ -2,7 +2,7 @@ package leetcode
 
 import "testing"
 
-func Test_search(t *testing.T) {
+func Test_search2(t *testing.T) {
 	type args struct {
 		nums   []int
 		target int
@@ -40,8 +40,30 @@ func Test_search(t *testing.T) {
 			"7",
 			args{[]int{4, 5, 6, 7, 8, 1, 2, 3}, 8},
 			4},
+		{
+			name: "8",
+			args: args{
+				nums:   []int{7, 1, 2, 3, 4, 5, 6},
+				target: 3,
+			},
+			want: 3,
+		},
+		{
+			name: "9",
+			args: args{
+				nums:   []int{5, 1, 3},
+				target: 3,
+			},
+			want: 2,
+		},
 	}
 	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := search2(tt.args.nums, tt.args.target); got != tt.want {
+				t.Errorf("search() = %v, want %v", got, tt.want)
+			}
+		})
+
 		t.Run(tt.name, func(t *testing.T) {
 			if got := search(tt.args.nums, tt.args.target); got != tt.want {
 				t.Errorf("search() = %v, want %v", got, tt.want)
