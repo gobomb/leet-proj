@@ -23,8 +23,9 @@ func partition(arr []int, startIndex, endIndex int) int {
 		piv = arr[startIndex]
 	)
 
+	// i+ j- 不会越界
 	for i != j {
-		// <= ;顺序
+		// 先移动j
 		for i < j && arr[j] > piv {
 			j--
 		}
@@ -37,7 +38,8 @@ func partition(arr []int, startIndex, endIndex int) int {
 			swap(arr, i, j)
 		}
 	}
-	// i j 交错
+
+	//i == j
 	swap(arr, startIndex, i)
 
 	return i

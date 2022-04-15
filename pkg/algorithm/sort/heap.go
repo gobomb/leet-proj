@@ -2,7 +2,12 @@ package sort
 
 import (
 	"container/heap"
+	"log"
 )
+
+func init() {
+	log.SetFlags(log.Lshortfile)
+}
 
 type h struct {
 	a []int
@@ -44,45 +49,59 @@ func heapSortSTL(arr []int) {
 	}
 }
 
-// 非稳定
-func heapSort(arr []int) {
-	l := 1
+// O(n)
+func buildHeap(arr []int) {
+	for i := (len(arr) - 2) / 2; i >= 0; i-- {
+		down(arr, i, len(arr))
+	}
+}
 
-	// 建堆，升序排序使用大顶堆
+// O(nlog(n))
+func buildHeap2(arr []int) {
+	l := 1
 	for ; l <= len(arr); l++ {
 		up(arr[:l])
 	}
+}
 
-	l = len(arr)
-	i := 0
+// 非稳定
+func heapSort(arr []int) {
+	// 建堆，升序排序使用大顶堆
+	buildHeap(arr)
+
+	l := len(arr)
 
 	for l != 0 {
 		l--
 		// 交换最后叶子和根，将最大值放到最后
 		swap(arr, 0, l)
-		i = 0
+		// 调整堆
+		down(arr, 0, l)
+	}
+}
 
-		// 调整堆 down
-		for {
-			// 左节点
-			child := i*2 + 1
-			if child >= l {
-				break
-			}
+// O(log(n))
+func down(arr []int, i, l int) {
+	// 调整堆 down
+	for {
+		// 左节点
+		child := i*2 + 1
+		if child >= l {
+			break
+		}
 
-			if child+1 < l && arr[child+1] > arr[child] {
-				// 与右节点比较，取比较大的一个
-				child++
-			}
+		if child+1 < l && arr[child+1] > arr[child] {
+			// 与右节点比较，取比较大的一个
+			child++
+		}
 
-			if arr[child] > arr[i] {
-				// 与父节点比较，如果比较大就交换
-				swap(arr, child, i)
-				// 继续检查子节点
-				i = child
-			} else {
-				break
-			}
+		if arr[child] > arr[i] {
+			// 与父节点比较，如果比较大就交换
+			swap(arr, child, i)
+			// 继续检查子节点
+			i = child
+		} else {
+			break
 		}
 	}
 }
