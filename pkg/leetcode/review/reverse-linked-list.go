@@ -8,7 +8,6 @@ package review
  * }
  */
 
-
 // 206. Reverse Linked List
 
 func reverseList(head *ListNode) *ListNode {
@@ -23,7 +22,6 @@ func reverseList(head *ListNode) *ListNode {
 	}
 	return dummy
 }
-
 
 func reverseList2(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
