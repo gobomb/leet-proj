@@ -17,6 +17,8 @@ var (
 	MakeListNode = listnode.MakeListNode
 	LNDeepCopy   = listnode.LNDeepCopy
 	funcName     = utils.FuncName
+
+	FindKthLargest1 = findKthLargestQuickSelect
 )
 
 type (

@@ -1,5 +1,9 @@
 package medium
 
+import (
+	"justest/pkg/leetcode/review"
+)
+
 /*
 	324. Wiggle Sort II
 */
@@ -12,7 +16,7 @@ func wiggleSort(nums []int) {
 		return
 	}
 
-	m := findKthLargest1(nums, (n+1)/2)
+	m := review.FindKthLargest1(nums, (n+1)/2)
 
 	left := 0
 	right := n - 1

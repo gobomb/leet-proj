@@ -1,4 +1,4 @@
-package leetcode
+package review
 
 import (
 	"log"
@@ -90,4 +90,18 @@ func maxSubArray1(nums []int) int {
 		}
 	}
 	return maxSum
+}
+
+func maxSubArray4(nums []int) int {
+	if len(nums) == 0 {
+		return -1
+	}
+
+	maxNum := nums[0]
+	for i := 1; i < len(nums); i++ {
+		nums[i] = max(nums[i-1]+nums[i], nums[i])
+		maxNum = max(nums[i], maxNum)
+	}
+
+	return maxNum
 }
