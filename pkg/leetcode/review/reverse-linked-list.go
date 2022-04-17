@@ -30,7 +30,10 @@ func reverseList2(head *ListNode) *ListNode {
 
 	last := reverseList2(head.Next)
 
+	// 直接逆转当前 head
 	head.Next.Next = head
 	head.Next = nil
+
+	// 总是返回最后一个
 	return last
 }

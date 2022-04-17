@@ -1,9 +1,11 @@
-package leetcode
+package review
 
 import (
 	"reflect"
 	"testing"
 )
+
+// 25. Reverse Nodes in k-Group
 
 func Test_reverseKGroup(t *testing.T) {
 	type args struct {
@@ -48,47 +50,20 @@ func Test_reverseKGroup(t *testing.T) {
 			},
 			MakeListNode(1),
 		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := reverseKGroup(tt.args.head, tt.args.k); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("reverseKGroup() = %+v, want %+v", got, tt.want)
-			}
-		})
-	}
-}
-
-func Test_reverse(t *testing.T) {
-	type args struct {
-		first *ListNode
-		last  *ListNode
-	}
-	tests := []struct {
-		name string
-		args args
-		want *ListNode
-	}{
 		{
-			"1",
-			args{
-				MakeListNode(1, 2, 3, 4, 5),
-				nil,
-			},
-			MakeListNode(5, 4, 3, 2, 1),
-		},
-		{
-			"1",
+			"5",
 			args{
 				MakeListNode(1, 2),
-				nil,
+				2,
 			},
 			MakeListNode(2, 1),
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := reverse(tt.args.first, tt.args.last); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("reverse() = %+v, want %+v", got, tt.want)
+			if got := reverseKGroup(tt.args.head, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("reverseKGroup() = %+v, want %+v", got, tt.want)
 			}
 		})
 	}
