@@ -1,6 +1,8 @@
 package review
 
-import "log"
+import (
+	"math/rand"
+)
 
 /*
 	215. Kth Largest Element in an Array
@@ -34,7 +36,7 @@ func qselect(arr []int, k, left, right int) int {
 
 	// i := index - 1
 
-	i := partition(arr, left, right)
+	i := randomPartition(arr, left, right)
 
 	if k < i {
 		return qselect(arr, k, left, i-1)
@@ -47,6 +49,13 @@ func qselect(arr []int, k, left, right int) int {
 
 func swap(arr []int, i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
+}
+
+func randomPartition(nums []int, st, ed int) int {
+	i := rand.Int()%(ed-st+1) + st
+	swap(nums, st, i)
+
+	return partition(nums, st, ed)
 }
 
 func partition(nums []int, st, ed int) int {
@@ -94,7 +103,7 @@ func findKthLargestHeap(arr []int, k0 int) int {
 		up(arr, i)
 	}
 
-	log.Println(arr, k)
+	// log.Println(arr, k)
 
 	// 最后下标与堆顶交换，并调整堆
 
@@ -105,7 +114,7 @@ func findKthLargestHeap(arr []int, k0 int) int {
 		}
 
 		swap(arr, i, 0)
-		log.Println(arr, k, i)
+		// log.Println(arr, k, i)
 
 		// down
 

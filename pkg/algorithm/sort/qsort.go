@@ -1,6 +1,13 @@
 package sort
 
+import (
+	"math/rand"
+	"time"
+)
+
 func quick(arr []int) {
+	rand.Seed(time.Now().UnixNano())
+
 	QuickSort(arr, 0, len(arr)-1)
 }
 
@@ -9,10 +16,17 @@ func QuickSort(arr []int, startIndex, endIndex int) {
 		return
 	}
 
-	pivotIndex := partition(arr, startIndex, endIndex)
+	pivotIndex := randomPartition(arr, startIndex, endIndex)
 	// pivotIndex 的数字已经在正确的位置上了
 	QuickSort(arr, startIndex, pivotIndex-1)
 	QuickSort(arr, pivotIndex+1, endIndex)
+}
+
+func randomPartition(arr []int, startIndex, endIndex int) int {
+	i := rand.Int()%(endIndex-startIndex+1) + startIndex
+	swap(arr, startIndex, i)
+
+	return partition(arr, startIndex, endIndex)
 }
 
 // https://segmentfault.com/a/1190000020229121
