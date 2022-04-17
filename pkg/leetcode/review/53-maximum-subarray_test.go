@@ -50,7 +50,7 @@ func Test_maxSubArray(t *testing.T) {
 		}
 	}
 
-	toTest := []func([]int) int{maxSubArray, maxSubArray2, maxSubArray3, maxSubArray4}
+	toTest := []func([]int) int{maxSubArray, maxSubArray2, maxSubArray3, maxSubArray11}
 
 	for _, f := range toTest {
 		now := time.Now()

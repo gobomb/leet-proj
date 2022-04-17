@@ -9,6 +9,7 @@ func init() {
 	log.SetFlags(log.Lshortfile)
 }
 
+// 53. maximum subarray
 // 暴力
 //88 ms	3.3 MB
 func maxSubArray(nums []int) int {
@@ -92,16 +93,19 @@ func maxSubArray1(nums []int) int {
 	return maxSum
 }
 
-func maxSubArray4(nums []int) int {
+
+func maxSubArray11(nums []int) int {
 	if len(nums) == 0 {
-		return -1
+		return 0
 	}
 
-	maxNum := nums[0]
+	maxn := nums[0]
+
 	for i := 1; i < len(nums); i++ {
-		nums[i] = max(nums[i-1]+nums[i], nums[i])
-		maxNum = max(nums[i], maxNum)
+		nums[i] = max(nums[i], nums[i]+nums[i-1])
+
+		maxn = max(nums[i], maxn)
 	}
 
-	return maxNum
+	return maxn
 }
