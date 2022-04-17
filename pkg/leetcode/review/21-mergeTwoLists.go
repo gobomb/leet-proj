@@ -1,7 +1,9 @@
-package easy
+package review
 
 /*
 	21. Merge Two Sorted Lists
+
+	4min
 */
 
 /**

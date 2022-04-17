@@ -1,4 +1,4 @@
-package easy
+package review
 
 /*
 	1. Two Sum

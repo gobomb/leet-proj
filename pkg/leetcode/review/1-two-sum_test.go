@@ -1,4 +1,4 @@
-package easy
+package review
 
 import (
 	"reflect"

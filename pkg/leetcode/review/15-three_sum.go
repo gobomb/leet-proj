@@ -5,6 +5,7 @@ import (
 )
 
 // 15. 3Sum
+// 27min
 
 func threeSum(nums []int) [][]int {
 	sort.Ints(nums)

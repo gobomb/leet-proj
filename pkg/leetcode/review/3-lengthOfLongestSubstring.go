@@ -2,6 +2,7 @@ package review
 
 /*
 	3. Longest Substring Without Repeating Characters
+	6min
 */
 
 func lengthOfLongestSubstring(s string) int {

@@ -1,9 +1,6 @@
-package leetcode
+package review
 
-import (
-	"log"
-)
-
+// 102. binary-tree-level-order-traversal
 func levelOrder(root *TreeNode) [][]int {
 	rs := [][]int{}
 	getLevelOrder(root, 0, &rs)
@@ -36,8 +33,6 @@ func levelOrderIter(node *TreeNode) [][]int {
 
 	for i := 0; len(queue) != 0; i++ {
 		rs = append(rs, []int{})
-
-		log.Println(i, queue)
 
 		p := []*TreeNode{}
 

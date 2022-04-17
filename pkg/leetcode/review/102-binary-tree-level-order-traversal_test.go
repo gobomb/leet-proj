@@ -1,4 +1,4 @@
-package leetcode
+package review
 
 import (
 	"log"
@@ -28,14 +28,14 @@ func Test_levelOrder(t *testing.T) {
 			{
 				name: "1",
 				args: args{
-					root: MakeTree([]int{3, 9, 20, Null, Null, 15, 7}),
+					root: MakeTree(3, 9, 20, Null, Null, 15, 7),
 				},
 				want: [][]int{{3}, {9, 20}, {15, 7}},
 			},
 			{
 				name: "2",
 				args: args{
-					root: MakeTree([]int{3}),
+					root: MakeTree(3),
 				},
 				want: [][]int{{3}},
 			},
