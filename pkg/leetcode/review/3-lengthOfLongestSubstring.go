@@ -4,31 +4,22 @@ package review
 	3. Longest Substring Without Repeating Characters
 */
 
-/*
-	Runtime: 0 ms, faster than 100.00% of Go online submissions for Longest Substring Without Repeating Characters.
-	Memory Usage: 2.5 MB, less than 91.00% of Go online submissions for Longest Substring Without Repeating Characters.
-*/
 func lengthOfLongestSubstring(s string) int {
-	cache := [128]int{}
+	var i, j, maxN int
 
-	left, right, maxLen := 0, 0, 0
+	m := make(map[byte]int)
 
-	for right < len(s) {
-		c := s[right]
-		right++
-		cache[c]++
+	for j < len(s) {
+		m[s[j]]++
 
-		// cache 中的字符大于1，触发左指针向前走
-		// 同时要更新cache
-		for cache[c] > 1 {
-			cache[s[left]]--
-			left++
+		for m[s[j]] > 1 {
+			m[s[i]]--
+			i++
 		}
 
-		if right-left > maxLen {
-			maxLen = right - left
-		}
+		maxN = max(maxN, j-i+1)
+
+		j++
 	}
-
-	return maxLen
+	return maxN
 }
