@@ -1,8 +1,8 @@
-package leetcode
+package review
 
 import "testing"
 
-func Test_maxProfit(t *testing.T) {
+func Test_maxProfit2(t *testing.T) {
 	type args struct {
 		prices []int
 	}

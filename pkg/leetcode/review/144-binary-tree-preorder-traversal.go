@@ -1,4 +1,6 @@
-package leetcode
+package review
+
+// 144. binary-tree-preorder-traversal
 
 func preorderTraversal(root *TreeNode) []int {
 	var rs []int
@@ -14,7 +16,6 @@ func preorderTraversal2(root *TreeNode, rs *[]int) {
 	preorderTraversal2(root.Left, rs)
 	preorderTraversal2(root.Right, rs)
 }
-
 
 // 迭代法
 func preorderTraversal3(root *TreeNode) []int {
@@ -33,6 +34,7 @@ func preorderTraversal3(root *TreeNode) []int {
 
 		rs = append(rs, r.Val)
 
+		// 先压栈右节点
 		if r.Right != nil {
 			stack = append(stack, r.Right)
 		}

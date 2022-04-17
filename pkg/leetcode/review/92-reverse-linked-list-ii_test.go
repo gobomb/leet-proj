@@ -1,4 +1,4 @@
-package leetcode
+package review
 
 import (
 	"reflect"
@@ -52,7 +52,7 @@ func Test_reverseBetween(t *testing.T) {
 		}
 	}
 
-	fc := []func(*ListNode, int, int) *ListNode{reverseBetween2}
+	fc := []func(*ListNode, int, int) *ListNode{reverseBetween, reverseBetween2}
 
 	for _, fn := range fc {
 		for _, tt := range tests() {

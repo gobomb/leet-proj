@@ -1,4 +1,4 @@
-package leetcode
+package review
 
 import (
 	"reflect"
@@ -23,14 +23,14 @@ func Test_preorderTraversal(t *testing.T) {
 			{
 				name: "",
 				args: args{
-					root: MakeTree2(2, 3, 4, 5),
+					root: MakeTree(2, 3, 4, 5),
 				},
 				want: []int{2, 3, 5, 4},
 			},
 			{
 				name: "",
 				args: args{
-					root: MakeTree2(2, 3, Null, 4, 5),
+					root: MakeTree(2, 3, Null, 4, 5),
 				},
 				want: []int{2, 3, 4, 5},
 			},

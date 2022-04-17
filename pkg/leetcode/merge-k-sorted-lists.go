@@ -1,6 +1,6 @@
 package leetcode
 
-import "justest/pkg/leetcode/easy"
+import "justest/pkg/leetcode/review"
 
 func mergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 0 {
@@ -8,7 +8,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	}
 	temp := lists[0]
 	for i := 1; i < len(lists); i++ {
-		temp = easy.MergeTwoLists(temp, lists[i])
+		temp = review.MergeTwoLists(temp, lists[i])
 	}
 
 	return temp

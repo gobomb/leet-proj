@@ -13,6 +13,7 @@ package review
 func reverseList(head *ListNode) *ListNode {
 	indirect := head
 
+	// 哑节点
 	var dummy *ListNode
 	for (indirect) != nil {
 		tmp := dummy

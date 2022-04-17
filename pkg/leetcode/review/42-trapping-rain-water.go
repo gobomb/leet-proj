@@ -1,4 +1,6 @@
-package leetcode
+package review
+
+// 42. trapping-rain-water
 
 func trap(height []int) int {
 	return trapBetween(height, 0, len(height)-1)
@@ -50,4 +52,30 @@ func subOtherBars(height []int, h, l int) int {
 	}
 
 	return height[l]*(w-1) - sub
+}
+
+func trap2(height []int) int {
+	maxH := 0
+	dp1 := make([]int, len(height))
+	dp2 := make([]int, len(height))
+
+	for i := 0; i < len(height); i++ {
+		maxH = max(maxH, height[i])
+		dp1[i] = maxH
+	}
+
+	maxH = 0
+
+	for j := len(height) - 1; j >= 0; j-- {
+		maxH = max(maxH, height[j])
+		dp2[j] = maxH
+	}
+
+	wt := 0
+	for i := 1; i < len(height)-1; i++ {
+		h := min(dp1[i], dp2[i])
+		wt += h - height[i]
+	}
+
+	return wt
 }
