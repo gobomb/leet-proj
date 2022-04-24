@@ -5,23 +5,24 @@ import (
 )
 
 func makeCycle(h *ListNode, pos int) *ListNode {
-	if pos == -1 {
-		return h
-	}
+	// if pos == -1 {
+	// 	return h
+	// }
 
-	var p *ListNode
-	s := h
-	c := 0
+	// var p *ListNode
+	// s := h
+	// c := 0
 
-	for h.Next != nil {
-		h = h.Next
-		if c == pos {
-			p = h
-		}
-		c++
-	}
+	// for h.Next != nil {
+	// 	h = h.Next
+	// 	if c == pos {
+	// 		p = h
+	// 	}
+	// 	c++
+	// }
 
-	h.Next = p
+	// h.Next = p
+	s, _ := makeCycle2(h, pos)
 	return s
 }
 
