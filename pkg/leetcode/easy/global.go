@@ -3,8 +3,6 @@ package easy
 import (
 	"log"
 
-	"github.com/google/go-cmp/cmp"
-
 	"justest/pkg/ds/listnode"
 	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
@@ -17,9 +15,10 @@ var (
 	null   = tree.Null
 	isNull = tree.IsNull
 
-	MakeListNode = listnode.MakeListNode
-	LNDeepCopy   = listnode.LNDeepCopy
-	funcName     = utils.FuncName
+	MakeListNode    = listnode.MakeListNode
+	LNDeepCopy      = listnode.LNDeepCopy
+	funcName        = utils.FuncName
+	ShouldEqualDiff = utils.ShouldEqualDiff
 )
 
 type (
@@ -38,14 +37,6 @@ func Abs(x int) int {
 	}
 
 	return x
-}
-
-func ShouldEqualDiff(actual interface{}, expected ...interface{}) string {
-	if len(expected) == 0 {
-		return "expected should not be empty"
-	}
-
-	return cmp.Diff(expected[0], actual)
 }
 
 func MakeTree(arg ...int) *TreeNode {
