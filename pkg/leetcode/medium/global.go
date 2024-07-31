@@ -8,14 +8,15 @@ import (
 )
 
 var (
-	max          = utils.Max
-	min          = utils.Min
-	Null         = tree.Null
-	null         = tree.Null
-	MakeListNode = listnode.MakeListNode
-	LNDeepCopy   = listnode.LNDeepCopy
-	isNull       = tree.IsNull
-	funcName     = utils.FuncName
+	max             = utils.Max
+	min             = utils.Min
+	Null            = tree.Null
+	null            = tree.Null
+	MakeListNode    = listnode.MakeListNode
+	LNDeepCopy      = listnode.LNDeepCopy
+	isNull          = tree.IsNull
+	funcName        = utils.FuncName
+	ShouldEqualDiff = utils.ShouldEqualDiff
 )
 
 type (

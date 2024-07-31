@@ -1,10 +1,11 @@
 package easy
 
 import (
+	"log"
+
 	"justest/pkg/ds/listnode"
 	"justest/pkg/ds/tree"
 	"justest/pkg/utils"
-	"log"
 )
 
 var (
@@ -14,9 +15,10 @@ var (
 	null   = tree.Null
 	isNull = tree.IsNull
 
-	MakeListNode = listnode.MakeListNode
-	LNDeepCopy   = listnode.LNDeepCopy
-	funcName     = utils.FuncName
+	MakeListNode    = listnode.MakeListNode
+	LNDeepCopy      = listnode.LNDeepCopy
+	funcName        = utils.FuncName
+	ShouldEqualDiff = utils.ShouldEqualDiff
 )
 
 type (
