@@ -20,7 +20,9 @@ func twoSum(numbers []int, target int) []int {
 // 	4 ms	3 MB
 func twoSumBiSe(numbers []int, target int) []int {
 	for i := range numbers {
+		// target subs the candicate
 		target -= numbers[i]
+
 		lo, hi, mid := i+1, len(numbers)-1, 0
 
 		for lo <= hi {
@@ -40,4 +42,24 @@ func twoSumBiSe(numbers []int, target int) []int {
 	}
 
 	return []int{}
+}
+
+// hashmap solution
+func twoSum2(nums []int, target int) []int {
+	rs := []int{}
+	cache := map[int]int{}
+
+	for i := 0; i < len(nums); i++ {
+		need := target - nums[i]
+		index, ok := cache[need]
+		if !ok {
+			cache[nums[i]] = i
+			continue
+		}
+
+		rs = append(rs, index+1, i+1)
+		return rs
+	}
+
+	return rs
 }
